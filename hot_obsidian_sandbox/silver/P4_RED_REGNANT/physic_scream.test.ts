@@ -4,15 +4,17 @@ import * as fs from 'node:fs';
 import * as path from 'node:path';
 
 /**
- * 🥈 TEST: Port 4 Psychic Scream
+ * 🥈 TEST: Port 4 Physic Scream
  * 
- * @provenance hot_obsidian_sandbox/bronze/P4_DISRUPTION_KINETIC.md
- * @topic System Disruption & Testing
+ * Authority: Red Regnant (The Disruptor)
+ * Verb: DISRUPT / TEST
+ * Topic: System Disruption & Testing
+ * Provenance: hot_obsidian_sandbox/bronze/P4_DISRUPTION_KINETIC.md
  */
 
-describe('Port 4 Psychic Scream', () => {
+describe('Port 4 Physic Scream', () => {
   const ROOT_DIR = path.resolve(__dirname, '../../../');
-  const SCREAMER_PATH = path.join(ROOT_DIR, 'hot_obsidian_sandbox/silver/P4_RED_REGNANT/screamer.ts');
+  const SCREAMER_PATH = path.join(ROOT_DIR, 'hot_obsidian_sandbox/silver/P4_RED_REGNANT/physic_scream.ts');
 
   it('should detect root pollution', () => {
     const slopFile = path.join(ROOT_DIR, 'test_slop.txt');

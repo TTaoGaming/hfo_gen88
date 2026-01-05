@@ -44,9 +44,9 @@ The HIVE/8 workflow is the strategic loop for feature development. It is non-seq
 The PREY loop is the micro-cycle for every agent tool call.
 
 1.  **P (Perceive)**: Read the environment (files, terminal, memory).
-2.  **R (Reflect)**: Use Sequential Thinking to analyze the delta.
+2.  **R (React)**: Use Sequential Thinking to analyze the delta and formulate a response.
 3.  **E (Execute)**: Call the tool (edit file, run command).
-4.  **Y (Yield)**: Verify the result and report back.
+4.  **Y (Yield)**: Verify the result and report back. **Strange Loop point**: Feeds the next workflow as an artifact.
 
 ---
 

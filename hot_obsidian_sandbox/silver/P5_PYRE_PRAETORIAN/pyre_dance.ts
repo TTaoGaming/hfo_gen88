@@ -2,7 +2,8 @@
 /**
  * 🔥 PORT 5: PYRE DANCE (The Pyre Praetorian)
  * 
- * Authority: Pyre Praetorian (The Defender)
+ * Authority: Pyre Praetorian (The Immunizer)
+ * Verb: DEFEND / IMMUNIZE
  * Topic: System Disruption & Testing
  * Provenance: hot_obsidian_sandbox/bronze/P5_PYRE_PRAETORIAN/DANCE_SPEC.md
  * 
@@ -29,6 +30,7 @@ const ALLOWED_ROOT_FILES = [
     'AGENTS.md',
     'llms.txt',
     'obsidianblackboard.jsonl',
+    '.env',
     '.git',
     '.gitignore',
     '.vscode'
@@ -90,6 +92,7 @@ function stepSeal() {
     let content = fs.readFileSync(gitignorePath, 'utf-8');
     const mandatoryBlocks = [
         '# HFO Gen 88 Cleanroom Firewall',
+        '.env',
         'node_modules/',
         '.venv/',
         '*.log',

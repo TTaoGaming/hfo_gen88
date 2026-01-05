@@ -12,5 +12,6 @@ dist/
 cold_obsidian_sandbox/silver/active_root
 
 # HFO Gen 88 Cleanroom Firewall
+.env
 .venv/
 hot_obsidian_sandbox/bronze/quarantine/

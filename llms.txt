@@ -3,7 +3,7 @@ Topic: System Disruption & Testing
 Provenance: bronze/P4_DISRUPTION_KINETIC.md
 
 > Generation: 88
-> Status: TOTAL RESET - ALL SILVER DEMOTED TO BRONZE
+> Status: IMMUNE SYSTEM PROMOTED TO SILVER
 > Status: HARD-GATED ENFORCEMENT ACTIVE
 
 ## 🎯 CURRENT MISSION: W3C Gesture Control Plane
@@ -19,14 +19,18 @@ Provenance: bronze/P4_DISRUPTION_KINETIC.md
 Gen 88 is designed to prevent "AI Theater" through strict architectural gates.
 - **Root Purge**: No pollution allowed in the root.
 - **Medallion Architecture**: Strict separation of data quality.
-- **Immune System**: `screamer.ts` detects violations.
+- **Immune System**: `physic_scream.ts` (Port 4) detects violations.
+- **Hardening**: `pyre_dance.ts` (Port 5) remediates slop.
 - **Stigmergy**: `obsidianblackboard.jsonl` is the source of truth.
+- **Grudges**: `BLOOD_BOOK_OF_GRUDGES.jsonl` tracks dev pain.
 
 ## Key Files
 
 1. **AGENTS.md** - Full agent instructions and rules.
 2. **obsidianblackboard.jsonl** - The Truth Source (Root).
-3. **hot_obsidian_sandbox/bronze/infra/** - Testing and enforcement infrastructure.
+3. **BLOOD_BOOK_OF_GRUDGES.jsonl** - The Ledger of Pain (Port 4).
+4. **hot_obsidian_sandbox/silver/P5_PYRE_PRAETORIAN/pyre_dance.ts** - Proactive Hardening (Port 5).
+5. **hot_obsidian_sandbox/bronze/infra/** - Testing and enforcement infrastructure.
 
 ## Rules for LLMs
 

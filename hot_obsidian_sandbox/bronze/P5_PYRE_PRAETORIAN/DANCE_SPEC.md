@@ -2,10 +2,10 @@
 
 Topic: System Disruption & Testing
 Provenance: hot_obsidian_sandbox/bronze/P5_PYRE_PRAETORIAN/DANCE_SPEC.md
-Status: BRONZE (Active Hardening)
+Status: SILVER (Verified Hardening)
 
 ## 🎯 Mission
-The Pyre Praetorian is the proactive defender of the HFO Gen 88 Cleanroom. While the Red Regnant (Port 4) screams at violations, the Praetorian performs the **Pyre Dance** to harden the system and prevent screams from occurring.
+The Pyre Praetorian is the proactive defender of the HFO Gen 88 Cleanroom. While the Red Regnant (Port 4) performs the **Physic Scream** at violations, the Praetorian performs the **Pyre Dance** to harden the system and prevent screams from occurring.
 
 ## 💃 The Pyre Dance
 The dance consists of four primary steps:
@@ -18,7 +18,7 @@ The dance consists of four primary steps:
 ## 🛡️ Defense in Depth Layers
 
 1.  **Zod (Contract Law)**: All public exports must be wrapped in `VacuoleEnvelope` to ensure data integrity.
-2.  **Pre-commit (The Gatekeeper)**: Runs the Pyre Dance and Psychic Scream before any code is committed.
+2.  **Pre-commit (The Gatekeeper)**: Runs the **Pyre Dance** and **Physic Scream** before any code is committed.
 3.  **TDD/CDD (The Proof)**: No implementation in `silver/` without a corresponding test.
 4.  **Stigmergy (The Memory)**: All audits and test results are logged to `obsidianblackboard.jsonl`.
 5.  **The Blood Book of Grudges**: A cryptographically hashed ledger of all major architectural failures and AI hallucinations.

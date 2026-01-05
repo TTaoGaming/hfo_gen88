@@ -3,7 +3,7 @@ Topic: System Disruption & Testing
 Provenance: bronze/P4_DISRUPTION_KINETIC.md
 
 > **Generation**: 88 (Canalization)
-> **Status**: TOTAL RESET - ALL SILVER DEMOTED TO BRONZE
+> **Status**: IMMUNE SYSTEM PROMOTED TO SILVER
 > **Architecture**: Medallion (Hot/Cold Obsidian Sandboxes)
 > **Status**: HARD-GATED ENFORCEMENT ACTIVE
 > **Architecture**: Medallion (Hot/Cold Obsidian Sandboxes)
@@ -27,8 +27,9 @@ Provenance: bronze/P4_DISRUPTION_KINETIC.md
 1. **ROOT PURGE**: The root directory MUST remain clean. Only `hot_obsidian_sandbox`, `cold_obsidian_sandbox`, `AGENTS.md`, `llms.txt`, `obsidianblackboard.jsonl`, and `ttao-notes-*.md` are allowed.
 2. **NO THEATER**: Do not report "Green" without "Red". Every implementation in `silver/` must have a corresponding test in the same directory.
 3. **MEDALLION FLOW**: Code starts in `bronze/`, moves to `silver/` once tested, and `gold/` once canonized.
-4. **IMMUNE SYSTEM**: The `screamer.ts` script runs every 10 minutes. Architectural violations will be logged to the Blackboard.
+4. **IMMUNE SYSTEM**: The `physic_scream.ts` script (Port 4) runs on every commit. Architectural violations will be logged to the Blackboard and the Blood Book of Grudges.
 5. **STIGMERGY**: All progress and violations MUST be logged to `obsidianblackboard.jsonl` in the root.
+6. **STRANGE LOOPS**: Port 7 (Spider Sovereign) enforces HIVE/8 (Strategic) and PREY/8 (Tactical) workflows.
 
 ---
 
@@ -36,16 +37,16 @@ Provenance: bronze/P4_DISRUPTION_KINETIC.md
 
 ### The 8 Legendary Commanders
 ```
-Port │ Commander        │ Verb    │ HIVE Phase
-─────┼──────────────────┼─────────┼────────────
-  0  │ Lidless Legion   │ SENSE   │ H (Hunt)
-  1  │ Web Weaver       │ FUSE    │ I (Interlock)
-  2  │ Mirror Magus     │ SHAPE   │ V (Validate)
-  3  │ Spore Storm      │ DELIVER │ E (Evolve)
-  4  │ Red Regnant      │ TEST    │ E (Evolve)
-  5  │ Pyre Praetorian  │ DEFEND  │ V (Validate)
-  6  │ Kraken Keeper    │ STORE   │ I (Interlock)
-  7  │ Spider Sovereign │ DECIDE  │ H (Hunt)
+Port │ Commander        │ Verb            │ HIVE Phase
+─────┼──────────────────┼─────────────────┼────────────
+  0  │ Lidless Legion   │ SENSE           │ H (Hunt)
+  1  │ Web Weaver       │ FUSE            │ I (Interlock)
+  2  │ Mirror Magus     │ SHAPE           │ V (Validate)
+  3  │ Spore Storm      │ DELIVER         │ E (Evolve)
+  4  │ Red Regnant      │ DISRUPT / TEST  │ E (Evolve)
+  5  │ Pyre Praetorian  │ DEFEND / IMMUNIZE│ V (Validate)
+  6  │ Kraken Keeper    │ STORE           │ I (Interlock)
+  7  │ Spider Sovereign │ DECIDE          │ H (Hunt)
 ```
 
 ### HIVE/8 Workflow
@@ -57,7 +58,9 @@ Port │ Commander        │ Verb    │ HIVE Phase
 ---
 
 ## 🧰 Tools & Infrastructure
-- **Enforcement**: `hot_obsidian_sandbox/bronze/scripts/screamer.ts`
+- **Enforcement**: `hot_obsidian_sandbox/silver/P4_RED_REGNANT/physic_scream.ts`
+- **Hardening**: `hot_obsidian_sandbox/silver/P5_PYRE_PRAETORIAN/pyre_dance.ts`
+- **Ledger**: `hot_obsidian_sandbox/silver/P4_RED_REGNANT/BLOOD_BOOK_OF_GRUDGES.jsonl`
 - **Daemon**: `hot_obsidian_sandbox/bronze/scripts/daemon.ps1`
 - **Testing**: Vitest (configured in `hot_obsidian_sandbox/bronze/infra/`)
 - **Contracts**: Zod (Contract Law)
@@ -66,6 +69,6 @@ Port │ Commander        │ Verb    │ HIVE Phase
 ---
 
 ## 🔑 Quick Start
-1. **Check Health**: `cd hot_obsidian_sandbox/bronze/infra; npm run scream`
+1. **Check Health**: `cd hot_obsidian_sandbox/bronze/infra; npx tsx ../../silver/P4_RED_REGNANT/physic_scream.ts`
 2. **Run Tests**: `cd hot_obsidian_sandbox/bronze/infra; npm test`
-3. **Log Progress**: Append to `hot_obsidian_sandbox/silver/manifests/obsidianblackboard.jsonl`
+3. **Log Progress**: Append to `obsidianblackboard.jsonl` in the root.

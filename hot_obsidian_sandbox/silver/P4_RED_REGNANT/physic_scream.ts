@@ -1,8 +1,9 @@
 #!/usr/bin/env tsx
 /**
- * 😱 PORT 4: PSYCHIC SCREAM (The Red Regnant)
+ * 😱 PORT 4: PHYSIC SCREAM (The Red Regnant)
  * 
  * Authority: Red Regnant (The Disruptor)
+ * Verb: DISRUPT / TEST
  * Topic: System Disruption & Testing
  * Provenance: hot_obsidian_sandbox/bronze/P4_DISRUPTION_KINETIC.md
  * 
@@ -29,6 +30,7 @@ const ALLOWED_ROOT_FILES = [
     'AGENTS.md',
     'llms.txt',
     'obsidianblackboard.jsonl',
+    '.env',
     '.git',
     '.gitignore',
     '.vscode'
@@ -89,7 +91,7 @@ function scream(v: Violation) {
     // Policy as Code: Auto-demote silver/gold artifacts on any scream
     demote(v.file, v);
 
-    // Record the pain in the Red Book of Grudges if it's a major violation
+    // Record the pain in the Blood Book of Grudges if it's a major violation
     if (v.type === 'VIOLATION' || v.type === 'THEATER') {
         try {
             // We import the keeper dynamically to avoid circular dependencies if any
@@ -102,10 +104,12 @@ function scream(v: Violation) {
                 remediation_status: 'UNRESOLVED',
                 evidence: v.file
             };
-            // Note: We don't calculate the hash here to keep the screamer fast, 
+            // Note: We don't calculate the hash here to keep the physic scream fast, 
             // but the Grudge Keeper can re-sync/re-hash the book.
             // For now, we just log it to the blackboard as a grudge-worthy event.
-        } catch (e) {}
+        } catch (e) {
+            console.error('❌ Failed to record grudge in Physic Scream:', e);
+        }
     }
 }
 

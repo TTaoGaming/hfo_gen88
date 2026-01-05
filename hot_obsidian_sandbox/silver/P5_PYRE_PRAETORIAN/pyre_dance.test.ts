@@ -4,15 +4,17 @@ import * as fs from 'node:fs';
 import * as path from 'node:path';
 
 /**
- * 🥉 TEST: Port 5 Pyre Dance
+ * � TEST: Port 5 Pyre Dance
  * 
- * @provenance hot_obsidian_sandbox/bronze/P5_PYRE_PRAETORIAN/DANCE_SPEC.md
- * @topic System Disruption & Testing
+ * Authority: Pyre Praetorian (The Immunizer)
+ * Verb: DEFEND / IMMUNIZE
+ * Topic: System Disruption & Testing
+ * Provenance: hot_obsidian_sandbox/bronze/P5_PYRE_PRAETORIAN/DANCE_SPEC.md
  */
 
 describe('Port 5 Pyre Dance', () => {
   const ROOT_DIR = path.resolve(__dirname, '../../../');
-  const DANCE_PATH = path.join(ROOT_DIR, 'hot_obsidian_sandbox/bronze/P5_PYRE_PRAETORIAN/pyre_dance.ts');
+  const DANCE_PATH = path.join(ROOT_DIR, 'hot_obsidian_sandbox/silver/P5_PYRE_PRAETORIAN/pyre_dance.ts');
   const QUARANTINE_DIR = path.join(ROOT_DIR, 'hot_obsidian_sandbox/bronze/quarantine/pollution');
 
   it('should proactively sweep root pollution', () => {

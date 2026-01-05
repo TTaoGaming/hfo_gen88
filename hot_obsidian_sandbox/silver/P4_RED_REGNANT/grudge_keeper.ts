@@ -1,9 +1,15 @@
 import * as fs from 'node:fs';
 import * as path from 'node:path';
 import * as crypto from 'node:crypto';
+import { z } from 'zod';
 
 /**
  * 📕 PORT 4: THE BLOOD BOOK OF GRUDGES
+ * 
+ * Authority: Red Regnant (The Disruptor)
+ * Verb: DISRUPT / TEST
+ * Topic: System Disruption & Testing
+ * Provenance: hot_obsidian_sandbox/bronze/P4_DISRUPTION_KINETIC.md
  * 
  * "The Book is written in the blood of the fallen. Every entry is a scar, 
  * every hash a chain that binds the AI to its failures until they are redeemed."
@@ -11,20 +17,24 @@ import * as crypto from 'node:crypto';
  * This script manages the append-only, hash-chained ledger of Dev Pain.
  */
 
+const VacuoleEnvelope = <T extends z.ZodTypeAny>(schema: T, data: unknown) => schema.parse(data);
+
 const ROOT = path.resolve(__dirname, '../../../');
 const GRUDGE_BOOK_PATH = path.join(ROOT, 'hot_obsidian_sandbox/silver/P4_RED_REGNANT/BLOOD_BOOK_OF_GRUDGES.jsonl');
 
-interface Grudge {
-    index: number;
-    ts: string;
-    pain_id: string;
-    grudge: string;
-    severity: 'TRIVIAL' | 'MINOR' | 'MAJOR' | 'CRITICAL' | 'CATASTROPHIC';
-    remediation_status: 'UNRESOLVED' | 'REMEDIATED' | 'FORGIVEN';
-    evidence?: string;
-    prev_hash: string;
-    hash: string;
-}
+const GrudgeSchema = z.object({
+    index: z.number(),
+    ts: z.string(),
+    pain_id: z.string(),
+    grudge: z.string(),
+    severity: z.enum(['TRIVIAL', 'MINOR', 'MAJOR', 'CRITICAL', 'CATASTROPHIC']),
+    remediation_status: z.enum(['UNRESOLVED', 'REMEDIATED', 'FORGIVEN']),
+    evidence: z.string().optional(),
+    prev_hash: z.string(),
+    hash: z.string()
+});
+
+type Grudge = z.infer<typeof GrudgeSchema>;
 
 export function calculateHash(grudge: Omit<Grudge, 'hash'>): string {
     const data = JSON.stringify({
@@ -45,7 +55,7 @@ export function addGrudge(pain_id: string, description: string, severity: Grudge
     if (fs.existsSync(GRUDGE_BOOK_PATH)) {
         const lines = fs.readFileSync(GRUDGE_BOOK_PATH, 'utf8').trim().split('\n');
         if (lines.length > 0 && lines[0] !== '') {
-            const lastGrudge = JSON.parse(lines[lines.length - 1]) as Grudge;
+            const lastGrudge = VacuoleEnvelope(GrudgeSchema, JSON.parse(lines[lines.length - 1]));
             index = lastGrudge.index + 1;
             prev_hash = lastGrudge.hash;
         }
@@ -73,7 +83,7 @@ export function addGrudge(pain_id: string, description: string, severity: Grudge
 // If run directly, initialize with the Genesis Grudges if empty
 if (process.argv[1] === __filename || process.argv[1]?.endsWith('grudge_keeper.ts')) {
     if (!fs.existsSync(GRUDGE_BOOK_PATH) || fs.readFileSync(GRUDGE_BOOK_PATH, 'utf8').trim() === '') {
-        console.log('📕 INITIALIZING THE RED BOOK OF GRUDGES...');
+        console.log('📕 INITIALIZING THE BLOOD BOOK OF GRUDGES...');
         
         addGrudge(
             'PAIN_000',

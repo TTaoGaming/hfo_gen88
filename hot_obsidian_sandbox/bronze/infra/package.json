@@ -4,7 +4,7 @@
   "description": "HFO Gen 88: Cleanroom Genesis with Hard-Gated Enforcement",
   "type": "module",
   "scripts": {
-    "scream": "tsx ../demoted_silver/P4_RED_REGNANT/screamer.ts",
+    "scream": "tsx ../../silver/P4_RED_REGNANT/physic_scream.ts",
     "watch:scream": "nodemon --watch ../.. --ext ts --exec \"npm run scream\"",
     "test": "vitest run",
     "test:watch": "vitest",
@@ -12,17 +12,20 @@
     "genesis": "npm install && npm run scream"
   },
   "dependencies": {
-    "zod": "^3.22.4",
+    "@langchain/langgraph": "^1.0.7",
+    "@temporalio/workflow": "^1.14.0",
+    "cloudevents": "^8.0.0",
+    "dotenv": "^17.2.3",
     "nats": "^2.17.0",
-    "cloudevents": "^8.0.0"
+    "zod": "^3.22.4"
   },
   "devDependencies": {
-    "vitest": "^1.2.1",
     "@stryker-mutator/core": "^8.0.0",
-    "@stryker-mutator/vitest-runner": "^8.0.0",
     "@stryker-mutator/typescript-checker": "^8.0.0",
+    "@stryker-mutator/vitest-runner": "^8.0.0",
+    "nodemon": "^3.0.3",
     "tsx": "^4.7.0",
     "typescript": "^5.3.3",
-    "nodemon": "^3.0.3"
+    "vitest": "^1.2.1"
   }
 }
