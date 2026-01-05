@@ -1,13 +1,13 @@
 #!/usr/bin/env tsx
 /**
- * 😱 THE RED REGNANT'S PHYSIC SCREAM (PORT 4)
+ * 😱 PORT 4: PSYCHIC SCREAM (The Red Regnant)
  * 
  * Authority: Red Regnant (The Disruptor)
  * Topic: System Disruption & Testing
- * Provenance: bronze/P4_DISRUPTION_KINETIC.md
+ * Provenance: hot_obsidian_sandbox/bronze/P4_DISRUPTION_KINETIC.md
  * 
- * This script is the "Immune System" of the Gen 88 Cleanroom.
- * It runs to disrupt AI Theater, Hallucinations, and Architectural Violations.
+ * This is the formal Silver-tier implementation of the Gen 88 Immune System.
+ * It enforces Canalization, Medallion Flow, and Contract Law.
  */
 
 import * as fs from 'node:fs';
@@ -17,7 +17,7 @@ import { fileURLToPath } from 'node:url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const ROOT_DIR = path.resolve(__dirname, '../../../../');
+const ROOT_DIR = path.resolve(__dirname, '../../../');
 const HOT_DIR = path.join(ROOT_DIR, 'hot_obsidian_sandbox');
 const COLD_DIR = path.join(ROOT_DIR, 'cold_obsidian_sandbox');
 const BLACKBOARD_PATH = path.resolve(ROOT_DIR, 'obsidianblackboard.jsonl');
@@ -301,8 +301,12 @@ function audit(dir: string) {
     if (!fs.existsSync(dir)) return;
     
     const normalizedDir = dir.replace(/\\/g, '/');
-    // EXCLUSION: Skip node_modules, infra, and quarantine
-    if (normalizedDir.includes('node_modules') || normalizedDir.includes('bronze/infra') || normalizedDir.includes('bronze/quarantine') || normalizedDir.includes('bronze/demoted_silver')) return;
+    // EXCLUSION: Skip node_modules, infra, quarantine, and the screamer's own source
+    if (normalizedDir.includes('node_modules') || 
+        normalizedDir.includes('bronze/infra') || 
+        normalizedDir.includes('bronze/quarantine') || 
+        normalizedDir.includes('bronze/demoted_silver') ||
+        normalizedDir.includes('silver/P4_RED_REGNANT')) return;
 
     const entries = fs.readdirSync(dir, { withFileTypes: true });
 
