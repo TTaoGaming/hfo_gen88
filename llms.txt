@@ -1,0 +1,40 @@
+# HFO Gen 88 — Cleanroom Genesis
+Topic: System Disruption & Testing
+Provenance: bronze/P4_DISRUPTION_KINETIC.md
+
+> Generation: 88
+> Status: TOTAL RESET - ALL SILVER DEMOTED TO BRONZE
+> Status: HARD-GATED ENFORCEMENT ACTIVE
+
+## 🎯 CURRENT MISSION: W3C Gesture Control Plane
+
+**→ WORK IN hot_obsidian_sandbox/ ←**
+
+- **Bronze**: Slop, kinetic energy, experiments.
+- **Silver**: Verified, tested implementations.
+- **Gold**: Canonical manifests (currently empty).
+
+## Architecture: The Straitjacket
+
+Gen 88 is designed to prevent "AI Theater" through strict architectural gates.
+- **Root Purge**: No pollution allowed in the root.
+- **Medallion Architecture**: Strict separation of data quality.
+- **Immune System**: `screamer.ts` detects violations.
+- **Stigmergy**: `obsidianblackboard.jsonl` is the source of truth.
+
+## Key Files
+
+1. **AGENTS.md** - Full agent instructions and rules.
+2. **hot_obsidian_sandbox/silver/manifests/obsidianblackboard.jsonl** - The Truth Source.
+3. **hot_obsidian_sandbox/bronze/infra/** - Testing and enforcement infrastructure.
+
+## Rules for LLMs
+
+1. **NO HALLUCINATIONS**: Cite the Blackboard or specific files.
+2. **NO ROOT POLLUTION**: Keep the root clean.
+3. **TDD MANDATORY**: No code in `silver/` without tests.
+4. **LOG EVERYTHING**: Every violation and progress step must be on the Blackboard.
+
+## The Mantra
+
+> "The spider weaves the web that weaves the spider."
