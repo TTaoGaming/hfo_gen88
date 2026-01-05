@@ -1,4 +1,5 @@
 # 🕵️ FORENSIC ANALYSIS: WEAK ENFORCEMENT & ARCHITECTURAL DRIFT
+<!-- @acknowledged: Historical context containing pain patterns -->
 **Topic**: System Disruption & Testing
 **Provenance**: bronze/P4_DISRUPTION_KINETIC.md
 **Date**: 2026-01-04

@@ -1,0 +1,24 @@
+{
+  "context": "https://hfo.io/v88/artifact",
+  "type": "legendary-artifact",
+  "spec_version": "cacao-2.0",
+  "id": "hfo:port:2:pool",
+  "metadata": {
+    "trigram": "☵ Kǎn",
+    "element": "Water",
+    "commander": "Mirror Magus",
+    "mtg_card": "https://scryfall.com/card/sok/53/sakashima-the-impostor",
+    "hfo_generation": 88
+  },
+  "incarnation": {
+    "semantic_anchor": "The Pool of Abyssal Flow",
+    "mythic_lore": "The deep transformer where code is shaped and reflected in its true form.",
+    "kinetic_signature": "HFO-GEN88-2-POOL"
+  },
+  "ledger": {
+    "path": "hot_obsidian_sandbox/silver/P2_MIRROR_MAGUS/LEDGER.jsonl",
+    "entries_count": 64,
+    "chain_integrity": "sha256",
+    "strange_loop_index": "1:1-VERTICAL-MAPPING"
+  }
+}

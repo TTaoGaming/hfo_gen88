@@ -29,11 +29,11 @@
     "isolatedModules": true,
     "baseUrl": ".",
     "paths": {
-      "@contracts/*": ["hot/silver/src/contracts/*"],
-      "@ports/*": ["hot/silver/src/ports/*"],
-      "@adapters/*": ["hot/silver/src/adapters/*"]
+      "@contracts/*": ["../../bronze/contracts/*"],
+      "@ports/*": ["../../silver/*"],
+      "@adapters/*": ["../../bronze/adapters/*"]
     }
   },
-  "include": ["hot/**/*.ts", "scripts/**/*.ts"],
+  "include": ["../../silver/**/*.ts", "../../bronze/**/*.ts"],
   "exclude": ["node_modules", "dist"]
 }

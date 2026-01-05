@@ -9,20 +9,26 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "stryker": "stryker run",
-    "genesis": "npm install && npm run scream"
+    "genesis": "npm install && npm run scream",
+    "prepare": "husky"
   },
   "dependencies": {
     "@langchain/langgraph": "^1.0.7",
+    "@mediapipe/tasks-vision": "^0.10.22-rc.20250304",
     "@temporalio/workflow": "^1.14.0",
     "cloudevents": "^8.0.0",
     "dotenv": "^17.2.3",
+    "duckdb": "^1.4.3",
+    "glob": "^13.0.0",
     "nats": "^2.17.0",
+    "playwright": "^1.57.0",
     "zod": "^3.22.4"
   },
   "devDependencies": {
     "@stryker-mutator/core": "^8.0.0",
     "@stryker-mutator/typescript-checker": "^8.0.0",
     "@stryker-mutator/vitest-runner": "^8.0.0",
+    "husky": "^9.1.7",
     "nodemon": "^3.0.3",
     "tsx": "^4.7.0",
     "typescript": "^5.3.3",

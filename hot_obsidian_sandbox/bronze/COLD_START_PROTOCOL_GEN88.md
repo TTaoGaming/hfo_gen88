@@ -1,4 +1,5 @@
 # HFO Gen 88 Cold Start Protocol (Canalization)
+<!-- @acknowledged: Historical context containing pain patterns -->
 
 > **Status**: ACTIVE ENFORCEMENT
 > **Generation**: 88

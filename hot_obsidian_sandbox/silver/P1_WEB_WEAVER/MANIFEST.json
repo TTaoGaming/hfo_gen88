@@ -1,0 +1,24 @@
+{
+  "context": "https://hfo.io/v88/artifact",
+  "type": "legendary-artifact",
+  "spec_version": "cacao-2.0",
+  "id": "hfo:port:1:bifrost",
+  "metadata": {
+    "trigram": "☶ Gèn",
+    "element": "Mountain",
+    "commander": "Web Weaver",
+    "mtg_card": "https://scryfall.com/card/emn/162/ishkanah-grafwidow",
+    "hfo_generation": 88
+  },
+  "incarnation": {
+    "semantic_anchor": "The Bifrost Web",
+    "mythic_lore": "The bridge between realms anchored in the stillness of the mountain.",
+    "kinetic_signature": "HFO-GEN88-1-BIFROST"
+  },
+  "ledger": {
+    "path": "hot_obsidian_sandbox/silver/P1_WEB_WEAVER/LEDGER.jsonl",
+    "entries_count": 64,
+    "chain_integrity": "sha256",
+    "strange_loop_index": "1:1-VERTICAL-MAPPING"
+  }
+}

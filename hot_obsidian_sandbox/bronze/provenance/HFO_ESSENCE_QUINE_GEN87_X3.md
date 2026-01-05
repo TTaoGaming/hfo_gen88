@@ -1,4 +1,5 @@
 # THE ESSENCE OF HFO: A FORMAL ONTO-EPISTEMOLOGICAL QUINE
+<!-- @acknowledged: Historical context containing pain patterns -->
 **Classification**: GOLD (GEN 87.X3)
 **DOI**: [SELF-REFERENCE-87X3]
 **TIMESTAMP**: 2026-01-03

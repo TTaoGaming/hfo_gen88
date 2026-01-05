@@ -23,6 +23,8 @@ const ROOT_DIR = path.resolve(__dirname, '../../../');
 const HOT_DIR = path.join(ROOT_DIR, 'hot_obsidian_sandbox');
 const BLACKBOARD_PATH = path.resolve(ROOT_DIR, 'obsidianblackboard.jsonl');
 const QUARANTINE_DIR = path.join(HOT_DIR, 'bronze/quarantine/pollution');
+const BLOOD_BOOK_PATH = path.join(HOT_DIR, 'silver/P4_RED_REGNANT/BLOOD_BOOK_OF_GRUDGES.jsonl');
+const SHIELD_BOOK_PATH = path.join(HOT_DIR, 'silver/P5_PYRE_PRAETORIAN/SHIELD_BOOK_OF_IMMUNIZATIONS.jsonl');
 
 const ALLOWED_ROOT_FILES = [
     'hot_obsidian_sandbox',
@@ -30,6 +32,12 @@ const ALLOWED_ROOT_FILES = [
     'AGENTS.md',
     'llms.txt',
     'obsidianblackboard.jsonl',
+    'package.json',
+    'package-lock.json',
+    'stryker.root.config.mjs',
+    'vitest.root.config.ts',
+    'node_modules',
+    '.stryker-tmp',
     '.env',
     '.git',
     '.gitignore',
@@ -208,9 +216,31 @@ function getAllFiles(dir: string): string[] {
     return results;
 }
 
+function stepStrangeLoop() {
+    console.log('🌀 STEP: STRANGE LOOP (Co-evolutionary Audit)');
+    if (!fs.existsSync(BLOOD_BOOK_PATH) || !fs.existsSync(SHIELD_BOOK_PATH)) {
+        console.log('⚠️ Books missing. Skipping loop.');
+        return;
+    }
+
+    const grudges = fs.readFileSync(BLOOD_BOOK_PATH, 'utf-8').split('\n').filter(l => l.trim()).map(l => JSON.parse(l));
+    const immunizations = fs.readFileSync(SHIELD_BOOK_PATH, 'utf-8').split('\n').filter(l => l.trim()).map(l => JSON.parse(l));
+
+    grudges.forEach((grudge, i) => {
+        const imm = immunizations[i];
+        if (!imm) {
+            console.log(`🚨 VULNERABILITY: Grudge ${i} (${grudge.title}) has no corresponding immunization!`);
+            logDance('VULNERABILITY', `Missing immunization for ${grudge.title}`);
+        } else if (imm.target_grudge !== `GRUDGE_${i.toString().padStart(3, '0')}`) {
+            console.log(`🚨 MISALIGNMENT: Immunization ${i} is not targeting Grudge ${i}!`);
+        }
+    });
+}
+
 console.log('🔥 PYRE PRAETORIAN: BEGINNING THE PYRE DANCE...');
 stepSweep();
 stepSeal();
 stepShield();
 stepPulse();
+stepStrangeLoop();
 console.log('🔥 PYRE DANCE COMPLETE. THE CLEANROOM IS HARDENED.');

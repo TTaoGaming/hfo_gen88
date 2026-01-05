@@ -16,3 +16,18 @@ we need to align the galois lattice to the new HFO verbs instead of the JADC2 ve
 ---
 ok, we need to give each of them their capability and playbooks. i think i have lists and many other details but it's been lost to the different generations. they had different names and different ideas but they are all converging on my HFO obsidian galois lattice. I hope you can use the system to navigate for example the purpose of a agent in X Y coordinate should become obvious what their role in the HFO swarm is
 ---
+let's try it, do a web search on social spider optimization and see if the results gets correctly enveloped. the idea is that this would become a good datapoint to make navigator decisions
+---
+ok what we need now is gitops and strengthening of the red regnant, I want to populate her blood book of grudges with my dev pain over the past year, there are documents but we should now have kraken keeper online, the kraken keeper should be able show the red regnant where I have been bleeding and in pain
+---
+the blood book of grudges is not a test log, it's a history of the patterns and meta patterns that cause bleeding and pain for HFO and from me as the DEV since I am part of the spider sovereign. what I want to do is to equipt the red reganant with the ATT&CK playbooks as well. so she has TEETH and CLAWS. her physic screams should go to the stigmergy layer so right now the obsidian blackboard but later NATS
+---
+you need to use port 0 tavily search and port 7 sequential thinking. you are missing key details. 1, download the mitre att ck playbook for the red regnant 2, populate the blood book of grudges with 12 entries from my 1 year of dev pain. so 1 for each month, it's to analyze the attack vectors like a major attack vector is soft enforcement with instruction instead of hard enforcement with machine parsability for example, or believing in hallucinations without testing etc. the major pains
+---
+i think there are some hallucinations so let's clarify first. 1, download ATT&CK Matrix for Enterprise use tavily port 0 and tell me what results you see, I want it offline ready for the red regnant in hot silver to use, maybe a pdf, maybe a knowledge graph or a vector database. find the real playbook
+---
+coordinate with obsidian blackboard, I am improving my port 4 hot\silver red regnant, her testing methods are not enough to catch all the ai slop, so we are upgrading her knowledge with enterprise playbooks for her to adapt into her own standardized format, the blood book of grudges. the idea is to semantically chunk and converge on the main patterns in my DEV PAIN as well as in enterprise so the red regnant is ready for production
+---
+we need to redo the blood book, it is starting to get polluted. what I want you to do is to search and read about my dev pain working with ai the past 1 year, what are the biggest patterns? give me anumber of meta patterns and hyper heuristics for me to document into a newly minted blood book. we need to use enterprise exemplar standards with security and crypto hash provence chaining
+---
+I want her default behavior to be to demote anything wrong to hot\bronze quarantine, likely paired with the pyre praetorian port 5. the idea is that the red regnant tests, the pyre praetorian port 5 defends, disrupt + immunize

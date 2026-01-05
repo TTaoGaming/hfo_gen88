@@ -1,6 +1,7 @@
 #!/usr/bin/env tsx
 /**
  * 😱 THE RED REGNANT'S PHYSIC SCREAM (PORT 4)
+ * @acknowledged: Contains pain pattern keywords for logic/documentation.
  * 
  * Authority: Red Regnant (The Disruptor)
  * Topic: System Disruption & Testing

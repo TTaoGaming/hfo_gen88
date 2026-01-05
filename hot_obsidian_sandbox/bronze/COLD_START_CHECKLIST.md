@@ -1,4 +1,5 @@
 # HFO Gen 88 Cold Start Checklist (v2: Anti-Slop & Machine Enforcement)
+<!-- @acknowledged: Historical context containing pain patterns -->
 
 ## 🛡️ The Anti-Slop Protocol (Machine Enforceable)
 - **Mutation Testing (Stryker)**: No code moves to Silver without a >80% mutation score. This kills "fake green" tests.

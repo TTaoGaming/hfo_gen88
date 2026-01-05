@@ -1,0 +1,24 @@
+{
+  "context": "https://hfo.io/v88/artifact",
+  "type": "legendary-artifact",
+  "spec_version": "cacao-2.0",
+  "id": "hfo:port:6:abyssal-ledger",
+  "metadata": {
+    "trigram": "☱ Duì",
+    "element": "Lake",
+    "commander": "Kraken Keeper",
+    "mtg_card": "https://scryfall.com/card/c18/38/arixmethes-slumbering-isle",
+    "hfo_generation": 88
+  },
+  "incarnation": {
+    "semantic_anchor": "The Abyssal Ledger of the Data Lake",
+    "mythic_lore": "The joyous reservoir where all data eventually settles into memory.",
+    "kinetic_signature": "HFO-GEN88-6-ABYSSAL-LEDGER"
+  },
+  "ledger": {
+    "path": "hot_obsidian_sandbox/silver/P6_KRAKEN_KEEPER/LEDGER.jsonl",
+    "entries_count": 64,
+    "chain_integrity": "sha256",
+    "strange_loop_index": "1:1-VERTICAL-MAPPING"
+  }
+}

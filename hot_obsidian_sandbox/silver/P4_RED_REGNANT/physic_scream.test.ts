@@ -25,7 +25,9 @@ describe('Port 4 Physic Scream', () => {
       // If it doesn't throw, it failed to detect pollution
       expect(true).toBe(false);
     } catch (error: any) {
-      const output = error.stdout.toString() + error.stderr.toString();
+      const stdout = error.stdout ? error.stdout.toString() : '';
+      const stderr = error.stderr ? error.stderr.toString() : '';
+      const output = stdout + stderr;
       expect(output).toContain('😱 SCREAM: [POLLUTION]');
     } finally {
       if (fs.existsSync(slopFile)) fs.unlinkSync(slopFile);

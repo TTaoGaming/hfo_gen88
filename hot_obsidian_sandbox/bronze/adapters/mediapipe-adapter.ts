@@ -3,31 +3,56 @@ import { Port, SensorFrame, SensorFrameSchema, LandmarkSchema } from '../contrac
 import { VacuoleEnvelope } from '../contracts/envelope.js';
 
 /**
- * 🥈 PORT 0: OBSERVER (SENSE) - MediaPipe Adapter (Mock)
+ * 🥈 PORT 0: OBSERVER (SENSE) - MediaPipe Adapter
  * 
  * Wraps MediaPipe Hand Landmarker.
  * 
  * @source https://ai.google.dev/edge/mediapipe/solutions/vision/gesture_recognizer
  */
 
-export class MediaPipeAdapter implements Port<unknown, SensorFrame> {
+export class MediaPipeAdapter implements Port<any, SensorFrame> {
   readonly name = 'MediaPipeObserver';
-  readonly inputSchema = z.unknown(); // Raw MediaPipe result
+  readonly inputSchema = z.any(); // @bespoke: MediaPipe raw input is untyped
   readonly outputSchema = SensorFrameSchema;
 
   private frameId = 0;
+  private recognizer: any = null; // @bespoke: MediaPipe recognizer is untyped in this context
 
-  async process(input: any): Promise<SensorFrame> { // // @bespoke: MediaPipe raw input is untyped
-    // In a real implementation, this would map MediaPipe's result to SensorFrame
-    // For now, we assume the input is already close to what we need or we mock it.
-    
+  /**
+   * Initialize the recognizer. 
+   * In a browser context, this would load the WASM and model.
+   */
+  async initialize(options: { modelPath: string, wasmPath: string }) {
+    // This is a placeholder for the actual initialization logic
+    // which varies between Node and Browser.
+    // The verification script showed how to do this in a browser.
+    console.log('MediaPipeAdapter initialized with', options);
+  }
+
+  async process(input: any): Promise<SensorFrame> {
+    // If input is already a MediaPipe result (e.g. from a browser-side detection)
+    if (input.landmarks) {
+      return this.transformResult(input);
+    }
+
+    // If input is a video/image, we would run detection here.
+    // For now, we assume the input is the result object for simplicity in the pipeline.
+    throw new Error('MediaPipeAdapter.process requires a MediaPipe result object or initialized recognizer.');
+  }
+
+  private transformResult(result: any): SensorFrame {
+    const landmarks = result.landmarks[0] || this.generateDefaultLandmarks();
+    const gesture = result.gestures?.[0]?.[0]?.categoryName || 'None';
+    const handedness = result.handedness?.[0]?.[0]?.categoryName || 'Right';
+    const confidence = result.gestures?.[0]?.[0]?.score || 0.0;
+
     const output: SensorFrame = {
       frameId: this.frameId++,
       timestamp: Date.now(),
-      landmarks: input.landmarks || this.generateDefaultLandmarks(),
-      gesture: input.gesture || 'None',
-      handedness: input.handedness || 'Right',
-      confidence: input.confidence || 0.9,
+      landmarks: landmarks.map((l: any) => ({ x: l.x, y: l.y, z: l.z })),
+      gesture: gesture,
+      handedness: handedness as 'Left' | 'Right',
+      confidence: confidence,
     };
 
     return this.outputSchema.parse(output);

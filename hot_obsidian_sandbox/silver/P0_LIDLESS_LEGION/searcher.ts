@@ -3,8 +3,8 @@
  * 
  * Authority: Lidless Legion (The Sensor)
  * Verb: SENSE
- * Topic: Gesture Control Plane
- * Provenance: hot_obsidian_sandbox/bronze/P0_GESTURE_KINETIC_DRAFT.md
+ * Topic: Web Search & Perception
+ * @provenance hot_obsidian_sandbox/bronze/P0_WEB_SEARCH_KINETIC.md
  * 
  * This port provides the "Lidless" gaze into the digital world via Tavily.
  * @sensor RAW acquisition only. Wrapping is handled by Port 1.
@@ -53,7 +53,7 @@ export async function search(query: string): Promise<any> {
         body: JSON.stringify({
             api_key: apiKey,
             query,
-            search_depth: 'smart',
+            search_depth: 'advanced',
             include_answer: true,
             max_results: 5
         })

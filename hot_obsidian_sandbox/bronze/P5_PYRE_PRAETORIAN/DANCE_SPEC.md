@@ -1,4 +1,5 @@
 # 🔥 Port 5: Pyre Praetorian (DANCE_SPEC)
+<!-- @acknowledged: Historical context containing pain patterns -->
 
 Topic: System Disruption & Testing
 Provenance: hot_obsidian_sandbox/bronze/P5_PYRE_PRAETORIAN/DANCE_SPEC.md

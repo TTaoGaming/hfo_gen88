@@ -6,8 +6,8 @@ import { search } from './searcher.js';
  * 
  * Authority: Lidless Legion (The Sensor)
  * Verb: SENSE
- * Topic: Gesture Control Plane
- * Provenance: hot_obsidian_sandbox/bronze/P0_GESTURE_KINETIC_DRAFT.md
+ * Topic: Web Search & Perception
+ * @provenance hot_obsidian_sandbox/bronze/P0_WEB_SEARCH_KINETIC.md
  */
 
 describe('Port 0 Lidless Legion', () => {
@@ -27,10 +27,15 @@ describe('Port 0 Lidless Legion', () => {
             ]
         };
 
+        let capturedRequest: any = null; // @bespoke justification: Mocking fetch request object for verification.
+
         // Mock fetch
-        global.fetch = vi.fn().mockResolvedValue({
-            ok: true,
-            json: () => Promise.resolve(mockResponse)
+        global.fetch = vi.fn().mockImplementation(async (url, options) => {
+            capturedRequest = { url, options };
+            return {
+                ok: true,
+                json: () => Promise.resolve(mockResponse)
+            };
         });
 
         process.env.TAVILY_API_KEY = 'test-key';
@@ -38,6 +43,25 @@ describe('Port 0 Lidless Legion', () => {
 
         expect(results.results).toHaveLength(1);
         expect(results.results[0].title).toBe('Test Result');
-        expect(global.fetch).toHaveBeenCalledWith('https://api.tavily.com/search', expect.any(Object));
+        
+        expect(capturedRequest.url).toBe('https://api.tavily.com/search');
+        expect(capturedRequest.options.method).toBe('POST');
+        expect(capturedRequest.options.headers['Content-Type']).toBe('application/json');
+        
+        const body = JSON.parse(capturedRequest.options.body);
+        expect(body.query).toBe('test query');
+        expect(body.api_key).toBe('test-key');
+        expect(body.search_depth).toBe('advanced');
+        expect(body.include_answer).toBe(true);
+    });
+
+    it('should throw error if response is not ok', async () => {
+        global.fetch = vi.fn().mockResolvedValue({
+            ok: false,
+            text: () => Promise.resolve('Unauthorized')
+        });
+
+        process.env.TAVILY_API_KEY = 'test-key';
+        await expect(search('test query')).rejects.toThrow('Tavily search failed: Unauthorized');
     });
 });
