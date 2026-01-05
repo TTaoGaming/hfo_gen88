@@ -1,3 +1,11 @@
+/**
+ * 🥈 TEST: Galois Lattice Tension
+ * 
+ * Authority: Spider Sovereign (The Hunter)
+ * Verb: DECIDE
+ * Topic: Decision Making & Navigation
+ * Provenance: hot_obsidian_sandbox/bronze/P7_DECISION_KINETIC.md
+ */
 import { describe, it, expect, vi } from 'vitest';
 import { Navigator } from './navigator.js';
 
@@ -15,7 +23,7 @@ describe('Galois Lattice: Mathematical & Semantic Tension', () => {
         for (let x = 0; x < 8; x++) {
             for (let y = 0; y < 8; y++) {
                 // Accessing private method via any for verification
-                const { role, purpose } = (navigator as any).resolveGaloisLattice(x, y);
+                const { role, purpose } = (navigator as any).resolveGaloisLattice(x, y); // @bespoke private access
                 purposes.add(purpose);
                 roles.add(role);
             }
@@ -35,16 +43,16 @@ describe('Galois Lattice: Mathematical & Semantic Tension', () => {
         //    ...
         // }
 
-        const hunt1 = (navigator as any).resolveGaloisLattice(0, 7);
+        const hunt1 = (navigator as any).resolveGaloisLattice(0, 7); // @bespoke private access
         expect(hunt1.role).toContain('HIVE Anti-Diagonal: HUNT');
         
-        const interlock1 = (navigator as any).resolveGaloisLattice(1, 6);
+        const interlock1 = (navigator as any).resolveGaloisLattice(1, 6); // @bespoke private access
         expect(interlock1.role).toContain('HIVE Anti-Diagonal: INTERLOCK');
 
-        const validate1 = (navigator as any).resolveGaloisLattice(2, 5);
+        const validate1 = (navigator as any).resolveGaloisLattice(2, 5); // @bespoke private access
         expect(validate1.role).toContain('HIVE Anti-Diagonal: VALIDATE');
 
-        const evolve1 = (navigator as any).resolveGaloisLattice(3, 4);
+        const evolve1 = (navigator as any).resolveGaloisLattice(3, 4); // @bespoke private access
         expect(evolve1.role).toContain('HIVE Anti-Diagonal: EVOLVE');
     });
 

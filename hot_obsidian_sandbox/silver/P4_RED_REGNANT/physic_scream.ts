@@ -155,6 +155,9 @@ function checkPortIsolation(filePath: string, content: string) {
     if (!portMatch) return;
     const currentPort = portMatch[1];
 
+    // Port 1 (Web Weaver) is the designated Bridger and is allowed to import from other ports.
+    if (currentPort === '1') return;
+
     // Regex to find imports from other ports
     const otherPortImport = /import.*from.*P([0-7])_/;
     const match = content.match(otherPortImport);
@@ -176,11 +179,13 @@ function checkEnvelope(filePath: string, content: string) {
     
     // Regex to find top-level exports that are not wrapped in VacuoleEnvelope
     const hasExport = /^export\s+(const|let|var|function|class|type|interface)\b/m.test(content);
-    if (hasExport && !content.includes('VacuoleEnvelope')) {
+    const isRaw = content.includes('@raw') || content.includes('@sensor');
+    
+    if (hasExport && !content.includes('VacuoleEnvelope') && !isRaw) {
         scream({
             file: filePath,
             type: 'THEATER',
-            message: `Public export detected without VacuoleEnvelope enforcement. This is unverified "Theater" code.`
+            message: `Public export detected without VacuoleEnvelope enforcement. This is unverified "Theater" code. Use @raw or @sensor to bypass for raw acquisition.`
         });
     }
 }

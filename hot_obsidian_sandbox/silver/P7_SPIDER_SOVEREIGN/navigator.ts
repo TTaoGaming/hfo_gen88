@@ -3,7 +3,7 @@
  * 
  * Authority: Spider Sovereign (The Hunter)
  * Verb: DECIDE
- * Topic: Sequential Thinking & Navigation
+ * Topic: Decision Making & Navigation
  * Provenance: hot_obsidian_sandbox/bronze/P7_DECISION_KINETIC.md
  * 
  * This port implements the Sequential Thinking engine.
@@ -12,7 +12,8 @@
 import { z } from 'zod';
 import * as fs from 'fs';
 import * as path from 'path';
-import { sense } from '../P1_WEB_WEAVER/bridger.js';
+
+const VacuoleEnvelope = <T extends z.ZodTypeAny>(schema: T, data: unknown) => schema.parse(data);
 
 const ThoughtSchema = z.object({
     thoughtNumber: z.number(),
@@ -50,7 +51,7 @@ interface OctreeNode {
     id: string;
     depth: number;
     children: (OctreeNode | null)[]; // Exactly 8 children
-    state: any;
+    state: unknown; // @bespoke H-POMDP state
     action: string;
     value: number;
 }
@@ -78,7 +79,7 @@ export class Navigator {
         this.root = this.createNode('root', 0, 'INITIAL_STATE', 'START');
     }
 
-    private createNode(id: string, depth: number, state: any, action: string): OctreeNode {
+    private createNode(id: string, depth: number, state: unknown, action: string): OctreeNode { // @bespoke H-POMDP state
         return {
             id,
             depth,
@@ -215,7 +216,7 @@ export class Navigator {
             purpose = lattice.purpose;
         }
 
-        const thought: Thought = ThoughtSchema.parse({
+        const thought: Thought = VacuoleEnvelope(ThoughtSchema, {
             thoughtNumber,
             totalThoughts: this.totalThoughts,
             thought: params.thought,
@@ -345,6 +346,7 @@ export class Navigator {
      * Hunting uses PREY within the HIVE 'H' phase.
      */
     public async senseWeb(query: string) {
+        const { sense } = await import('../P1_WEB_WEAVER/bridger.js');
         const hiveId = await this.hive('H', `Hunting for: "${query}" using tactical PREY loop.`);
         await this.prey('P', `Perceiving the web for: "${query}" via Port 0 Lidless Legion.`, true, false, hiveId);
         

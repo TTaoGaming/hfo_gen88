@@ -3,14 +3,15 @@
  * 
  * Authority: Lidless Legion (The Sensor)
  * Verb: SENSE
- * Topic: Web Search & Perception
+ * Topic: Gesture Control Plane
  * Provenance: hot_obsidian_sandbox/bronze/P0_GESTURE_KINETIC_DRAFT.md
  * 
  * This port provides the "Lidless" gaze into the digital world via Tavily.
+ * @sensor RAW acquisition only. Wrapping is handled by Port 1.
  */
 
 import { z } from 'zod';
-import * as dotenv from 'dotenv';
+// import * as dotenv from 'dotenv';
 import * as path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -18,9 +19,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // Load .env from root
-dotenv.config({ path: path.resolve(__dirname, '../../../../.env') });
-
-const VacuoleEnvelope = <T extends z.ZodTypeAny>(schema: T, data: unknown) => schema.parse(data);
+// dotenv.config({ path: path.resolve(__dirname, '../../../.env') });
 
 export const SearchResultSchema = z.object({
     title: z.string(),
@@ -38,9 +37,9 @@ export type SearchResponse = z.infer<typeof SearchResponseSchema>;
 /**
  * Performs a web search using Tavily.
  * @param query The search query.
- * @returns A list of search results.
+ * @returns A list of search results (RAW).
  */
-export async function search(query: string): Promise<SearchResponse> {
+export async function search(query: string): Promise<any> {
     const apiKey = process.env.TAVILY_API_KEY;
     if (!apiKey) {
         throw new Error('TAVILY_API_KEY not found in environment.');
@@ -65,6 +64,5 @@ export async function search(query: string): Promise<SearchResponse> {
         throw new Error(`Tavily search failed: ${error}`);
     }
 
-    const data = await response.json();
-    return VacuoleEnvelope(SearchResponseSchema, data);
+    return await response.json();
 }

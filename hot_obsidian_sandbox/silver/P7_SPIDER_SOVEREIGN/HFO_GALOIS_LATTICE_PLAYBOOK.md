@@ -1,7 +1,7 @@
 # 🕸️ HFO Obsidian Galois Lattice: The 8x8 Playbook
 
-Topic: Swarm Orchestration & Semantic Grounding
-Provenance: hot_obsidian_sandbox/silver/P7_SPIDER_SOVEREIGN/HFO_GALOIS_LATTICE_PLAYBOOK.md
+Topic: Decision Making & Navigation
+Provenance: hot_obsidian_sandbox/bronze/P7_DECISION_KINETIC.md
 Status: SILVER (Promotion Ready)
 
 ## 🎭 The 8 Legendary Commanders

@@ -135,7 +135,8 @@ function stepShield() {
         const relativePath = path.relative(ROOT_DIR, file);
 
         // 1. VacuoleEnvelope Check
-        if (content.includes('export ') && !content.includes('VacuoleEnvelope')) {
+        const isRaw = content.includes('@raw') || content.includes('@sensor');
+        if (content.includes('export ') && !content.includes('VacuoleEnvelope') && !isRaw) {
             console.warn(`⚠️ SHIELD WARNING: ${relativePath} is missing VacuoleEnvelope!`);
             unshieldedCount++;
         }

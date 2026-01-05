@@ -6,8 +6,8 @@ import { search } from './searcher.js';
  * 
  * Authority: Lidless Legion (The Sensor)
  * Verb: SENSE
- * Topic: Web Search & Perception
- * Provenance: hot_obsidian_sandbox/silver/P0_LIDLESS_LEGION/searcher.ts
+ * Topic: Gesture Control Plane
+ * Provenance: hot_obsidian_sandbox/bronze/P0_GESTURE_KINETIC_DRAFT.md
  */
 
 describe('Port 0 Lidless Legion', () => {

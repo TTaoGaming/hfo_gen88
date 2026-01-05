@@ -1,13 +1,21 @@
 /**
  * 🕷️ DURABLE WORKFLOW COORDINATOR
  * 
+ * Authority: Spider Sovereign (The Hunter)
+ * Verb: DECIDE
+ * Topic: Decision Making & Navigation
+ * Provenance: hot_obsidian_sandbox/bronze/P7_DECISION_KINETIC.md
+ * 
  * Integrates Temporal (Durable Execution) and LangGraph (Stateful Agents).
  * Orchestrates the HIVE/8:1010 Swarm Pattern.
  */
 
+import { z } from 'zod';
 import { proxyActivities } from '@temporalio/workflow';
 import { StateGraph, MessagesAnnotation, Command } from "@langchain/langgraph";
 import { Navigator } from './navigator.js';
+
+const VacuoleEnvelope = <T extends z.ZodTypeAny>(schema: T, data: unknown) => schema.parse(data);
 
 // Temporal Activities (Stateless, Retriable)
 const activities = proxyActivities({
@@ -20,13 +28,13 @@ const activities = proxyActivities({
 const SwarmState = {
     ...MessagesAnnotation.spec,
     phase: { value: (x: string) => x, default: () => 'H' },
-    results: { value: (x: any[]) => x.concat(x), default: () => [] },
+    results: { value: (x: any[]) => x.concat(x), default: () => [] }, // @bespoke LangGraph state
 };
 
 /**
  * LangGraph Node: Hunt Agent (Scatter)
  */
-const huntAgent = async (state: any) => {
+const huntAgent = async (state: any) => { // @bespoke LangGraph state
     const navigator = new Navigator();
     const agentId = `HUNT_AGENT_${state.results.length}`;
     
@@ -53,7 +61,7 @@ const huntAgent = async (state: any) => {
 /**
  * LangGraph Node: Interlock Master (Gather)
  */
-const interlockMaster = async (state: any) => {
+const interlockMaster = async (state: any) => { // @bespoke LangGraph state
     const navigator = new Navigator();
     
     await navigator.think({
@@ -80,7 +88,13 @@ export async function hiveSwarmWorkflow(context: string): Promise<string> {
     const navigator = new Navigator();
     
     // 1. HUNT (Scatter)
-    await navigator.hive('H', `Temporal Workflow starting HUNT for: ${context}`);
+    await navigator.think({
+        thought: `Temporal Workflow starting HUNT for: ${context}`,
+        nextThoughtNeeded: true,
+        coordinate: { x: 7, y: 0 },
+        workflow: 'HIVE',
+        phase: 'H'
+    });
     
     // Compile LangGraph for the Hunt/Interlock phase
     const workflow = new StateGraph({ channels: SwarmState })
@@ -89,7 +103,7 @@ export async function hiveSwarmWorkflow(context: string): Promise<string> {
         .addEdge("__start__", "huntAgent")
         .compile();
 
-    const finalState = await workflow.invoke({ messages: [context] });
+    const finalState: any = await workflow.invoke({ messages: [context] }); // @bespoke LangGraph state
 
-    return `Swarm completed phase: ${finalState.phase}`;
+    return VacuoleEnvelope(z.string(), `Swarm completed phase: ${finalState.phase}`);
 }

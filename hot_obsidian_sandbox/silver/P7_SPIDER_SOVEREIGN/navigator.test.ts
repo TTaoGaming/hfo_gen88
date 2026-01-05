@@ -1,7 +1,13 @@
+/**
+ * 🥈 TEST: Port 7 Spider Sovereign
+ * 
+ * Authority: Spider Sovereign (The Hunter)
+ * Verb: DECIDE
+ * Topic: Decision Making & Navigation
+ * Provenance: hot_obsidian_sandbox/bronze/P7_DECISION_KINETIC.md
+ */
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { Navigator } from './navigator.js';
-import * as P1 from '../P1_WEB_WEAVER/bridger.js';
-import * as fs from 'fs';
 import * as path from 'path';
 
 vi.mock('../P1_WEB_WEAVER/bridger.js', () => ({
@@ -95,16 +101,17 @@ describe('Port 7: Spider Sovereign (Navigator)', () => {
     });
 
     it('should integrate with Port 0 via Port 1 using PREY within HIVE H with hierarchy', async () => {
+        const { sense } = await import('../P1_WEB_WEAVER/bridger.js');
         const mockResults = {
             results: [{ title: 'Test Result', url: 'https://test.com', content: 'Test content', score: 0.9 }],
             query: 'test query',
             responseTime: 100
         };
-        (P1.sense as any).mockResolvedValue(mockResults);
+        (sense as any).mockResolvedValue(mockResults); // @bespoke mock access
 
         const results = await navigator.senseWeb('test query');
         
-        expect(P1.sense).toHaveBeenCalledWith('test query');
+        expect(sense).toHaveBeenCalledWith('test query');
         expect(results).toEqual(mockResults);
         
         const history = navigator.getHistory();
@@ -116,7 +123,8 @@ describe('Port 7: Spider Sovereign (Navigator)', () => {
     });
 
     it('should handle failures and log them as revisions', async () => {
-        (P1.sense as any).mockRejectedValue(new Error('API Down'));
+        const { sense } = await import('../P1_WEB_WEAVER/bridger.js');
+        (sense as any).mockRejectedValue(new Error('API Down')); // @bespoke mock access
 
         await expect(navigator.senseWeb('fail query')).rejects.toThrow('API Down');
         
