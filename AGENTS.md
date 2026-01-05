@@ -2,7 +2,7 @@
 Topic: System Disruption & Testing
 Provenance: bronze/P4_DISRUPTION_KINETIC.md
 
-> **Generation**: 88 (The Straitjacket)
+> **Generation**: 88 (Canalization)
 > **Status**: TOTAL RESET - ALL SILVER DEMOTED TO BRONZE
 > **Architecture**: Medallion (Hot/Cold Obsidian Sandboxes)
 > **Status**: HARD-GATED ENFORCEMENT ACTIVE
@@ -22,13 +22,13 @@ Provenance: bronze/P4_DISRUPTION_KINETIC.md
 
 ---
 
-## 🚨 The Straitjacket Rules (NON-NEGOTIABLE)
+## 🚨 The Canalization Rules (NON-NEGOTIABLE)
 
-1. **ROOT PURGE**: The root directory MUST remain clean. Only `hot_obsidian_sandbox`, `cold_obsidian_sandbox`, `AGENTS.md`, and `llms.txt` are allowed.
+1. **ROOT PURGE**: The root directory MUST remain clean. Only `hot_obsidian_sandbox`, `cold_obsidian_sandbox`, `AGENTS.md`, `llms.txt`, `obsidianblackboard.jsonl`, and `ttao-notes-*.md` are allowed.
 2. **NO THEATER**: Do not report "Green" without "Red". Every implementation in `silver/` must have a corresponding test in the same directory.
 3. **MEDALLION FLOW**: Code starts in `bronze/`, moves to `silver/` once tested, and `gold/` once canonized.
 4. **IMMUNE SYSTEM**: The `screamer.ts` script runs every 10 minutes. Architectural violations will be logged to the Blackboard.
-5. **STIGMERGY**: All progress and violations MUST be logged to `hot_obsidian_sandbox/silver/manifests/obsidianblackboard.jsonl`.
+5. **STIGMERGY**: All progress and violations MUST be logged to `obsidianblackboard.jsonl` in the root.
 
 ---
 

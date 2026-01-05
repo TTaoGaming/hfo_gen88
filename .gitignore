@@ -9,3 +9,4 @@ playwright/.cache/
 reports/
 dist/
 .vitest-results/
+cold_obsidian_sandbox/silver/active_root

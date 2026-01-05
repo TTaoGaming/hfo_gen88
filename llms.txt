@@ -14,7 +14,7 @@ Provenance: bronze/P4_DISRUPTION_KINETIC.md
 - **Silver**: Verified, tested implementations.
 - **Gold**: Canonical manifests (currently empty).
 
-## Architecture: The Straitjacket
+## Architecture: Canalization
 
 Gen 88 is designed to prevent "AI Theater" through strict architectural gates.
 - **Root Purge**: No pollution allowed in the root.
@@ -25,7 +25,7 @@ Gen 88 is designed to prevent "AI Theater" through strict architectural gates.
 ## Key Files
 
 1. **AGENTS.md** - Full agent instructions and rules.
-2. **hot_obsidian_sandbox/silver/manifests/obsidianblackboard.jsonl** - The Truth Source.
+2. **obsidianblackboard.jsonl** - The Truth Source (Root).
 3. **hot_obsidian_sandbox/bronze/infra/** - Testing and enforcement infrastructure.
 
 ## Rules for LLMs
