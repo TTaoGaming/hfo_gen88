@@ -33,6 +33,10 @@ const ALLOWED_ROOT_FILES = [
     '.vscode'
 ];
 
+const ALLOWED_ROOT_PATTERNS = [
+    /^ttao-notes-.*\.md$/
+];
+
 interface Violation {
     file: string;
     type: 'THEATER' | 'VIOLATION' | 'BESPOKE' | 'AMNESIA' | 'POLLUTION';
@@ -90,7 +94,10 @@ function checkRootPollution() {
     const entries = fs.readdirSync(ROOT_DIR);
     for (const entry of entries) {
         if (entry === 'bronze' || entry === 'silver') continue; // These are inside hot/cold
-        if (!ALLOWED_ROOT_FILES.includes(entry)) {
+        const isAllowedFile = ALLOWED_ROOT_FILES.includes(entry);
+        const isAllowedPattern = ALLOWED_ROOT_PATTERNS.some(pattern => pattern.test(entry));
+        
+        if (!isAllowedFile && !isAllowedPattern) {
             scream({
                 file: entry,
                 type: 'POLLUTION',
@@ -139,11 +146,13 @@ function checkPortIsolation(filePath: string, content: string) {
 
 // 2. Check for VacuoleEnvelope (Zod)
 function checkEnvelope(filePath: string, content: string) {
-    if (filePath.includes('.test.') || filePath.includes('.spec.')) return;
+    const normalizedPath = filePath.replace(/\\/g, '/');
+    if (normalizedPath.includes('.test.') || normalizedPath.includes('.spec.')) return;
+    if (!normalizedPath.includes('silver/') && !normalizedPath.includes('gold/')) return;
     
     // Regex to find top-level exports that are not wrapped in VacuoleEnvelope
-    const exportRegex = /^export\s+(const|let|var|function|class)\s+/m;
-    if (exportRegex.test(content) && !content.includes('VacuoleEnvelope')) {
+    const hasExport = /^export\s+(const|let|var|function|class|type|interface)\b/m.test(content);
+    if (hasExport && !content.includes('VacuoleEnvelope')) {
         scream({
             file: filePath,
             type: 'THEATER',
@@ -168,6 +177,33 @@ function checkBespoke(filePath: string, content: string) {
             });
         }
     }
+
+    // Check for 'any' usage without @bespoke
+    if ((content.includes(': any') || content.includes('as any')) && !content.includes('@bespoke')) {
+        scream({
+            file: filePath,
+            type: 'BESPOKE',
+            message: `Bespoke 'any' type detected. Use a Zod schema or mark with // @bespoke justification.`
+        });
+    }
+}
+
+// 3.1 Check for Test Coverage (No Theater)
+function checkTestFile(filePath: string) {
+    const normalizedPath = filePath.replace(/\\/g, '/');
+    if (!normalizedPath.includes('silver/') && !normalizedPath.includes('gold/')) return;
+    if (normalizedPath.includes('.test.') || normalizedPath.includes('.spec.')) return;
+
+    const testPath = filePath.replace(/\.ts$/, '.test.ts').replace(/\.js$/, '.test.js');
+    const fullTestPath = path.join(HOT_DIR, testPath);
+
+    if (!fs.existsSync(fullTestPath)) {
+        scream({
+            file: filePath,
+            type: 'THEATER',
+            message: `Silver/Gold artifact missing corresponding test file: ${testPath}. Theater is forbidden.`
+        });
+    }
 }
 
 // 4. Check for Provenance and Topic Alignment
@@ -191,15 +227,24 @@ function checkProvenance(filePath: string, content: string) {
         return;
     }
 
-    const provenancePath = provenanceMatch[1].replace(/\\/g, '/');
-    const fullProvenancePath = path.resolve(HOT_DIR, provenancePath);
+    let provenancePath = provenanceMatch[1].replace(/\\/g, '/');
+    
+    // Handle absolute-style paths within the workspace
+    let fullProvenancePath: string;
+    if (provenancePath.startsWith('hot_obsidian_sandbox/')) {
+        fullProvenancePath = path.join(ROOT_DIR, provenancePath);
+    } else if (provenancePath.startsWith('cold_obsidian_sandbox/')) {
+        fullProvenancePath = path.join(ROOT_DIR, provenancePath);
+    } else {
+        fullProvenancePath = path.resolve(HOT_DIR, provenancePath);
+    }
 
     // 1. Check if provenance target exists
     if (!fs.existsSync(fullProvenancePath)) {
         scream({
             file: filePath,
             type: 'VIOLATION',
-            message: `Provenance link broken: ${provenancePath} does not exist.`
+            message: `Provenance link broken: ${provenancePath} does not exist at ${fullProvenancePath}.`
         });
         return;
     }
@@ -278,6 +323,7 @@ function audit(dir: string) {
                     checkPortIsolation(normalizedRelPath, content);
                     checkEnvelope(normalizedRelPath, content);
                     checkBespoke(normalizedRelPath, content);
+                    checkTestFile(normalizedRelPath);
                 }
                 
                 checkProvenance(normalizedRelPath, content);
@@ -322,8 +368,23 @@ auditCold(COLD_DIR);
 
 if (violations.length > 0) {
     console.error(`\n❌ SWEEP FAILED: ${violations.length} violations found.`);
+    const logEntry = {
+        timestamp: new Date().toISOString(),
+        type: 'PHYSIC_SCREAM_AUDIT',
+        status: 'FAILED',
+        details: `Red Regnant's Physic Scream detected ${violations.length} violations.`,
+        violations: violations.map(v => ({ file: v.file, type: v.type, message: v.message }))
+    };
+    fs.appendFileSync(BLACKBOARD_PATH, JSON.stringify(logEntry) + '\n');
     process.exit(1);
 } else {
     console.log('\n✅ SWEEP PASSED: Architecture is intact.');
+    const logEntry = {
+        timestamp: new Date().toISOString(),
+        type: 'PHYSIC_SCREAM_AUDIT',
+        status: 'PASSED',
+        details: 'Cleanroom integrity verified by Red Regnant.'
+    };
+    fs.appendFileSync(BLACKBOARD_PATH, JSON.stringify(logEntry) + '\n');
     process.exit(0);
 }

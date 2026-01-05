@@ -10,12 +10,12 @@ import { z } from 'zod';
 export const VacuoleEnvelope = z.object({
   ts: z.string().datetime(),
   mark: z.string(),
-  payload: z.any(),
+  payload: z.unknown(),
 });
 
 export type VacuoleEnvelope = z.infer<typeof VacuoleEnvelope>;
 
-export function wrapInEnvelope(mark: string, payload: any): VacuoleEnvelope {
+export function wrapInEnvelope(mark: string, payload: unknown): VacuoleEnvelope {
   return {
     ts: new Date().toISOString(),
     mark,

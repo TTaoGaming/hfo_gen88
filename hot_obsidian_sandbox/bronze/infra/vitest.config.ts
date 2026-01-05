@@ -7,6 +7,7 @@ export default defineConfig({
     include: [
       '../../silver/**/*.test.ts',
       '../../bronze/scripts/**/*.test.ts',
+      '../../bronze/tests/**/*.test.ts',
     ],
     exclude: ['**/node_modules/**', '**/dist/**'],
   },

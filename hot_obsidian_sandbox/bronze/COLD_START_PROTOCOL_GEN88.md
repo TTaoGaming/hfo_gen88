@@ -57,7 +57,28 @@ Every component must align with the 8 Legendary Commanders and their respective 
 
 ---
 
-## 5. Stigmergy (Blackboard)
+## 5. The Fractal Growth Rule (Powers of 2 → 8)
+
+All quantities MUST be powers of 2. Powers of 2 fractally build toward powers of 8 in production.
+
+| Bootstrap | Minimal | Production | Meaning |
+|:---|:---|:---|:---|
+| 1 | 2 | 8 | Single → Pair → Octet |
+| 2 | 4 | 8 | Pair → Quad → Octet |
+| 4 | 8 | 64 | Quad → Octet → 8² |
+
+---
+
+## 6. Knowledge Bank (DuckDB FTS)
+
+The system is grounded in a **DuckDB Knowledge Bank** containing 6,423+ artifacts from previous generations (Pre-HFO to Gen 84).
+
+- **Location**: `cold_obsidian_sandbox/silver/active_root/portable_hfo_memory_pre_hfo_to_gen84_2025-12-27T21-46-52/hfo_memory.duckdb`
+- **Usage**: AI agents MUST query this database before reinventing architectures. "Did I check the Knowledge Bank?" is a mandatory pre-flight check.
+
+---
+
+## 7. Stigmergy (Blackboard)
 
 All progress and violations MUST be logged to `obsidianblackboard.jsonl` in the root. This is the central nervous system of the swarm.
 
