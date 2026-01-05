@@ -5,3 +5,7 @@ playwright-report/
 blob-report/
 playwright/.cache/
 *.log
+.stryker-tmp/
+reports/
+dist/
+.vitest-results/
