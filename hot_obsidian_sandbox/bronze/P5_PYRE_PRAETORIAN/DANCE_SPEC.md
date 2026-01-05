@@ -21,8 +21,9 @@ The dance consists of four primary steps:
 2.  **Pre-commit (The Gatekeeper)**: Runs the Pyre Dance and Psychic Scream before any code is committed.
 3.  **TDD/CDD (The Proof)**: No implementation in `silver/` without a corresponding test.
 4.  **Stigmergy (The Memory)**: All audits and test results are logged to `obsidianblackboard.jsonl`.
-5.  **Import Audit (The Reality Check)**: Prevents AI from hallucinating non-existent libraries.
-6.  **Theater Detection (The Anti-Slop)**: Blocks commits containing `TODO` or empty implementations in `silver/`.
+5.  **The Blood Book of Grudges**: A cryptographically hashed ledger of all major architectural failures and AI hallucinations.
+6.  **Import Audit (The Reality Check)**: Prevents AI from hallucinating non-existent libraries.
+7.  **Theater Detection (The Anti-Slop)**: Blocks commits containing `TODO` or empty implementations in `silver/`.
 
 ## 📉 Addressing DEV PAIN
 

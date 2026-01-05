@@ -21,7 +21,7 @@ const ROOT_DIR = path.resolve(__dirname, '../../../');
 const HOT_DIR = path.join(ROOT_DIR, 'hot_obsidian_sandbox');
 const COLD_DIR = path.join(ROOT_DIR, 'cold_obsidian_sandbox');
 const BLACKBOARD_PATH = path.resolve(ROOT_DIR, 'obsidianblackboard.jsonl');
-const GRUDGE_BOOK_PATH = path.resolve(ROOT_DIR, 'hot_obsidian_sandbox/silver/P4_RED_REGNANT/RED_BOOK_OF_GRUDGES.jsonl');
+const GRUDGE_BOOK_PATH = path.resolve(ROOT_DIR, 'hot_obsidian_sandbox/silver/P4_RED_REGNANT/BLOOD_BOOK_OF_GRUDGES.jsonl');
 
 const ALLOWED_ROOT_FILES = [
     'hot_obsidian_sandbox',

@@ -3,7 +3,7 @@ import * as path from 'node:path';
 import * as crypto from 'node:crypto';
 
 /**
- * 📕 PORT 4: THE RED BOOK OF GRUDGES
+ * 📕 PORT 4: THE BLOOD BOOK OF GRUDGES
  * 
  * "The Book is written in the blood of the fallen. Every entry is a scar, 
  * every hash a chain that binds the AI to its failures until they are redeemed."
@@ -12,7 +12,7 @@ import * as crypto from 'node:crypto';
  */
 
 const ROOT = path.resolve(__dirname, '../../../');
-const GRUDGE_BOOK_PATH = path.join(ROOT, 'hot_obsidian_sandbox/silver/P4_RED_REGNANT/RED_BOOK_OF_GRUDGES.jsonl');
+const GRUDGE_BOOK_PATH = path.join(ROOT, 'hot_obsidian_sandbox/silver/P4_RED_REGNANT/BLOOD_BOOK_OF_GRUDGES.jsonl');
 
 interface Grudge {
     index: number;
