@@ -95,3 +95,21 @@
 {"timestamp":"2026-01-05T03:05:07.170Z","type":"PYRE_DANCE","step":"SHIELD","details":"Scanning silver/ for unshielded exports (Theater detection active).","author":"Pyre Praetorian"}
 {"timestamp":"2026-01-05T03:05:08.221Z","type":"PYRE_DANCE","step":"SHIELD","details":"Scanning silver/ for unshielded exports (Theater detection active).","author":"Pyre Praetorian"}
 {"timestamp":"2026-01-05T03:05:43.517Z","type":"PYRE_DANCE","step":"SHIELD","details":"All silver/ exports are properly shielded.","author":"Pyre Praetorian"}
+{"timestamp":"2026-01-05T03:07:03.031Z","type":"PHYSIC_SCREAM_AUDIT","status":"PASSED","details":"Cleanroom integrity verified by Red Regnant."}
+{"timestamp":"2026-01-05T03:08:19.369Z","type":"PYRE_DANCE","step":"SWEEP","details":"Proactively moved 1 unauthorized files to quarantine.","author":"Pyre Praetorian"}
+{"timestamp":"2026-01-05T03:08:19.372Z","type":"PYRE_DANCE","step":"SHIELD","details":"All silver/ exports are properly shielded and audited.","author":"Pyre Praetorian"}
+{"timestamp":"2026-01-05T03:08:20.376Z","type":"PYRE_DANCE","step":"SHIELD","details":"All silver/ exports are properly shielded and audited.","author":"Pyre Praetorian"}
+{"timestamp":"2026-01-05T03:08:33.650Z","type":"PHYSIC_SCREAM_AUDIT","status":"PASSED","details":"Cleanroom integrity verified by Red Regnant."}
+{"timestamp":"2026-01-05T03:08:34.709Z","type":"PYRE_DANCE","step":"SHIELD","details":"All silver/ exports are properly shielded and audited.","author":"Pyre Praetorian"}
+{"timestamp":"2026-01-05T03:08:34.711Z","type":"PYRE_DANCE","step":"PULSE","details":"Verified recent test success: undefined","author":"Pyre Praetorian"}
+{"timestamp":"2026-01-05T03:09:44.375Z","type":"PYRE_DANCE","step":"SHIELD","details":"All silver/ exports are properly shielded and audited.","author":"Pyre Praetorian"}
+{"timestamp":"2026-01-05T03:09:44.377Z","type":"PYRE_DANCE","step":"PULSE","details":"Verified recent test success: undefined","author":"Pyre Praetorian"}
+{"timestamp":"2026-01-05T03:09:47.731Z","type":"PYRE_DANCE","step":"SHIELD","details":"Detected 0 unshielded, 1 theater, and 0 hallucinated files in silver/.","author":"Pyre Praetorian"}
+{"timestamp":"2026-01-05T03:09:47.732Z","type":"PYRE_DANCE","step":"PULSE","details":"Verified recent test success: undefined","author":"Pyre Praetorian"}
+{"timestamp":"2026-01-05T03:09:50.889Z","type":"PYRE_DANCE","step":"SHIELD","details":"Detected 0 unshielded, 1 theater, and 1 hallucinated files in silver/.","author":"Pyre Praetorian"}
+{"timestamp":"2026-01-05T03:09:50.891Z","type":"PYRE_DANCE","step":"PULSE","details":"Verified recent test success: undefined","author":"Pyre Praetorian"}
+{"timestamp":"2026-01-05T03:09:56.110Z","type":"PYRE_DANCE","step":"SHIELD","details":"All silver/ exports are properly shielded and audited.","author":"Pyre Praetorian"}
+{"timestamp":"2026-01-05T03:09:56.112Z","type":"PYRE_DANCE","step":"PULSE","details":"Verified recent test success: undefined","author":"Pyre Praetorian"}
+{"timestamp":"2026-01-05T03:13:02.249Z","type":"PYRE_DANCE","step":"SHIELD","details":"Detected 1 unshielded, 1 theater, and 0 hallucinated files in silver/.","author":"Pyre Praetorian"}
+{"timestamp":"2026-01-05T03:13:02.251Z","type":"PYRE_DANCE","step":"PULSE","details":"Verified recent test success: undefined","author":"Pyre Praetorian"}
+{"timestamp":"2026-01-05T03:13:03.566Z","type":"PHYSIC_SCREAM_AUDIT","status":"PASSED","details":"Cleanroom integrity verified by Red Regnant."}

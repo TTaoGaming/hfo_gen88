@@ -111,27 +111,81 @@ function stepSeal() {
     }
 }
 
-// Step 3: The Shield (VacuoleEnvelope Wrapping)
+/**
+ * 🛡️ STEP 3: SHIELD (Defense in Depth)
+ * Proactively check silver/ for missing envelopes, theater, and hallucinations.
+ */
 function stepShield() {
     const silverDir = path.join(ROOT_DIR, 'hot_obsidian_sandbox/silver');
     if (!fs.existsSync(silverDir)) return;
 
     const files = getAllFiles(silverDir).filter(f => f.endsWith('.ts') && !f.endsWith('.test.ts'));
     let unshieldedCount = 0;
+    let theaterCount = 0;
+    let hallucinationCount = 0;
+
+    const packageJson = JSON.parse(fs.readFileSync(path.join(ROOT_DIR, 'hot_obsidian_sandbox/bronze/infra/package.json'), 'utf8'));
+    const allowedDeps = [...Object.keys(packageJson.dependencies || {}), ...Object.keys(packageJson.devDependencies || {}), 'node:fs', 'node:path', 'node:child_process', 'node:os', 'node:crypto', 'node:events', 'node:util', 'node:stream', 'node:url', 'node:http', 'node:https', 'node:zlib', 'node:readline', 'node:buffer', 'node:process', 'node:v8', 'node:vm', 'node:worker_threads', 'node:perf_hooks', 'node:async_hooks', 'node:diagnostics_channel', 'node:test', 'node:net', 'node:tls', 'node:dgram', 'node:dns', 'node:string_decoder', 'node:punycode', 'node:querystring', 'node:timers', 'node:trace_events', 'node:inspector', 'node:module'];
 
     for (const file of files) {
         const content = fs.readFileSync(file, 'utf8');
-        // Simple check for VacuoleEnvelope usage if it exports something
+        const relativePath = path.relative(ROOT_DIR, file);
+
+        // 1. VacuoleEnvelope Check
         if (content.includes('export ') && !content.includes('VacuoleEnvelope')) {
-            console.warn(`⚠️ SHIELD WARNING: ${path.relative(ROOT_DIR, file)} is missing VacuoleEnvelope!`);
+            console.warn(`⚠️ SHIELD WARNING: ${relativePath} is missing VacuoleEnvelope!`);
             unshieldedCount++;
+        }
+
+        // 2. Theater Check (TODOs, FIXMEs, or empty implementations)
+        if (content.includes('TODO') || content.includes('FIXME') || /\{\s*\}/.test(content.replace(/\/\/.*/g, ''))) {
+            console.warn(`🎭 THEATER DETECTED: ${relativePath} contains placeholders or empty blocks.`);
+            theaterCount++;
+        }
+
+        // 3. Hallucination Check (Import Audit)
+        const importMatches = content.matchAll(/import .* from ['"](.*)['"]/g);
+        for (const match of importMatches) {
+            const dep = match[1];
+            if (!dep.startsWith('.') && !dep.startsWith('/') && !allowedDeps.includes(dep) && !allowedDeps.includes(`node:${dep}`)) {
+                console.error(`❌ HALLUCINATION DETECTED: ${relativePath} imports unknown module '${dep}'`);
+                hallucinationCount++;
+            }
         }
     }
 
-    if (unshieldedCount > 0) {
-        logDance('SHIELD', `Detected ${unshieldedCount} unshielded files in silver/. Remediation required.`);
+    if (unshieldedCount > 0 || theaterCount > 0 || hallucinationCount > 0) {
+        logDance('SHIELD', `Detected ${unshieldedCount} unshielded, ${theaterCount} theater, and ${hallucinationCount} hallucinated files in silver/.`);
     } else {
-        logDance('SHIELD', 'All silver/ exports are properly shielded.');
+        logDance('SHIELD', 'All silver/ exports are properly shielded and audited.');
+    }
+}
+
+/**
+ * 🛡️ STEP 4: PULSE (Test Verification)
+ * Prevent Optimistic Override by checking the blackboard for recent test success.
+ */
+function stepPulse() {
+    const blackboardPath = path.join(ROOT_DIR, 'obsidianblackboard.jsonl');
+    if (!fs.existsSync(blackboardPath)) {
+        console.warn('⚠️ PULSE WARNING: No blackboard found. Cannot verify test pulse.');
+        return;
+    }
+
+    const lines = fs.readFileSync(blackboardPath, 'utf8').trim().split('\n');
+    const lastEntries = lines.slice(-20).map(line => JSON.parse(line));
+    
+    const lastTestSuccess = lastEntries.reverse().find(entry => 
+        entry.type === 'TEST_SUCCESS' || 
+        entry.msg?.includes('PASSED') || 
+        entry.status === 'PASSED'
+    );
+
+    if (!lastTestSuccess) {
+        console.error('❌ PULSE FAILURE: No recent test success found in blackboard. Optimistic Override suspected.');
+        // In a strict dance, we would exit 1 here.
+    } else {
+        logDance('PULSE', `Verified recent test success: ${lastTestSuccess.msg}`);
     }
 }
 
@@ -154,4 +208,5 @@ console.log('🔥 PYRE PRAETORIAN: BEGINNING THE PYRE DANCE...');
 stepSweep();
 stepSeal();
 stepShield();
+stepPulse();
 console.log('🔥 PYRE DANCE COMPLETE. THE CLEANROOM IS HARDENED.');

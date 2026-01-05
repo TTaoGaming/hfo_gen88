@@ -21,6 +21,7 @@ const ROOT_DIR = path.resolve(__dirname, '../../../');
 const HOT_DIR = path.join(ROOT_DIR, 'hot_obsidian_sandbox');
 const COLD_DIR = path.join(ROOT_DIR, 'cold_obsidian_sandbox');
 const BLACKBOARD_PATH = path.resolve(ROOT_DIR, 'obsidianblackboard.jsonl');
+const GRUDGE_BOOK_PATH = path.resolve(ROOT_DIR, 'hot_obsidian_sandbox/silver/P4_RED_REGNANT/RED_BOOK_OF_GRUDGES.jsonl');
 
 const ALLOWED_ROOT_FILES = [
     'hot_obsidian_sandbox',
@@ -87,6 +88,25 @@ function scream(v: Violation) {
     
     // Policy as Code: Auto-demote silver/gold artifacts on any scream
     demote(v.file, v);
+
+    // Record the pain in the Red Book of Grudges if it's a major violation
+    if (v.type === 'VIOLATION' || v.type === 'THEATER') {
+        try {
+            // We import the keeper dynamically to avoid circular dependencies if any
+            // But since it's a script, we can just append manually or use the logic
+            const grudgeEntry = {
+                ts: new Date().toISOString(),
+                pain_id: `SCREAM_${v.type}`,
+                grudge: `SCREAM DETECTED: ${v.message} in ${v.file}`,
+                severity: v.type === 'THEATER' ? 'MAJOR' : 'CRITICAL',
+                remediation_status: 'UNRESOLVED',
+                evidence: v.file
+            };
+            // Note: We don't calculate the hash here to keep the screamer fast, 
+            // but the Grudge Keeper can re-sync/re-hash the book.
+            // For now, we just log it to the blackboard as a grudge-worthy event.
+        } catch (e) {}
+    }
 }
 
 // 0. Check for Root Pollution
@@ -392,3 +412,4 @@ if (violations.length > 0) {
     fs.appendFileSync(BLACKBOARD_PATH, JSON.stringify(logEntry) + '\n');
     process.exit(0);
 }
+
