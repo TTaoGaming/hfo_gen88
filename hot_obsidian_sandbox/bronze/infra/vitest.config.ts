@@ -8,6 +8,7 @@ export default defineConfig({
       '../../silver/**/*.test.ts',
       '../../bronze/scripts/**/*.test.ts',
       '../../bronze/tests/**/*.test.ts',
+      '../../bronze/P5_PYRE_PRAETORIAN/**/*.test.ts',
     ],
     exclude: ['**/node_modules/**', '**/dist/**'],
   },
