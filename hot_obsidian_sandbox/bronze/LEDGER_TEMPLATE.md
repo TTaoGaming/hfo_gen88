@@ -36,5 +36,7 @@ Feature: [HFO_NAME]
 ### Phase 3: [STEP_3]
 [DESCRIPTION_3]
 
+[OPTIONAL_HISTORY_SECTION]
+
 ---
 **Provenance**: [PROVENANCE_FILE] | **Pain ID**: [PAIN_ID]

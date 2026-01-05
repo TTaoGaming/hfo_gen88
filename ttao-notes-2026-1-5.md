@@ -1,0 +1,4 @@
+answer my fucking question and list me a list, I do not trust you, show me in terminal what has coverage and what doesn' t I am asking you and want proof NOW
+why are demotions being promoted without the correct criteria of mutation test? what is causing this thrash? I am making myself VERY fucking clear, if it doesn't pass8-% mutation test iI don't care what it is, demote and quarantine immediately
+---
+stop everything, my system is being corrupted with AI slop. I want red regnant and pyre praetorian to protect me NOW. the red regnant should be able to scream and anything without 80% mutation score needs to be demoted immediately, the pyre praetorian should have defense in depth, my defenses have been broken, there is significant slop everywhere and ai claiming "CLEANROOM" with 31 violations which is BS

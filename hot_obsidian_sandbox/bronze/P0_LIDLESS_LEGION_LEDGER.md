@@ -1,9 +1,9 @@
-# P0 Ledger: Lidless Legion (SENSE)
+# P0 Ledger: Lidless Legion (OBSERVE)
 
 ## 💓 Heartbeat Mantra (Gherkin)
 ```gherkin
 Feature: Omphalos
-  Scenario: SENSE Protocol
+  Scenario: OBSERVE Protocol
     Given a stream of landmarks, When the hand closes, Then the Omphalos triggers a grab event.
 ```
 
@@ -12,7 +12,7 @@ Feature: Omphalos
 {
   "type": "playbook",
   "spec_version": "2.0",
-  "id": "playbook--8d28aa0a-863c-405b-82b7-e4da9848d83d",
+  "id": "playbook--ece2af9e-06cc-4878-bf3c-8e6ce10b6ab4",
   "name": "Active Scanning",
   "description": "Adversaries may execute active reconnaissance scans to gather information that can be used during targeting. Active scans are those where the adversary probes victim infrastructure via network traffic, as opposed to other forms of reconnaissance that do not involve direct interaction.",
   "workflow_start": "action--1",
@@ -35,6 +35,8 @@ Acquire raw data from multi-domain sensors.
 
 ### Phase 3: Processing
 Convert raw data into usable information for analysis.
+
+
 
 ---
 **Provenance**: hot_obsidian_sandbox/bronze/P0_GESTURE_KINETIC_DRAFT.md | **Pain ID**: PAIN_017

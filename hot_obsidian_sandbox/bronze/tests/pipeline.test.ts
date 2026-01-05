@@ -14,10 +14,9 @@ describe('Port 0 Pipeline: Gesture Control', () => {
   it('should process a raw sensor frame and produce a smoothed frame', async () => {
     // 1. SENSE (Port 0)
     const rawInput = {
-      landmarks: Array.from({ length: 21 }, (_, i) => ({ x: 0.1, y: 0.1, z: 0 })),
-      gesture: 'Open_Palm',
-      handedness: 'Right',
-      confidence: 0.95
+      landmarks: [Array.from({ length: 21 }, (_, i) => ({ x: 0.1, y: 0.1, z: 0 }))],
+      gestures: [[{ categoryName: 'Open_Palm', score: 0.95 }]],
+      handedness: [[{ categoryName: 'Right' }]]
     };
     const sensorFrame = await sensor.process(rawInput);
     expect(sensorFrame.frameId).toBe(0);
@@ -39,11 +38,11 @@ describe('Port 0 Pipeline: Gesture Control', () => {
 
     for (let i = 0; i < timestamps.length; i++) {
       const sensorFrame = await sensor.process({
-        landmarks: Array.from({ length: 21 }, (_, j) => ({ 
+        landmarks: [Array.from({ length: 21 }, (_, j) => ({ 
           x: j === 8 ? positions[i] : 0.5, 
           y: 0.5, 
           z: 0 
-        })),
+        }))],
         timestamp: timestamps[i]
       });
 

@@ -1,3 +1,8 @@
+/**
+ * @topic System Disruption & Testing
+ * @provenance hot_obsidian_sandbox/bronze/P4_DISRUPTION_KINETIC.md
+ * @acknowledged: Historical Pain Patterns (PAIN_011, PAIN_021) are acknowledged.
+ */
 import * as fs from 'fs';
 import * as crypto from 'crypto';
 

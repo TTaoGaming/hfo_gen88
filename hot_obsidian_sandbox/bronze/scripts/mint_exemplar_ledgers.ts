@@ -9,12 +9,14 @@ const __dirname = path.dirname(__filename);
 const TEMPLATE_PATH = path.join(__dirname, '..', 'LEDGER_TEMPLATE.md');
 const MAPPING_PATH = path.join(__dirname, '..', 'exemplars', 'port_mapping.json');
 const MITRE_PATH = path.join(__dirname, '..', 'exemplars', 'cyber', 'enterprise-attack.json');
+const PAIN_PATH = path.join(__dirname, '..', 'exemplars', 'dev_pain_2025.json');
 const OUTPUT_DIR = path.join(__dirname, '..');
 
 async function mint() {
     const template = fs.readFileSync(TEMPLATE_PATH, 'utf-8');
     const mapping = JSON.parse(fs.readFileSync(MAPPING_PATH, 'utf-8'));
     const mitreData = JSON.parse(fs.readFileSync(MITRE_PATH, 'utf-8'));
+    const painData = JSON.parse(fs.readFileSync(PAIN_PATH, 'utf-8'));
 
     for (const port of mapping) {
         let ledger = template;
@@ -48,6 +50,20 @@ async function mint() {
         ledger = ledger.replace(/\[DESCRIPTION_2\]/g, port.jadc2.steps[1].split(': ')[1] || '');
         ledger = ledger.replace(/\[STEP_3\]/g, port.jadc2.steps[2].split(':')[0]);
         ledger = ledger.replace(/\[DESCRIPTION_3\]/g, port.jadc2.steps[2].split(': ')[1] || '');
+
+        // Optional History Section (Blood Book of Grudges for P4)
+        if (port.port === 4) {
+            let history = `\n## 🩸 The Blood Book of Grudges (2025 History)\n`;
+            history += `> "A history of the patterns and meta-patterns that cause bleeding and pain for HFO."\n\n`;
+            history += `| Month | Grudge | Vector | Solution |\n`;
+            history += `| :--- | :--- | :--- | :--- |\n`;
+            for (const pain of painData) {
+                history += `| ${pain.month} | **${pain.name}**: ${pain.description} | ${pain.vector} | ${pain.solution} |\n`;
+            }
+            ledger = ledger.replace(/\[OPTIONAL_HISTORY_SECTION\]/g, history);
+        } else {
+            ledger = ledger.replace(/\[OPTIONAL_HISTORY_SECTION\]/g, '');
+        }
 
         ledger = ledger.replace(/\[PROVENANCE_FILE\]/g, port.hfo.provenance);
         ledger = ledger.replace(/\[PAIN_ID\]/g, port.hfo.pain_id);

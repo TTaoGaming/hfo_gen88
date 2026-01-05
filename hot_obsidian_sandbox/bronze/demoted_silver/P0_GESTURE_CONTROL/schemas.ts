@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { VacuoleEnvelope } from '../envelope.js';
+import { VacuoleEnvelope } from '../../../silver/contracts/envelope.js';
 
 /**
  * 🥈 PORT 0: GESTURE CONTROL SCHEMAS

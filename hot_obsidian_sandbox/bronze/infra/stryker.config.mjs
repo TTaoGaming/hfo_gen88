@@ -2,9 +2,12 @@
 export default {
   _comment: "Stryker config for HFO Gen 88",
   packageManager: "npm",
-  reporters: ["html", "clear-text", "progress"],
+  reporters: ["html", "clear-text", "progress", "json"],
   htmlReporter: {
     fileName: "hot_obsidian_sandbox/bronze/infra/reports/mutation/mutation.html"
+  },
+  jsonReporter: {
+    fileName: "hot_obsidian_sandbox/bronze/infra/reports/mutation/mutation.json"
   },
   testRunner: "vitest",
   coverageAnalysis: "perTest",
@@ -20,6 +23,8 @@ export default {
     "!../../silver/P7_SPIDER_SOVEREIGN/durable_workflow.test.ts",
     "!../../silver/P4_RED_REGNANT/envelope.ts",
     "!../../silver/P4_RED_REGNANT/schemas.ts",
+    "!../../silver/P4_RED_REGNANT/grudge_keeper.ts",
+    "!../../silver/P4_RED_REGNANT/grudge_keeper.test.ts",
     "!../adapters/kraken-adapter.ts",
     "!../adapters/kraken-adapter.test.ts",
     "!package.json",
@@ -32,6 +37,7 @@ export default {
     "../../silver/P1_WEB_WEAVER/bridger.ts",
     "../../silver/P7_SPIDER_SOVEREIGN/navigator.ts",
     "../../silver/P7_SPIDER_SOVEREIGN/durable_workflow.ts",
+    "../../silver/P4_RED_REGNANT/grudge_keeper.ts",
     "../adapters/kraken-adapter.ts"
   ],
   vitest: {

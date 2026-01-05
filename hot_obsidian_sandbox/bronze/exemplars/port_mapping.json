@@ -2,7 +2,7 @@
   {
     "port": 0,
     "commander": "Lidless Legion",
-    "verb": "SENSE",
+    "verb": "OBSERVE",
     "jadc2": {
       "name": "Joint ISR Operations",
       "description": "Intelligence, Surveillance, and Reconnaissance (ISR) operations to provide situational awareness.",
@@ -29,7 +29,7 @@
   {
     "port": 1,
     "commander": "Web Weaver",
-    "verb": "FUSE",
+    "verb": "BRIDGE",
     "jadc2": {
       "name": "Joint Intelligence Fusion",
       "description": "Integrating and analyzing information from all sources to produce intelligence.",
@@ -83,7 +83,7 @@
   {
     "port": 3,
     "commander": "Spore Storm",
-    "verb": "DELIVER",
+    "verb": "INJECT",
     "jadc2": {
       "name": "Joint Fire Support",
       "description": "The coordination and integration of fires to achieve desired effects.",
@@ -137,64 +137,64 @@
   {
     "port": 5,
     "commander": "Pyre Praetorian",
-    "verb": "DEFEND",
+    "verb": "IMMUNIZE",
     "jadc2": {
-      "name": "Joint Force Protection",
-      "description": "Measures taken to protect the force and its assets from threats.",
+      "name": "Joint Force Protection (MOSAIC)",
+      "description": "Measures taken to protect the force and its assets from threats through dynamic surface mutation and decentralized kill-chain interruption.",
       "steps": [
-        "Hardening: Strengthen assets against potential attacks.",
-        "Detection: Identify incoming threats in real-time.",
-        "Response: Deploy defensive measures to neutralize threats."
+        "Stigmergic Sentinel: Deploy ephemeral defense nodes in response to Blackboard violations.",
+        "Surface Mutation: Implement Moving Target Defense by rotating internal tokens and port mappings.",
+        "Kill-Chain Interruption: Empower components to autonomously sever connections upon integrity failure."
       ]
     },
     "cyber": {
       "name": "Impair Defenses",
-      "description": "Disabling or bypassing security controls to facilitate further actions.",
+      "description": "Adversaries may impair defenses to avoid detection or prevent defensive actions.",
       "technique_id": "T1562",
       "tactics": "Defense Evasion"
     },
     "hfo": {
       "name": "Agni",
-      "description": "The blue flame of immunization that protects the HFO cleanroom.",
+      "description": "The blue flame paladin that immunizes the system through defense in depth.",
       "provenance": "hot_obsidian_sandbox/bronze/P5_PYRE_PRAETORIAN/DANCE_SPEC.md",
-      "pain_id": "PAIN_010",
-      "mantra": "Given a threat, When the Pyre Praetorian dances, Then the cleanroom remains untainted."
+      "pain_id": "PAIN_002",
+      "mantra": "Given a threat vector, When the Pyre Praetorian dances, Then the system is hardened against the attack."
     }
   },
   {
     "port": 6,
     "commander": "Kraken Keeper",
-    "verb": "STORE",
+    "verb": "ASSIMILATE",
     "jadc2": {
       "name": "Joint Logistics",
-      "description": "The planning and execution of the movement and support of forces.",
+      "description": "The coordination and integration of logistics to support operations.",
       "steps": [
-        "Sustainment: Ensure the continuous supply of resources.",
-        "Storage: Securely manage and index data and assets.",
-        "Retrieval: Provide rapid access to stored information for operations."
+        "Storage: Maintain and manage supplies and equipment.",
+        "Distribution: Deliver supplies and equipment to the force.",
+        "Maintenance: Ensure the readiness and functionality of assets."
       ]
     },
     "cyber": {
       "name": "Data from Local System",
-      "description": "Collecting data from the local system to support intelligence gathering.",
+      "description": "Adversaries may search local system sources, such as file systems and configuration files, to find sensitive data.",
       "technique_id": "T1005",
       "tactics": "Collection"
     },
     "hfo": {
-      "name": "The Ledger",
-      "description": "The forensic datalake for storing and querying HFO history.",
+      "name": "Medallion Lake",
+      "description": "The persistent storage layer for all HFO memories and artifacts.",
       "provenance": "hot_obsidian_sandbox/bronze/P6_KRAKEN_KEEPER_DRAFT.md",
-      "pain_id": "PAIN_009",
-      "mantra": "Given an artifact, When the Kraken Keeper assimilates it, Then it is indexed in the DuckDB lake."
+      "pain_id": "PAIN_003",
+      "mantra": "Given a new artifact, When the Kraken Keeper assimilates it, Then it is stored in the Medallion Lake with full provenance."
     }
   },
   {
     "port": 7,
     "commander": "Spider Sovereign",
-    "verb": "DECIDE",
+    "verb": "NAVIGATE",
     "jadc2": {
-      "name": "Joint Command and Control",
-      "description": "The exercise of authority and direction by a commander over assigned forces.",
+      "name": "Joint Planning",
+      "description": "The development of plans to achieve mission objectives.",
       "steps": [
         "Planning: Develop courses of action to achieve mission objectives.",
         "Decision: Select the optimal course of action based on intelligence.",
@@ -203,16 +203,16 @@
     },
     "cyber": {
       "name": "Application Layer Protocol",
-      "description": "Using application layer protocols to communicate with the command and control server.",
+      "description": "Adversaries may communicate using OSI application layer protocols to avoid detection/network filtering by blending in with existing traffic.",
       "technique_id": "T1071",
       "tactics": "Command and Control"
     },
     "hfo": {
       "name": "Firmament",
-      "description": "The strategic navigation layer for orchestrating the HFO swarm.",
+      "description": "The system of systems that navigates the swarm through the strategic landscape.",
       "provenance": "hot_obsidian_sandbox/bronze/P7_DECISION_KINETIC.md",
       "pain_id": "PAIN_008",
-      "mantra": "Given a goal, When the Spider Sovereign decides, Then the swarm navigates the Firmament."
+      "mantra": "Given a goal, When the Spider Sovereign navigates, Then the swarm moves towards the objective."
     }
   }
 ]

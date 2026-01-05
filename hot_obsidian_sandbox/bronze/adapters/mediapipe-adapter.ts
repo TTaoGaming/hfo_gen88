@@ -1,6 +1,6 @@
 import { z } from 'zod';
 import { Port, SensorFrame, SensorFrameSchema, LandmarkSchema } from '../contracts/pointer-contracts.js';
-import { VacuoleEnvelope } from '../contracts/envelope.js';
+import { VacuoleEnvelope } from '../../silver/contracts/envelope.js';
 
 /**
  * 🥈 PORT 0: OBSERVER (SENSE) - MediaPipe Adapter

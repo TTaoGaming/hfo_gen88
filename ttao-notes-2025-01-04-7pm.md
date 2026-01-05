@@ -30,4 +30,18 @@ coordinate with obsidian blackboard, I am improving my port 4 hot\silver red reg
 ---
 we need to redo the blood book, it is starting to get polluted. what I want you to do is to search and read about my dev pain working with ai the past 1 year, what are the biggest patterns? give me anumber of meta patterns and hyper heuristics for me to document into a newly minted blood book. we need to use enterprise exemplar standards with security and crypto hash provence chaining
 ---
-I want her default behavior to be to demote anything wrong to hot\bronze quarantine, likely paired with the pyre praetorian port 5. the idea is that the red regnant tests, the pyre praetorian port 5 defends, disrupt + immunize
+ok demote the other corrupted book into quarantine bronze and timestamp it. it shouldn't be touched for a while. and what I want you to do is to populate the book using the enterprise resources. learn from my pain, but also from the history of software, what are the weaknesses, what are the attack vectors the idea is to give the red regnant a near infinite attack surface
+---
+ok ,now upgrade my pyre praetorian in a similar way. the idea is to have defense in depth, pull JADC2 and MOSAIC warfare documentation to improve him .the idea is that the port 4 and port 5 are going to have co evolutionary strange loop
+---
+ok let's do this, list the different dimensions of HFO and then look at the different dimensions and suggest 3 names per port for me to decide. give me trade study. the idea is a semantic anchor and conceptual incarnation, I don't want the weak shit, give me the myth that have lasted. it is a book in a loose sense of the word
+---
+ok start generating the metadata for the 8 books. using the blood book as a initial template. before we begind consider our task and use web search and sequential thinking, is there a template we should adopt for this? is there a dominated option or a pareto frontier?
+---
+what are these ledgers suppose to be? because they are suppose to be different per comamnder and I am pretty sure you just hallucinated alot of them. what I want you to tell me is a matrix of the book per hero and provenance, for example red regnant book comes from my pain documentation and att&ck enterprise. don't edit just show me in a matrix don't try to edit once I've caught you. tell me what the source is or if they were bullshit, it should be machine parseable
+---
+
+I want red regnant default behavior to be to demote anything wrong to hot\bronze quarantine, likely paired with the pyre praetorian port 5. the idea is that the red regnant tests, the pyre praetorian port 5 defends, disrupt + immunize
+---
+keep it more project agnostic, the idea is that we are collecting the meta patterns the root causes and the signals from the noise. so chapter 1 is HFO pain and bleeding, chapter 2 is JADC2 red team concept and application chapter 3 will be domain specific so ATT&CK 
+--

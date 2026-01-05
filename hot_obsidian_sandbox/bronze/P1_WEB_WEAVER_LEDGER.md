@@ -1,9 +1,9 @@
-# P1 Ledger: Web Weaver (FUSE)
+# P1 Ledger: Web Weaver (BRIDGE)
 
 ## 💓 Heartbeat Mantra (Gherkin)
 ```gherkin
 Feature: Bifrost
-  Scenario: FUSE Protocol
+  Scenario: BRIDGE Protocol
     Given a raw payload, When it crosses the Bifrost, Then it is wrapped in a Zod-validated envelope.
 ```
 
@@ -12,7 +12,7 @@ Feature: Bifrost
 {
   "type": "playbook",
   "spec_version": "2.0",
-  "id": "playbook--cfe0b843-486c-45d2-bfb4-2f29a927243a",
+  "id": "playbook--228ff0a1-c6a2-416a-bbdb-28f9bb03d232",
   "name": "Acquire Infrastructure",
   "description": "Adversaries may buy, lease, rent, or obtain infrastructure that can be used during targeting. A wide variety of infrastructure exists for hosting and orchestrating adversary operations. Infrastructure solutions include physical or cloud servers, domains, and third-party web services.(Citation: TrendmicroHideoutsLease) Some infrastructure providers offer free trial periods, enabling infrastructure acquisition at limited to no cost.(Citation: Free Trial PurpleUrchin) Additionally, botnets are available for rent or purchase.",
   "workflow_start": "action--1",
@@ -35,6 +35,8 @@ Assess the reliability and accuracy of the fused data.
 
 ### Phase 3: Analysis
 Identify patterns and trends to support decision-making.
+
+
 
 ---
 **Provenance**: hot_obsidian_sandbox/bronze/P1_INTEGRATION_KINETIC.md | **Pain ID**: PAIN_004

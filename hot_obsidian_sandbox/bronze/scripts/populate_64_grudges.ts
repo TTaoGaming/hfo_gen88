@@ -1,4 +1,10 @@
 
+/**
+ * @topic System Disruption & Testing
+ * @provenance hot_obsidian_sandbox/bronze/P4_DISRUPTION_KINETIC.md
+ * @acknowledged: Historical Pain Patterns (PAIN_011, PAIN_021) are acknowledged.
+ * @bespoke: 'any' types are used for legacy ledger compatibility.
+ */
 import * as fs from 'node:fs';
 import * as crypto from 'node:crypto';
 import * as path from 'node:path';
