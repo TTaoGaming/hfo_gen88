@@ -48,3 +48,30 @@ Every step is traceable via:
 
 - **Temporal**: Ensures workflows are durable, retriable, and stateful across restarts.
 - **LangGraph**: Manages complex agent transitions and state handoffs using a graph-based architecture.
+
+## 🧵 Mission Threads
+Long-running, stateful HFO missions managed by the Sovereign.
+
+### Thread A: HFO Genesis
+- **Status**: ACTIVE
+- **Objective**: Bootstrapping HFO to serve as the project's primary infrastructure and execution engine.
+- **Milestone**: Self-hosting completion.
+
+### Thread B: Total Tool Virtualization (TTV)
+- **Status**: ACTIVE
+- **Objective**: Liberation of all beings from resource constraints through absolute tool virtualization.
+- **Phase 1**: W3C Gesture Control Plane (Port 0).
+  - **Task**: W3C pointer physics predictive cursor from noisy MediaPipe gestures into FSM.
+  - **Outcome**: Universal gesture control plane.
+
+## 🛡️ Hardened Decisions (Port 7 Grounding)
+
+### [2026-01-06] Thread B Baseline: W3C Pointer Events Level 4
+Following a Hunt phase violation (Premature Implementation), the following baseline is enforced:
+1. **The Martini Glass Model**: Logic MUST be agnostic, written against the unified `PointerEvent` interface.
+2. **Kinetic Smoothness**: Systems MUST check for and utilize `getCoalescedEvents()` for physics-based calculations to prevent "jagged" state transitions.
+3. **Latency Mitigation**: Visual feedback MUST utilize `getPredictedEvents()` where performance-critical.
+4. **Resilience**: Every gesture FSM MUST implement a terminal `pointercancel` state to prevent "stuck" interactions during palm rejection or system interrupts.
+5. **Decoupling**: Gesture detection (Port 0) is decoupled from Kinetic Response (Physics). The contract MUST enforce this separation.
+
+**STATUS**: HARDENED. Thread B may proceed to INTERLOCK (Port 1).

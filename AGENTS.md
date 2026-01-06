@@ -32,6 +32,7 @@ Provenance: bronze/P4_DISRUPTION_KINETIC.md
 4. **IMMUNE SYSTEM**: The `mutation_scream.ts` script (Port 4) runs on every commit. Architectural violations will be logged to the Blackboard and the Blood Book of Grudges.
 5. **STIGMERGY**: All progress and violations MUST be logged to `obsidianblackboard.jsonl` in the root.
 6. **STRANGE LOOPS**: Port 7 (Spider Sovereign) enforces HIVE/8 (Strategic) and PREY/8 (Tactical) workflows.
+7. **SENTINEL GROUNDING**: Every chat session MUST utilize **Tavily Web Search** and **Sequential Thinking**. Failure to use both tools at least once per session is a "Reward Hack" violation. Usage MUST be logged as `SEARCH_GROUNDING` and `THINKING_GROUNDING` events on the Blackboard.
 
 ---
 
