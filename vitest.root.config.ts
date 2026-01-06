@@ -5,8 +5,12 @@ export default defineConfig({
   test: {
     globals: true,
     environment: 'node',
+    env: {
+      HFO_TEST_MODE: 'true'
+    },
     include: [
-      'hot_obsidian_sandbox/silver/**/*.test.ts'
+      'hot_obsidian_sandbox/silver/**/*.test.ts',
+      'hot_obsidian_sandbox/bronze/P4_RED_REGNANT/**/*.test.ts'
     ],
     exclude: ['**/node_modules/**', '**/dist/**', '**/.stryker-tmp/**', 'cold_obsidian_sandbox/**'],
     alias: {

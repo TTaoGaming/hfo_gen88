@@ -14,6 +14,7 @@ export default {
   ignorePatterns: [
     "**/*",
     "!hot_obsidian_sandbox/silver/P4_RED_REGNANT/**",
+    "!hot_obsidian_sandbox/bronze/P4_RED_REGNANT/**",
     "!hot_obsidian_sandbox/silver/P5_PYRE_PRAETORIAN/**",
     "!hot_obsidian_sandbox/bronze/P4_RED_REGNANT/**",
     "!hot_obsidian_sandbox/bronze/contracts/**",
@@ -27,7 +28,7 @@ export default {
     "!.gitignore"
   ],
   mutate: [
-    "hot_obsidian_sandbox/silver/P4_RED_REGNANT/physic_scream.ts"
+    "hot_obsidian_sandbox/silver/P4_RED_REGNANT/mutation_scream.ts"
   ],
   vitest: {
     configFile: "vitest.root.config.ts"

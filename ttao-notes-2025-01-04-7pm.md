@@ -45,3 +45,5 @@ I want red regnant default behavior to be to demote anything wrong to hot\bronze
 ---
 keep it more project agnostic, the idea is that we are collecting the meta patterns the root causes and the signals from the noise. so chapter 1 is HFO pain and bleeding, chapter 2 is JADC2 red team concept and application chapter 3 will be domain specific so ATT&CK 
 --
+ok what I want you to do is signal a handoff report in the obsidian blackboard and I want you to help me with finalizing and testing the gesture controls. what I want is golden layout for me to move my hand on my webcam and control 3 different cursors, with 2 of them being rapier physics cursor
+---

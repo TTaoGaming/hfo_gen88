@@ -29,7 +29,7 @@ Provenance: bronze/P4_DISRUPTION_KINETIC.md
    - **Files**: `AGENTS.md`, `llms.txt`, `obsidianblackboard.jsonl`, `package.json`, `package-lock.json`, `vitest.root.config.ts`, `stryker.root.config.mjs`, `.gitignore`, `.env`, `ttao-notes-*.md`
 2. **NO THEATER**: Do not report "Green" without "Red". Every implementation in `silver/` must have a corresponding test in the same directory.
 3. **MEDALLION FLOW**: Code starts in `bronze/`, moves to `silver/` once tested, and `gold/` once canonized.
-4. **IMMUNE SYSTEM**: The `physic_scream.ts` script (Port 4) runs on every commit. Architectural violations will be logged to the Blackboard and the Blood Book of Grudges.
+4. **IMMUNE SYSTEM**: The `mutation_scream.ts` script (Port 4) runs on every commit. Architectural violations will be logged to the Blackboard and the Blood Book of Grudges.
 5. **STIGMERGY**: All progress and violations MUST be logged to `obsidianblackboard.jsonl` in the root.
 6. **STRANGE LOOPS**: Port 7 (Spider Sovereign) enforces HIVE/8 (Strategic) and PREY/8 (Tactical) workflows.
 
@@ -71,6 +71,6 @@ Port │ Commander        │ Verb            │ Artifact                      
 ---
 
 ## 🔑 Quick Start
-1. **Check Health**: `cd hot_obsidian_sandbox/bronze/infra; npx tsx ../../silver/P4_RED_REGNANT/physic_scream.ts`
+1. **Check Health**: `cd hot_obsidian_sandbox/bronze/infra; npx tsx ../../silver/P4_RED_REGNANT/mutation_scream.ts`
 2. **Run Tests**: `cd hot_obsidian_sandbox/bronze/infra; npm test`
 3. **Log Progress**: Append to `obsidianblackboard.jsonl` in the root.

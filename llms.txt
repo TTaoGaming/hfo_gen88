@@ -19,7 +19,7 @@ Provenance: bronze/P4_DISRUPTION_KINETIC.md
 Gen 88 is designed to prevent "AI Theater" through strict architectural gates.
 - **Root Purge**: No pollution allowed in the root.
 - **Medallion Architecture**: Strict separation of data quality.
-- **Immune System**: `physic_scream.ts` (Port 4) detects violations.
+- **Immune System**: `mutation_scream.ts` (Port 4) detects violations.
 - **Hardening**: `pyre_dance.ts` (Port 5) remediates slop.
 - **Stigmergy**: `obsidianblackboard.jsonl` is the source of truth.
 - **Grudges**: `BLOOD_BOOK_OF_GRUDGES.jsonl` tracks dev pain.

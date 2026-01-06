@@ -4,7 +4,7 @@
   "description": "HFO Gen 88: Cleanroom Genesis with Hard-Gated Enforcement",
   "type": "module",
   "scripts": {
-    "scream": "tsx ../../silver/P4_RED_REGNANT/physic_scream.ts",
+    "scream": "npx tsx ../P4_RED_REGNANT/mutation_scream.ts",
     "watch:scream": "nodemon --watch ../.. --ext ts --exec \"npm run scream\"",
     "test": "vitest run",
     "test:watch": "vitest",

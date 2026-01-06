@@ -4,7 +4,7 @@
   "description": "HFO Gen 88 Root Tooling (Immune System)",
   "type": "module",
   "scripts": {
-    "scream": "npx tsx hot_obsidian_sandbox/silver/P4_RED_REGNANT/physic_scream.ts",
+    "scream": "npx tsx hot_obsidian_sandbox/bronze/P4_RED_REGNANT/mutation_scream.ts",
     "stryker": "stryker run stryker.root.config.mjs",
     "test": "vitest run -c vitest.root.config.ts",
     "prepare": "husky"
