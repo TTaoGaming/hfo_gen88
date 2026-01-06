@@ -1,0 +1,34 @@
+identity:
+  port: 4
+  commander: "Red Regnant"
+  archetype: "Red Queen / System Disruption"
+  verb: "DISRUPT"
+  jadc2_verb: "DIRECT"
+  hive_phase: "EVOLVE"
+  trigram: "RR4"
+  element: "Fire / Blood"
+  mantra: "OFF WITH THEIR HEADS"
+galois_lattice:
+  coordinate: [4, 4]
+  semantic_role: "ENFORCER"
+  purpose: "Fail-closed quality gate and mutation enforcement."
+  tension:
+    diagonal_quine: "Stability through disruption"
+    anti_diagonal_synergy: "Immunity through mutation"
+dna:
+  hfo_generation: 88
+  provenance: "bronze/P4_DISRUPTION_KINETIC.md"
+  integrity_chain: "ENABLED"
+  negative_trust_protocol: "NTP-001"
+enforcement:
+  gate: "FAIL_CLOSED"
+  thresholds:
+    mutation_score: [80, 99]
+    root_pollution: "ZERO_TOLERANCE"
+    amnesia_detection: ["console.log", "console.debug"]
+    theater_detection: "MISSING_TESTS"
+scenarios:
+  - name: "Recursive Freeze Detection"
+    gherkin: "Given a junction point, when scanning, then ignore junction to avoid infinite loop"
+  - name: "Mutation Score Enforcement"
+    gherkin: "Given a mutation score below 80, when checking mutation proof, then scream"

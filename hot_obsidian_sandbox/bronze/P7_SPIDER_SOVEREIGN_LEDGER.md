@@ -4,7 +4,9 @@
 ```gherkin
 Feature: Firmament
   Scenario: NAVIGATE Protocol
-    Given a goal, When the Spider Sovereign navigates, Then the swarm moves towards the objective.
+    Given a goal and the OBSIDIAN H-POMDP HOURGLASS (OHH)
+    When the Spider Sovereign navigates
+    Then the swarm moves towards the objective.
 ```
 
 ## 🛠️ Technical Playbook (CACAO v2.0)
@@ -36,6 +38,15 @@ Select the optimal course of action based on intelligence.
 ### Phase 3: Direction
 Issue orders to subordinate units to execute the plan.
 
+
+## ⏳ OBSIDIAN H-POMDP HOURGLASS (OHH)
+**Definition**: A predictive strategic orchestration tool for AI swarm navigation.
+
+| Component | Technology | Purpose |
+| :--- | :--- | :--- |
+| **H-POMDP** | Hierarchical POMDP | Multi-level decision making under uncertainty |
+| **Hourglass** | Temporal Aggregator | Focal point of past data and future trajectories |
+| **Obsidian** | immutable Storage | Durable, hardened record of strategic state |
 
 
 ---

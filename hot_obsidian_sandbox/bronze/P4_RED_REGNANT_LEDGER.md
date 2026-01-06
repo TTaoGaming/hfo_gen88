@@ -7,8 +7,11 @@ Provenance: hot_obsidian_sandbox/bronze/P4_DISRUPTION_KINETIC.md
 ## 💓 Heartbeat Mantra (Gherkin)
 ```gherkin
 Feature: Grudges
-  Scenario: DISRUPT Protocol
-    Given a violation, When the Red Regnant screams, Then the violation is logged to the Blackboard.
+  Scenario: PSYCHIC_SCREAM Interlock
+    Given a violation of the BLOOD BOOK OF GRUDGES (BBG)
+    When the Red Regnant emits a PSYCHIC_SCREAM
+    Then the Promotion Quality Gate fails-closed
+    And the violation is logged to the Blackboard with Verification Attestation.
 ```
 
 ## 🛠️ Technical Playbook (CACAO v2.0)
@@ -30,7 +33,18 @@ Feature: Grudges
 }
 ```
 
-## 📜 Literate Execution (JADC2/Ancestral)
+## � PSYCHIC_SCREAM (The Fail-Closed Gate)
+**Definition**: Fail-Closed Promotion Quality Gate (Stop-the-Line Interlock) with Verification Attestation.
+
+| Constraint | Requirement | Enforcement |
+| :--- | :--- | :--- |
+| **Mutation Score** | >= 80% (Stryker/Vitest) | Terminal Proof Required |
+| **Root Integrity** | 0 Pollution | Immediate Quarantine |
+| **Theater Detection** | No "Green" without "Red" | Forensic Analysis |
+
+> "If the scream is heard, the line stops. No exceptions. No reward hacking."
+
+## �📜 Literate Execution (JADC2/Ancestral)
 ### Phase 1: Deception
 Mislead the adversary regarding friendly intentions.
 
@@ -41,8 +55,8 @@ Degrade the adversary's ability to communicate or decide.
 Leverage adversary vulnerabilities for strategic gain.
 
 
-## 🩸 The Blood Book of Grudges (2025 History)
-> "A history of the patterns and meta-patterns that cause bleeding and pain for HFO."
+## 🩸 BLOOD BOOK OF GRUDGES (BBG)
+> "A collection of blood and pain from HFO, written in blood that resonates with the swarm."
 
 | Month | Grudge | Vector | Solution |
 | :--- | :--- | :--- | :--- |
