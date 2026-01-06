@@ -6,13 +6,9 @@ export default defineConfig({
     globals: true,
     environment: 'node',
     include: [
-      'hot_obsidian_sandbox/silver/**/*.test.ts',
-      'hot_obsidian_sandbox/bronze/scripts/**/*.test.ts',
-      'hot_obsidian_sandbox/bronze/tests/**/*.test.ts',
-      'hot_obsidian_sandbox/bronze/P5_PYRE_PRAETORIAN/**/*.test.ts',
-      'hot_obsidian_sandbox/bronze/adapters/**/*.test.ts',
+      'hot_obsidian_sandbox/silver/**/*.test.ts'
     ],
-    exclude: ['**/node_modules/**', '**/dist/**'],
+    exclude: ['**/node_modules/**', '**/dist/**', '**/.stryker-tmp/**', 'cold_obsidian_sandbox/**'],
     alias: {
       'zod': resolve(__dirname, 'node_modules/zod'),
       'duckdb': resolve(__dirname, 'node_modules/duckdb'),

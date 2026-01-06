@@ -37,16 +37,16 @@ Provenance: bronze/P4_DISRUPTION_KINETIC.md
 
 ### The 8 Legendary Commanders
 ```
-Port │ Commander        │ Verb            │ HIVE Phase
-─────┼──────────────────┼─────────────────┼────────────
-  0  │ Lidless Legion   │ SENSE           │ H (Hunt)
-  1  │ Web Weaver       │ FUSE            │ I (Interlock)
-  2  │ Mirror Magus     │ SHAPE           │ V (Validate)
-  3  │ Spore Storm      │ DELIVER         │ E (Evolve)
-  4  │ Red Regnant      │ DISRUPT / TEST  │ E (Evolve)
-  5  │ Pyre Praetorian  │ DEFEND / IMMUNIZE│ V (Validate)
-  6  │ Kraken Keeper    │ STORE           │ I (Interlock)
-  7  │ Spider Sovereign │ DECIDE          │ H (Hunt)
+Port │ Commander        │ Verb            │ Artifact                      │ HIVE Phase
+─────┼──────────────────┼─────────────────┼───────────────────────────────┼────────────
+  0  │ Lidless Legion   │ SENSE           │ [DRAFT]                       │ H (Hunt)
+  1  │ Web Weaver       │ FUSE            │ [DRAFT]                       │ I (Interlock)
+  2  │ Mirror Magus     │ SHAPE           │ [DRAFT]                       │ V (Validate)
+  3  │ Spore Storm      │ DELIVER         │ [DRAFT]                       │ E (Evolve)
+  4  │ Red Regnant      │ DISRUPT / TEST  │ BLOOD BOOK OF GRUDGES (BBG)   │ E (Evolve)
+  5  │ Pyre Praetorian  │ DEFEND / IMMUNIZE│ [DRAFT]                      │ V (Validate)
+  6  │ Kraken Keeper    │ STORE           │ [DRAFT]                       │ I (Interlock)
+  7  │ Spider Sovereign │ DECIDE          │ OBSIDIAN H-POMDP HOURGLASS (OHH)│ H (Hunt)
 ```
 
 ### HIVE/8 Workflow

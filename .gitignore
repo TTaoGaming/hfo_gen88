@@ -10,6 +10,7 @@ reports/
 dist/
 .vitest-results/
 cold_obsidian_sandbox/silver/active_root
+cold_obsidian_sandbox/bronze/archive_pre_hfo_to_gen_87/active_root
 
 # HFO Gen 88 Cleanroom Firewall
 .env
