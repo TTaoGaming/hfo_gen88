@@ -24,7 +24,9 @@ Provenance: bronze/P4_DISRUPTION_KINETIC.md
 
 ## 🚨 The Canalization Rules (NON-NEGOTIABLE)
 
-1. **ROOT PURGE**: The root directory MUST remain clean. Only `hot_obsidian_sandbox`, `cold_obsidian_sandbox`, `AGENTS.md`, `llms.txt`, `obsidianblackboard.jsonl`, and `ttao-notes-*.md` are allowed.
+1. **ROOT PURGE**: The root directory MUST remain clean. Only the formal manifest is allowed:
+   - **Folders**: `hot_obsidian_sandbox`, `cold_obsidian_sandbox`, `.git`, `.vscode`, `.husky`, `.kiro`, `.venv`, `node_modules`
+   - **Files**: `AGENTS.md`, `llms.txt`, `obsidianblackboard.jsonl`, `package.json`, `package-lock.json`, `vitest.root.config.ts`, `stryker.root.config.mjs`, `.gitignore`, `.env`, `ttao-notes-*.md`
 2. **NO THEATER**: Do not report "Green" without "Red". Every implementation in `silver/` must have a corresponding test in the same directory.
 3. **MEDALLION FLOW**: Code starts in `bronze/`, moves to `silver/` once tested, and `gold/` once canonized.
 4. **IMMUNE SYSTEM**: The `physic_scream.ts` script (Port 4) runs on every commit. Architectural violations will be logged to the Blackboard and the Blood Book of Grudges.

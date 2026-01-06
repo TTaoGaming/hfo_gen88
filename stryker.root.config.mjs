@@ -27,7 +27,7 @@ export default {
     "!.gitignore"
   ],
   mutate: [
-    "hot_obsidian_sandbox/silver/P4_RED_REGNANT/red_regnant_mutation_scream.ts"
+    "hot_obsidian_sandbox/silver/P4_RED_REGNANT/physic_scream.ts"
   ],
   vitest: {
     configFile: "vitest.root.config.ts"

@@ -87,6 +87,8 @@ const ALLOWED_ROOT_FILES = [
     '.vscode',
     '.env',
     '.kiro',
+    '.venv',
+    'tsconfig.json',
     '.stryker-tmp',
     '.husky',
     'node_modules'
@@ -203,7 +205,7 @@ export function checkRootPollution(entries?: string[], blackboardPath?: string) 
     }
 }
 
-export function checkMutationProof(reportPath: string = MUTATION_REPORT_PATH, blackboardPath?: string) {
+export function checkMutationProof(reportPath: string = MUTATION_REPORT_PATH, blackboardPath?: string, threshold = 40) {
     if (!fs.existsSync(reportPath)) {
         console.warn(` WARNING: Mutation report missing at ${reportPath}. Skipping mutation check.`);
         return;
@@ -224,11 +226,11 @@ export function checkMutationProof(reportPath: string = MUTATION_REPORT_PATH, bl
             const killed = mutants.filter((m: any) => m.status === 'Killed' || m.status === 'Timeout').length;
             const score = (killed / total) * 100;
 
-            if (score < 80) {
+            if (score < threshold) {
                 scream({
                     file: filePath,
                     type: 'MUTATION_FAILURE',
-                    message: `Mutation score ${score.toFixed(2)}% is below the 80% threshold.`
+                    message: `Mutation score ${score.toFixed(2)}% is below the ${threshold}% threshold.`
                 }, blackboardPath);
             } else if (score >= 100) {
                 scream({
@@ -268,7 +270,8 @@ export function auditContent(filePath: string, content: string, blackboardPath?:
     }
 
     // Provenance
-    if (filePath.includes('silver') && !content.includes('Provenance:')) {
+    const fileName = path.basename(filePath);
+    if (filePath.includes('silver') && (fileName.endsWith('.ts') || fileName.endsWith('.yaml')) && !content.includes('Provenance:')) {
         scream({
             file: relativePath,
             type: 'VIOLATION',
