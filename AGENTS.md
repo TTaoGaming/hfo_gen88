@@ -36,7 +36,9 @@ Provenance: bronze/P4_DISRUPTION_KINETIC.md
 
 ---
 
-## 🏗️ HFO Gen 88 Architecture
+## 🏗️ HFO Gen 88 Architecture (TOTAL LOCKDOWN)
+
+> **LOCKDOWN STATUS**: ACTIVE. All Silver/Gold artifacts demoted to Bronze Quarantine. No promotions without explicit Warlock approval.
 
 ### The 8 Legendary Commanders
 ```
@@ -61,9 +63,9 @@ Port │ Commander        │ Verb            │ Artifact                      
 ---
 
 ## 🧰 Tools & Infrastructure
-- **Enforcement**: `hot_obsidian_sandbox/silver/P4_RED_REGNANT/physic_scream.ts`
-- **Hardening**: `hot_obsidian_sandbox/silver/P5_PYRE_PRAETORIAN/pyre_dance.ts`
-- **Ledger**: `hot_obsidian_sandbox/silver/P4_RED_REGNANT/BLOOD_BOOK_OF_GRUDGES.jsonl`
+- **Enforcement**: `hot_obsidian_sandbox/bronze/P4_RED_REGNANT/psychic_scream.ts`
+- **Hardening**: `hot_obsidian_sandbox/bronze/P5_PYRE_PRAETORIAN/pyre_dance.ts`
+- **Ledger**: `hot_obsidian_sandbox/bronze/P4_RED_REGNANT/BLOOD_BOOK_OF_GRUDGES.jsonl`
 - **Daemon**: `hot_obsidian_sandbox/bronze/scripts/daemon.ps1`
 - **Testing**: Vitest (configured in `hot_obsidian_sandbox/bronze/infra/`)
 - **Contracts**: Zod (Contract Law)
@@ -71,7 +73,7 @@ Port │ Commander        │ Verb            │ Artifact                      
 
 ---
 
-## 🔑 Quick Start
-1. **Check Health**: `cd hot_obsidian_sandbox/bronze/infra; npx tsx ../../silver/P4_RED_REGNANT/mutation_scream.ts`
+## 🔑 Quick Start (BRONZE-ONLY MODE)
+1. **Check Health**: `npx tsx hot_obsidian_sandbox/bronze/P4_RED_REGNANT/psychic_scream.ts`
 2. **Run Tests**: `cd hot_obsidian_sandbox/bronze/infra; npm test`
 3. **Log Progress**: Append to `obsidianblackboard.jsonl` in the root.
