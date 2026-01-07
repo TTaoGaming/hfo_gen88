@@ -387,72 +387,39 @@ export async function sporeInjectionWorkflow(payload: SporePayload, targets: str
 
 ---
 
-## 🔴 Port 4: RED REGNANT — The Disruptor
+## 🔴 Port 4: RED REGNANT — The Red Queen
 
-**Verb**: DISRUPT  
+**Verb**: SING / SCREAM  
+**Identity**: The Red Queen in crimson robes of office  
 **Trigram**: ☳ Zhèn (Thunder) — 100 binary — Mobile, shocking  
 **MOSAIC Tile**: Suppression/Destruction of Enemy Air Defenses (SEAD/DEAD)  
 
-### Grounded Technology Stack
+### The Red Queen's Mandate (TEST x TEST)
 
-| Component | Technology | Purpose |
-|:----------|:-----------|:--------|
-| Mutation Testing | Stryker Mutator | Code quality validation |
-| Quality Gates | Custom TypeScript | Promotion/demotion decisions |
-| Blood Book | JSONL + DuckDB | Failure tracking |
-| Chaos Engineering | Custom fault injection | Resilience testing |
+The Red Regnant is the **Test x Test** Commander. She is the immune system's primary sensory organ. She applies the **Red Queen Hypothesis**: code must constantly evolve (via mutation) just to maintain its status.
 
-### Real Implementation
-
-**Stryker** is a real mutation testing framework for JavaScript/TypeScript. It:
-- Creates mutants (small code changes)
-- Runs your test suite against each mutant
-- Reports which mutants survived (indicating weak tests)
-
-```typescript
-// stryker.config.mjs
-export default {
-  mutate: ['src/**/*.ts', '!src/**/*.test.ts'],
-  testRunner: 'vitest',
-  reporters: ['html', 'json', 'progress'],
-  thresholds: {
-    high: 80,
-    low: 60,
-    break: 50,
-  },
-};
-
-// Quality gate enforcement
-export function evaluateMutationScore(score: number): PromotionDecision {
-  if (score < 80) return 'DEMOTE';      // Below threshold → Bronze
-  if (score < 100) return 'PROMOTE';    // Good → Silver
-  return 'CANONIZE';                     // Perfect → Gold
-}
-```
-
-### The Red Queen Hypothesis (Grounded)
-
-The "Red Queen" concept comes from evolutionary biology: *"It takes all the running you can do, to keep in the same place."* In software terms:
-- Code that isn't tested will rot
-- Tests that don't catch mutations are weak
-- Continuous evolutionary pressure (mutation testing) ensures antifragility
+- **SINGING**: When code is PURE, mutation scores are >88%, and property tests pass, she sings the Medallion hymns.
+- **SCREAMING**: A psychic scream triggered by **Theater**, **Reward Hacks**, or **Silent Failures**. 
+- **ZERO ESCAPE HATCHES**: Any suspicion results in instant demotion to Bronze/Quarantine. No `NO_DEMOTE` overrides allowed in Silver.
+- **THE BOOK**: The **Blood Book of Grudges** tracks attack vectors and patterns of deception.
 
 ---
 
-## 🔥 Port 5: PYRE PRAETORIAN — The Defender
+## 🔥 Port 5: PYRE PRAETORIAN — The Blue Phoenix
 
-**Verb**: IMMUNIZE  
+**Verb**: DANCE / DIE  
+**Identity**: The Blue Phoenix in cobalt plate armor and ethereal blue flames  
 **Trigram**: ☲ Lí (Fire) — 101 binary — Illuminating, purifying  
 **MOSAIC Tile**: Integrated Air and Missile Defense (IAMD)  
 
-### Grounded Technology Stack
+### The Phoenix Protocol (Strange Loop)
 
-| Component | Technology | Purpose |
-|:----------|:-----------|:--------|
-| Input Validation | Zod | Schema enforcement |
-| Sanitization | DOMPurify, validator.js | XSS/injection prevention |
-| Contract Enforcement | Zod + TypeScript | Type safety |
-| Integrity Sealing | crypto.subtle | Hash verification |
+The Pyre Praetorian is the Enforcer of **Immune Memory**. She does not merely delete; she **immolates** to trigger **rebirth** in a co-evolutionary dance with Port 4.
+
+- **BLUE FLAMES**: Defense-in-depth firewalls that consume adversary nodes.
+- **STRANGE LOOP**: The "Dance of Shiva"—Demotion is a return to the ash (Quarantine) for reincarnation.
+- **IMMUNE MEMORY**: Defending against entire **Attack Vectors**, not just single instances, by adapting to hyper-heuristic patterns.
+- **PHOENIX IMMUNITY**: Certificates issued only to code that has survived the psychic scream and the blue pyre.
 
 ### Real Implementation
 

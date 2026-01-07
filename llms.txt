@@ -17,12 +17,12 @@ Provenance: bronze/P4_DISRUPTION_KINETIC.md
 ## Architecture: Canalization
 
 Gen 88 is designed to prevent "AI Theater" through strict architectural gates.
+- **The Red Queen (Port 4)**: Sings when code is pure; Screams on violations.
+- **The Blue Phoenix (Port 5)**: Immolates slop in blue flames; rebirths through the Phoenix Protocol.
 - **Root Purge**: No pollution allowed in the root.
 - **Medallion Architecture**: Strict separation of data quality.
-- **Immune System**: `mutation_scream.ts` (Port 4) detects violations.
-- **Hardening**: `pyre_dance.ts` (Port 5) remediates slop.
 - **Stigmergy**: `obsidianblackboard.jsonl` is the source of truth.
-- **Grudges**: `BLOOD_BOOK_OF_GRUDGES.jsonl` tracks dev pain.
+- **Blood Book**: `RED_BOOK_OF_BLOOD_GRUDGES.jsonl` tracks violations.
 
 ## Key Files
 

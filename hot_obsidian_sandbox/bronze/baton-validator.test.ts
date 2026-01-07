@@ -28,7 +28,8 @@ const validMetadataArb = fc.record({
   predecessor: fc.integer({ min: 0, max: 999 }),
   status: validStatusArb,
   checksum: hexStringArb.map(h => `sha256:${h}`),
-  created: fc.date().map(d => d.toISOString().split('T')[0]),
+  // Use a fixed timestamp range to avoid RangeError: Invalid time value
+  created: fc.integer({ min: 1577836800000, max: 1893456000000 }).map(t => new Date(t).toISOString().split('T')[0]),
 });
 
 const yamlFromMetadata = (m: { generation: number; predecessor: number; status: string; checksum: string; created: string }) =>

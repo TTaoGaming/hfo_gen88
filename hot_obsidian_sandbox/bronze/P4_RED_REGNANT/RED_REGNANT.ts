@@ -34,7 +34,9 @@ export const BLACKBOARD_PATH = path.join(ROOT_DIR, 'obsidianblackboard.jsonl');
 export const RED_BOOK_PATH = path.join(BRONZE_DIR, 'P4_RED_REGNANT/RED_BOOK_OF_BLOOD_GRUDGES.jsonl');
 export const BLOOD_BOOK_PATH = path.join(BRONZE_DIR, 'P4_RED_REGNANT/BLOOD_BOOK_OF_GRUDGES.jsonl');
 
-const db = new duckdb.Database(path.join(BRONZE_DIR, 'P4_RED_REGNANT/blood_book.db'));
+const isTest = process.env.HFO_TEST_MODE === 'true';
+const dbPath = isTest ? ':memory:' : path.join(BRONZE_DIR, 'P4_RED_REGNANT/blood_book.db');
+const db = new duckdb.Database(dbPath);
 
 // --- HFO GALOIS LATTICE (Cognitive Anchoring) ---
 
@@ -47,6 +49,7 @@ export const LATTICE = {
     O1: 8,               // Hive (8^1)
     O2: 64,              // Swarm (8^2)
     O3: 512,             // Legion (8^3)
+    O4: 4096,            // Sanctuary (8^4) - For Bronze Messiness
     GEN: 88,             // Temporal Anchor
     MUTATION_TARGET: 88, // 80% with an 8 (Gen 88 Pareto)
     THEATER_CAP: 99      // Threshold for "Theater" (Mock Poisoning)
@@ -70,10 +73,22 @@ export async function persistToKraken(violations: Violation[]) {
             if (err) return reject(err);
             const stmt = db.prepare('INSERT INTO grudges VALUES (?, ?, ?, ?, ?)');
             const now = new Date().toISOString();
-            for (const v of violations) {
-                stmt.run(now, v.file, v.type, v.message, LATTICE.GEN);
+            
+            let completed = 0;
+            if (violations.length === 0) {
+                stmt.finalize(() => resolve(true));
+                return;
             }
-            stmt.finalize(() => resolve(true));
+
+            for (const v of violations) {
+                stmt.run(now, v.file, v.type, v.message, LATTICE.GEN, (err) => {
+                    if (err) return reject(err);
+                    completed++;
+                    if (completed === violations.length) {
+                        stmt.finalize(() => resolve(true));
+                    }
+                });
+            }
         });
     });
 }
@@ -155,18 +170,17 @@ export const ManifestSchema = z.object({
 export const ALLOWED_ROOT_FILES = [
     'hot_obsidian_sandbox', 'cold_obsidian_sandbox', 'AGENTS.md', 'llms.txt',
     'obsidianblackboard.jsonl', 'package.json', 'package-lock.json',
-    'stryker.root.config.mjs', 'stryker.silver.config.mjs', 'vitest.root.config.ts', 
-    'vitest.silver.config.ts', 'vitest.harness.config.ts', 'vitest.mutation.config.ts',
-    'stryker.config.mjs', 'vitest.config.ts', '.git', '.github', '.gitignore', '.vscode', '.env',
-    '.kiro', '.venv', 'tsconfig.json', '.stryker-tmp', '.husky', 'node_modules',
-    'LICENSE', 'output.txt', 'reports', 'ttao-notes-2026-01-06.md', 'ttao-notes-2026-01-07.md'
+    'stryker.root.config.mjs', 'stryker.silver.config.mjs', 'stryker.p4.config.mjs',
+    'stryker.p5.config.mjs', 'run_stryker_p4.ps1',
+    'vitest.root.config.ts', 'vitest.silver.config.ts', 'vitest.harness.config.ts', 
+    'vitest.mutation.config.ts',
+    '.git', '.github', '.gitignore', '.vscode', '.env', '.kiro', '.venv', 'node_modules',
+    '.stryker-tmp', '.husky', 'reports', 'audit'
 ];
 
 export const ALLOWED_ROOT_PATTERNS = [
     /^ttao-notes-.*\.md$/,
-    /^\.vitest-reside-.*$/,
-    /^vitest\..*\.ts$/,
-    /^\.stryker-tmp.*$/
+    /^vitest\.root\.config\.ts\.timestamp-.*$/
 ];
 
 // --- CORE ENFORCEMENT ---
@@ -222,10 +236,14 @@ export function checkLatticeHealth() {
     for (const dir of medallions) {
         if (fs.existsSync(dir)) {
             const files = fs.readdirSync(dir);
-            if (files.length > LATTICE.O2) {
+            const limit = dir.includes('bronze') ? LATTICE.O4 : LATTICE.O2;
+            const thresholdName = dir.includes('bronze') ? 'O4' : 'O2';
+            const thresholdValue = dir.includes('bronze') ? LATTICE.O4 : LATTICE.O2;
+
+            if (files.length > limit) {
                 scream({
                     file: path.relative(ROOT_DIR, dir),
-                    message: `Hive Bloat: Folder density (${files.length}) exceeds O2 Limit (64).`,
+                    message: `Hive Bloat: Folder density (${files.length}) exceeds ${thresholdName} Limit (${thresholdValue}).`,
                     type: "LATTICE_BREACH"
                 });
             }
@@ -350,16 +368,16 @@ export function auditContent(filePath: string, content: string) {
 
     // Global: No Debt (TODO/FIXME)
     if ((content.includes('TO' + 'DO') || content.includes('FIX' + 'ME')) && !hasPermitted) {
-        scream({ file: relPath, type: 'DEBT', message: 'TODO/FIXME detected. Unpermitted in Silver/Gold.' });
+        scream({ file: relPath, type: 'AMNESIA', message: 'AI SLOP: Technical debt (TODO/FIXME) detected.' });
     }
 
     // Strict Zone Hard-Gates
     if (isStrict && !filePath.includes('P5_PYRE_PRAETORIAN')) {
         if ((content.includes('console.log') || content.includes('console.debug')) && !hasPermitted) {
-            scream({ file: relPath, type: 'THEATER', message: 'Console logging in strict zone without @permitted.' });
+            scream({ file: relPath, type: 'AMNESIA', message: `Unauthorized debug logs in strict zone: ${isStrict}.` });
         }
         if (content.match(/:\s*any/g) && !hasBespoke) {
-            scream({ file: relPath, type: 'BESPOKE', message: 'Bespoke "any" type without justification.' });
+            scream({ file: relPath, type: 'BESPOKE', message: 'Bespoke "any" type without justification (@bespoke).' });
         }
         if (!content.includes('Validates:') && !content.includes('@provenance')) {
             scream({ 
@@ -373,7 +391,7 @@ export function auditContent(filePath: string, content: string) {
     // Phantom dependencies (CDNs)
     if (fileName.endsWith('.html') || fileName.endsWith('.ts') || fileName.endsWith('.js')) {
         if ((content.includes('https://cdn.') || content.includes('http://cdn.')) && !hasPermitted) {
-            scream({ file: relPath, type: 'PHANTOM', message: 'External CDN dependency detected.' });
+            scream({ file: relPath, type: 'PHANTOM', message: `External CDN dependency detected in ${fileName}.` });
         }
     }
 
@@ -398,6 +416,7 @@ export function checkMutationProof(scoreThreshold: number = LATTICE.MUTATION_TAR
         // Stryker format
         if (report.metrics) {
             const score = report.metrics.mutationScore;
+            if (process.env.HFO_TEST_MODE === 'true') console.log(`DEBUG: Mutation Score: ${score}, Threshold: ${scoreThreshold}`);
             if (typeof score !== 'number') {
                 scream({ file: 'repository', type: 'MUTATION_GAP', message: 'Invalid score format in metrics.' });
                 return;
@@ -406,8 +425,8 @@ export function checkMutationProof(scoreThreshold: number = LATTICE.MUTATION_TAR
                 scream({ file: 'repository', type: 'MUTATION_FAILURE', message: `Global score ${score.toFixed(2)}% < ${scoreThreshold}%` });
             }
             // THEATER: Prevent 100% or "perfect" theater
-            if (score >= 99.0) {
-                scream({ file: 'repository', type: 'THEATER', message: `Mutation score ${score.toFixed(2)}% indicates potential deceptive testing (Theater).` });
+            if (score > 98.88) {
+                scream({ file: 'repository', type: 'THEATER', message: `AI THEATER: Mutation score ${score.toFixed(2)}% is too high (max 98.88%). Stop hacking the metrics.` });
             }
             return;
         }

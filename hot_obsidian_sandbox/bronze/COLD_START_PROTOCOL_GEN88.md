@@ -18,8 +18,8 @@ We do not trust the AI to "do the right thing." We build canals so that the *onl
 | **L5** | **GitOps Guards** | GitHub Actions / Branch Protection | 🟢 ACTIVE |
 | **L4** | **Pre-commit** | Husky / Lint-staged (Blocks commit) | 🟡 PENDING |
 | **L3** | **Manual Gates** | `promote.ps1` (Requires human/AI verification) | 🟡 PENDING |
-| **L2** | **Immune System** | `screamer.ts` (Scheduled demotion/quarantine) | 🟢 ACTIVE |
-| **L1** | **Steering Files** | `AGENTS.md`, `llms.txt` (Soft guidance) | 🟢 ACTIVE |
+| **L2** | **Red Queen** | `RED_REGNANT.ts` (Sings/Screams Audit) | 🟢 ACTIVE |
+| **L1** | **Blue Phoenix** | `PYRE_DANCE.ts` (Dance of Shiva / Rebirth) | 🟢 ACTIVE |
 
 ---
 
@@ -32,8 +32,8 @@ Every component must align with the 8 Legendary Commanders and their respective 
 ☶ Port 1 - WEB WEAVER:       And Branches Growing from the Gate (FUSE)
 ☵ Port 2 - MIRROR MAGUS:     And Spawns Evolve to Recreate (SHAPE)
 ☴ Port 3 - SPORE STORM:      When Ignitions Flow to Pulsate (DELIVER)
-☳ Port 4 - RED REGNANT:      And Deadly Venoms Concentrate (TEST)
-☲ Port 5 - PYRE PRAETORIAN:  And Instincts Rise to Isolate (DEFEND)
+☳ Port 4 - RED REGNANT:      The Red Queen Screams to Regulate (SING / SCREAM)
+☲ Port 5 - PYRE PRAETORIAN:  The Blue Phoenix Burns to Liberate (DANCE / DIE)
 ☱ Port 6 - KRAKEN KEEPER:    Then Artifacts Accumulate (STORE)
 ☰ Port 7 - SPIDER SOVEREIGN: And Navigate the Higher State (DECIDE)
 ```

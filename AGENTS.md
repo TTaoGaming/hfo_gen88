@@ -25,8 +25,8 @@ Provenance: bronze/P4_DISRUPTION_KINETIC.md
 ## 🚨 The Canalization Rules (NON-NEGOTIABLE)
 
 1. **ROOT PURGE**: The root directory MUST remain clean. Only the formal manifest is allowed:
-   - **Folders**: `hot_obsidian_sandbox`, `cold_obsidian_sandbox`, `.git`, `.vscode`, `.husky`, `.kiro`, `.venv`, `node_modules`, `.stryker-tmp`, `reports`
-   - **Files**: `AGENTS.md`, `llms.txt`, `obsidianblackboard.jsonl`, `package.json`, `package-lock.json`, `vitest.root.config.ts`, `vitest.silver.config.ts`, `vitest.harness.config.ts`, `vitest.mutation.config.ts`, `stryker.root.config.mjs`, `stryker.silver.config.mjs`, `.gitignore`, `.env`, `ttao-notes-*.md`
+   - **Folders**: `hot_obsidian_sandbox`, `cold_obsidian_sandbox`, `.git`, `.github`, `.vscode`, `.husky`, `.kiro`, `.venv`, `node_modules`, `.stryker-tmp`, `reports`, `audit`
+   - **Files**: `AGENTS.md`, `llms.txt`, `obsidianblackboard.jsonl`, `package.json`, `package-lock.json`, `vitest.root.config.ts`, `vitest.silver.config.ts`, `vitest.harness.config.ts`, `vitest.mutation.config.ts`, `stryker.root.config.mjs`, `stryker.silver.config.mjs`, `stryker.p4.config.mjs`, `stryker.p5.config.mjs`, `run_stryker_p4.ps1`, `.gitignore`, `.env`, `ttao-notes-*.md`
 2. **NO THEATER**: Do not report "Green" without "Red". Every implementation in `silver/` must have a corresponding test in the same directory.
 3. **MEDALLION FLOW**: Code starts in `bronze/`, moves to `silver/` once tested, and `gold/` once canonized.
 4. **PYRE DANCE**: The `RED_REGNANT.ts` script (Port 4) screams on violations, and `PYRE_DANCE.ts` (Port 5) immunizes via the "Dance of Shiva" (Demotion/Rebirth). Architectural violations will be logged to the Blackboard and the Blood Book of Grudges.

@@ -16,6 +16,7 @@ export default defineConfig({
       '../P5_PYRE_PRAETORIAN/**/*.test.ts',
       '../adapters/**/*.test.ts',
       '../contracts/**/*.test.ts',
+      '../2_areas/**/*.test.ts',
     ],
     exclude: ['**/node_modules/**', '**/dist/**'],
     alias: {

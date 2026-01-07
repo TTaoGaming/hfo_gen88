@@ -32,17 +32,27 @@ Status: SILVER (Hardened)
 ## 🐾 THE CLAWS: Enforcement Actions (Kinetic)
 *The Claws are the actions taken when a violation is detected.*
 
-### C2001: The Physic Scream (Stigmergy Injection)
-- **Action**: Immediate broadcast of the violation to `obsidianblackboard.jsonl` and (Future) NATS.
-- **Teeth Link**: Triggered by any T100x detection.
+| Action | Technology (Exemplar) | TRL | JADC2 MOSAIC Verb |
+|:---|:---|:---|:---|
+| **Psychic Scream** | **Stryker / Semgrep** | 9 | **DISRUPT** |
+| **Phoenix Immolation** | **Temporal / fs.rename** | 9 | **IMMUNIZE** |
+| **Grudge Chain** | **DuckDB / JSONL** | 9 | **STORE** |
+| **Contract Lockdown** | **Zod** | 9 | **FUSE** |
 
-### C2002: Medallion Demotion (Quarantine)
+### C2001: The Physic Scream (ISR Injection)
+- **Mechanism**: **Semgrep** rules identify AST "Theater"; **Stryker** identifies "Survivor Mutants."
+- **Action**: Immediate broadcast of the violation to `obsidianblackboard.jsonl`.
+- **Significance**: The Red Queen *Screams* through the static and dynamic sensors.
+
+### C2002: Medallion Demotion (The Phoenix Dance)
+- **Mechanism**: **Temporal Workflows** manage the durable transfer to quarantine.
 - **Action**: Moving Silver/Gold artifacts to `bronze/quarantine/` upon violation.
-- **Teeth Link**: Triggered by T1003 (Architectural Drift) or T1001.005 (Fake Green).
+- **Significance**: Port 5 executes the *Dance of Shiva* (Death and Rebirth).
 
 ### C2003: The Grudge Chain (Cryptographic Memory)
-- **Action**: Appending the violation to the `BLOOD_BOOK_OF_GRUDGES.jsonl` with a SHA-256 hash chain.
-- **Teeth Link**: Triggered by T1002.008 (Amnesia Loop) or major T1001 violations.
+- **Mechanism**: **DuckDB** analytics over the hash-chained JSONL.
+- **Action**: Appending the violation to the `RED_BOOK_OF_BLOOD_GRUDGES.jsonl`.
+- **Significance**: Systemic antifragility; the system learns from its own blood.
 
 ---
 

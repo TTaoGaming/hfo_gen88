@@ -1,10 +1,10 @@
 /**
- * HIVE/8:10 - Atomic Scatter-Gather Pattern
+ * HIVE/8:10 - Atomic Scatter-Gather Pattern with Proposer-Critique
  * 
- * :01 = Scatter (1→8) - fan out to 8 parallel workers
- * :10 = Gather (8→1) - aggregate 8 responses into 1 via majority vote
+ * :01 = Scatter (18) - fan out to 8 parallel workers
+ * :10 = Gather (81) - aggregate via proposer-critique pattern
  * 
- * Hypothesis: Multi-model BFT consensus > single agent at 8× cheap cost
+ * Hypothesis: Multi-model BFT consensus > single agent at 8 cheap cost
  */
 
 import { config } from 'dotenv';
@@ -15,7 +15,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = pathDirname(__filename);
 config({ path: resolve(__dirname, '../../../../.env') });
 
-import { chat, ChatMessage, MAP_ELITE_TIER1, MAP_ELITE_TIER2 } from '../runner/model-client';
+import { chat, ChatMessage } from '../runner/model-client';
 import { Harness } from '../harnesses/harness.interface';
 import { hleMath } from '../harnesses/hle-hard';
 import { appendFileSync, existsSync, mkdirSync } from 'fs';
@@ -23,28 +23,33 @@ import { dirname } from 'path';
 
 const HIVE_LOG = './audit/hive-10.jsonl';
 
-// 8 diverse model families for BFT
+// 8 models from 4 families (2x each for BFT redundancy)
+// Budget-friendly: all <$0.10/M tokens
 const HIVE_8_MODELS = [
-  'google/gemma-3n-e4b-it',           // Google
-  'meta-llama/llama-3.2-3b-instruct', // Meta
-  'qwen/qwen-2.5-7b-instruct',        // Alibaba
-  'mistralai/mistral-7b-instruct',    // Mistral
-  'microsoft/phi-3-mini-128k-instruct', // Microsoft
-  'deepseek/deepseek-chat',           // DeepSeek
-  'nvidia/llama-3.1-nemotron-nano-8b-v1', // Nvidia
-  'cohere/command-r7b-12-2024',       // Cohere
+  // Google family (2x)
+  'google/gemma-3n-e4b-it',           // $0.02/M
+  'google/gemma-2-9b-it',             // $0.06/M
+  // Meta family (2x)
+  'meta-llama/llama-3.2-3b-instruct', // $0.02/M
+  'meta-llama/llama-3.1-8b-instruct', // $0.06/M
+  // Qwen/Alibaba family (2x)
+  'qwen/qwen-2.5-7b-instruct',        // $0.03/M
+  'qwen/qwen-2.5-32b-instruct',       // $0.08/M
+  // DeepSeek + Mistral family (2x)
+  'deepseek/deepseek-chat',           // $0.07/M
+  'mistralai/mistral-7b-instruct',    // $0.03/M
 ];
-
 interface HiveResult {
   pattern: string;
   prompt_idx: number;
   question: string;
   expected: string;
-  responses: { model: string; response: string; score: number }[];
+  responses: { model: string; response: string; score: number; confidence: number }[];
   consensus: string;
   consensus_score: number;
   agreement_ratio: number;
   duration_ms: number;
+  critique?: string;
 }
 
 function log(entry: object): void {
@@ -55,13 +60,19 @@ function log(entry: object): void {
 
 /**
  * :01 Scatter - Fan out to 8 models in parallel
+ * Returns response + confidence (0-100) for each model
  */
 async function scatter(
   models: string[],
   prompt: { system: string; user: string }
-): Promise<{ model: string; response: string }[]> {
+): Promise<{ model: string; response: string; confidence: number }[]> {
+  const systemWithConfidence = `${prompt.system}
+
+After your answer, on a new line, provide your confidence level as a number from 0-100.
+Format: CONFIDENCE: <number>`;
+
   const msgs: ChatMessage[] = [
-    { role: 'system', content: prompt.system },
+    { role: 'system', content: systemWithConfidence },
     { role: 'user', content: prompt.user },
   ];
   
@@ -69,10 +80,13 @@ async function scatter(
     models.map(async (model) => {
       try {
         const { response } = await chat(model, msgs);
-        return { model, response };
+        const confMatch = response.match(/CONFIDENCE:\s*(\d+)/i);
+        const confidence = confMatch ? Math.min(100, Math.max(0, parseInt(confMatch[1]))) : 50;
+        const cleanResponse = response.replace(/CONFIDENCE:\s*\d+/gi, '').trim();
+        return { model, response: cleanResponse, confidence };
       } catch (err) {
-        console.error(`  ❌ ${model}: ${err}`);
-        return { model, response: 'ERROR' };
+        console.error(`   ${model}: ${err}`);
+        return { model, response: 'ERROR', confidence: 0 };
       }
     })
   );
@@ -81,44 +95,130 @@ async function scatter(
 }
 
 /**
- * :10 Gather - Aggregate 8 responses via majority vote
+ * :10 Gather - Zero-trust weighted consensus with Proposer-Critique
  */
-function gather(
-  responses: { model: string; response: string }[],
+async function gather(
+  responses: { model: string; response: string; confidence: number }[],
   harness: Harness,
-  expected: string
-): { consensus: string; scores: number[]; agreement: number } {
-  // Score each response
+  expected: string,
+  prompt: { system: string; user: string }
+): Promise<{ consensus: string; scores: number[]; agreement: number; confidences: number[]; critique: string }> {
   const scored = responses.map(r => ({
     ...r,
     score: harness.score(r.response, expected),
   }));
   
-  // Find majority answer (by normalized response)
-  const normalize = (s: string) => s.toLowerCase().replace(/[^a-z0-9]/g, '').slice(0, 20);
-  const votes = new Map<string, { count: number; original: string; score: number }>();
+  const valid = scored.filter(s => s.response !== 'ERROR');
   
-  for (const r of scored) {
-    const key = normalize(r.response);
-    if (!votes.has(key)) {
-      votes.set(key, { count: 0, original: r.response, score: r.score });
-    }
-    votes.get(key)!.count++;
+  if (valid.length === 0) {
+    return {
+      consensus: 'ERROR',
+      scores: scored.map(s => s.score),
+      agreement: 0,
+      confidences: scored.map(s => s.confidence),
+      critique: 'All models failed',
+    };
   }
   
-  // Get majority
-  const sorted = [...votes.values()].sort((a, b) => b.count - a.count);
-  const majority = sorted[0];
+  const proposalList = valid.map((r, i) => 
+    `[${i + 1}] Model: ${r.model.split('/')[1] || r.model}\n    Answer: ${r.response.slice(0, 200)}\n    Confidence: ${r.confidence}/100`
+  ).join('\n\n');
+  
+  const critiquePrompt = `You are a critical evaluator. Review these ${valid.length} proposed answers.
+
+QUESTION: ${prompt.user}
+
+PROPOSALS:
+${proposalList}
+
+TASK:
+1. Critique each proposal briefly (1 line each)
+2. Identify which proposals agree
+3. Pick the BEST answer
+4. Give your final answer
+
+Format:
+CRITIQUES:
+[1] ...
+
+CONVERGENCE: Which agree?
+
+BEST: [number] because...
+
+FINAL ANSWER: [answer]
+CONFIDENCE: [0-100]`;
+
+  const aggregatorModel = 'deepseek/deepseek-chat';
+  let critique = '';
+  let finalAnswer = '';
+  let aggregatorConfidence = 50;
+  
+  try {
+    const { response: critiqueResponse } = await chat(aggregatorModel, [
+      { role: 'system', content: 'You are a critical evaluator who synthesizes multiple AI responses.' },
+      { role: 'user', content: critiquePrompt },
+    ]);
+    
+    critique = critiqueResponse;
+    const answerMatch = critiqueResponse.match(/FINAL ANSWER:\s*(.+?)(?:\n|CONFIDENCE|$)/i);
+    if (answerMatch) finalAnswer = answerMatch[1].trim();
+    const confMatch = critiqueResponse.match(/CONFIDENCE:\s*(\d+)/i);
+    if (confMatch) aggregatorConfidence = Math.min(100, Math.max(0, parseInt(confMatch[1])));
+    
+    console.log(`\n    Aggregator Critique (${aggregatorModel.split('/')[1]}):`);
+    console.log(`      ${critique.slice(0, 200)}...`);
+  } catch (err) {
+    console.error(`    Aggregator failed: ${err}`);
+    finalAnswer = valid.sort((a, b) => b.confidence - a.confidence)[0].response;
+    critique = 'Aggregator failed, fell back to highest confidence';
+  }
+  
+  if (!finalAnswer) {
+    const grouped = new Map<string, { count: number; totalConf: number; original: string }>();
+    const normalize = (s: string) => s.toLowerCase().replace(/[^a-z0-9]/g, '').slice(0, 50);
+    for (const r of valid) {
+      const key = normalize(r.response);
+      if (!grouped.has(key)) grouped.set(key, { count: 0, totalConf: 0, original: r.response });
+      const g = grouped.get(key)!;
+      g.count++;
+      g.totalConf += r.confidence;
+    }
+    const winner = [...grouped.values()].sort((a, b) => b.totalConf - a.totalConf)[0];
+    finalAnswer = winner.original;
+  }
+  
+  const normalize = (s: string) => s.toLowerCase().replace(/[^a-z0-9]/g, '').slice(0, 50);
+  const finalNorm = normalize(finalAnswer);
+  const agreementCount = valid.filter(r => normalize(r.response) === finalNorm).length;
+  
+  logStigmergy({
+    event: 'GATHER_CRITIQUE',
+    timestamp: new Date().toISOString(),
+    aggregator: aggregatorModel,
+    proposals: valid.length,
+    agreement: agreementCount / responses.length,
+    aggregator_confidence: aggregatorConfidence,
+    model_scores: scored.map(s => ({ model: s.model, score: s.score, confidence: s.confidence })),
+  });
   
   return {
-    consensus: majority.original,
+    consensus: finalAnswer,
     scores: scored.map(s => s.score),
-    agreement: majority.count / responses.length,
+    agreement: agreementCount / responses.length,
+    confidences: scored.map(s => s.confidence),
+    critique,
   };
 }
 
+function logStigmergy(entry: object): void {
+  try {
+    const stigmergyPath = resolve(__dirname, '../../../../obsidianblackboard.jsonl');
+    appendFileSync(stigmergyPath, JSON.stringify(entry) + '\n');
+  } catch (err) { /* Silently fail */ }
+}
+
 /**
- * HIVE/8:10 - Full scatter-gather pattern
+ * HIVE/8:10 - Full scatter-gather pattern with confidence-weighted consensus
  */
 async function runHive10(
   promptIdx: number,
@@ -126,46 +226,55 @@ async function runHive10(
   models: string[] = HIVE_8_MODELS
 ): Promise<HiveResult> {
   const p = harness.prompts[promptIdx];
+  const expected = p.expected ?? '';
   const start = Date.now();
   
-  console.log(`\n🐝 HIVE/8:10 - Prompt ${promptIdx}`);
+  console.log(`\n HIVE/8:10 - Prompt ${promptIdx}`);
   console.log(`   Q: "${p.user.slice(0, 60)}..."`);
-  console.log(`   Expected: ${p.expected}`);
+  console.log(`   Expected: ${expected}`);
   
-  // :01 Scatter
-  console.log(`\n   :01 Scatter → ${models.length} models...`);
+  // :01 Scatter (with confidence)
+  console.log(`\n   :01 Scatter  ${models.length} models (requesting confidence)...`);
   const scattered = await scatter(models, p);
   
-  // :10 Gather
-  console.log(`   :10 Gather → majority vote...`);
-  const { consensus, scores, agreement } = gather(scattered, harness, p.expected);
+  // :10 Gather (weighted consensus with proposer-critique)
+  console.log(`   :10 Gather  zero-trust weighted consensus with critique...`);
+  const { consensus, scores, agreement, confidences, critique } = await gather(scattered, harness, expected, p);
   
   // Score consensus
-  const consensusScore = harness.score(consensus, p.expected);
+  const consensusScore = harness.score(consensus, expected);
   
-  // Log individual responses
+  // Log individual responses with confidence
   console.log(`\n   Responses:`);
   scattered.forEach((r, i) => {
     const short = r.model.split('/')[1]?.slice(0, 15) || r.model;
     const score = scores[i];
-    const mark = score > 0 ? '✅' : '❌';
-    console.log(`     ${mark} ${short}: "${r.response.slice(0, 30)}..." (${score}/10)`);
+    const conf = r.confidence;
+    const mark = score > 0 ? '' : '';
+    console.log(`     ${mark} ${short}: "${r.response.slice(0, 25)}..." (${score}/10, conf:${conf})`);
   });
   
-  console.log(`\n   📊 Consensus: "${consensus.slice(0, 40)}..."`);
-  console.log(`   📊 Agreement: ${(agreement * 100).toFixed(0)}% (${Math.round(agreement * models.length)}/${models.length})`);
-  console.log(`   📊 Score: ${consensusScore}/10`);
+  console.log(`\n    Consensus: "${consensus.slice(0, 40)}..."`);
+  console.log(`    Agreement: ${(agreement * 100).toFixed(0)}% (${Math.round(agreement * models.length)}/${models.length})`);
+  console.log(`    Score: ${consensusScore}/10`);
+  console.log(`    Avg Confidence: ${(confidences.reduce((a, b) => a + b, 0) / confidences.length).toFixed(0)}/100`);
   
   const result: HiveResult = {
     pattern: 'HIVE/8:10',
     prompt_idx: promptIdx,
     question: p.user,
-    expected: p.expected,
-    responses: scattered.map((r, i) => ({ ...r, score: scores[i] })),
+    expected,
+    responses: scattered.map((r, i) => ({ 
+      model: r.model, 
+      response: r.response, 
+      score: scores[i],
+      confidence: r.confidence 
+    })),
     consensus,
     consensus_score: consensusScore,
     agreement_ratio: agreement,
     duration_ms: Date.now() - start,
+    critique,
   };
   
   log(result);
@@ -182,12 +291,12 @@ async function compareSingleVsHive(
 ): Promise<void> {
   const p = harness.prompts[promptIdx];
   
-  console.log('\n' + '═'.repeat(60));
-  console.log('🔬 SINGLE vs HIVE/8:10 COMPARISON');
-  console.log('═'.repeat(60));
+  console.log('\n' + ''.repeat(60));
+  console.log(' SINGLE vs HIVE/8:10 COMPARISON');
+  console.log(''.repeat(60));
   
   // Single agent
-  console.log(`\n📍 Single Agent (${singleModel.split('/')[1]})`);
+  console.log(`\n Single Agent (${singleModel.split('/')[1]})`);
   const msgs: ChatMessage[] = [
     { role: 'system', content: p.system },
     { role: 'user', content: p.user },
@@ -201,9 +310,9 @@ async function compareSingleVsHive(
   const hiveResult = await runHive10(promptIdx, harness);
   
   // Summary
-  console.log('\n' + '─'.repeat(60));
-  console.log('📈 RESULT');
-  console.log('─'.repeat(60));
+  console.log('\n' + ''.repeat(60));
+  console.log(' RESULT');
+  console.log(''.repeat(60));
   console.log(`   Single:    ${singleScore}/10`);
   console.log(`   HIVE/8:10: ${hiveResult.consensus_score}/10`);
   const delta = hiveResult.consensus_score - singleScore;
@@ -215,17 +324,17 @@ async function compareSingleVsHive(
 if (process.argv[1]?.includes('hive-10')) {
   const promptIdx = parseInt(process.argv[2] || '0');
   
-  console.log('\n🐝 HIVE/8:10 Atomic Pattern Test');
+  console.log('\n HIVE/8:10 Atomic Pattern Test');
   console.log('   Testing BFT consensus vs single agent');
   console.log('   Harness: HLE_MATH (HARD - models score <10%)');
   
   compareSingleVsHive(promptIdx, hleMath)
     .then(() => {
-      console.log('\n✅ Test complete');
+      console.log('\n Test complete');
       process.exit(0);
     })
     .catch(err => {
-      console.error('❌ Error:', err);
+      console.error(' Error:', err);
       process.exit(1);
     });
 }

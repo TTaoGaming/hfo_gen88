@@ -21,8 +21,8 @@ Canonical mapping of Port → Commander → Tech Stack:
 | **1** | **Web Weaver** | FUSE | NATS, Syndication | C2 (Bridge) |
 | **2** | **Mirror Magus** | SHAPE | Rapier2D, OneEuro | Effects (Smooth) |
 | **3** | **Spore Storm** | DELIVER | Temporal, XState | Fire (Inject) |
-| **4** | **Red Regnant** | DISRUPT | Stryker, Chaos Engineering | EW/Cyber (Test) |
-| **5** | **Pyre Praetorian** | DEFEND | Zod, Gate Validation | Air Defense (Protect) |
+| **4** | **Red Regnant** | SING / SCREAM | Stryker, Chaos Engineering | The Red Queen (Audit) |
+| **5** | **Pyre Praetorian** | DANCE / DIE | Zod, Gate Validation | The Blue Phoenix (Enforce) |
 | **6** | **Kraken Keeper** | STORE | DuckDB, LanceDB | Logistics (Assimilate) |
 | **7** | **Spider Sovereign** | DECIDE | LangGraph, MCTS | Battle Mgr (Navigate) |
 
