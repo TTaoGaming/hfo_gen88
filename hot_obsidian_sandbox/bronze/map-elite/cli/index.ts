@@ -9,7 +9,7 @@ config({ path: resolve(__dirname, '../../../../.env') });
 
 import { runEvaluation, runBatch } from '../runner/run-evaluation';
 import { verifyLedger, readLedger } from '../ledger/eval-ledger';
-import { CHEAP_MODELS, CHEAP_8_MODELS, ALL_CHEAP_MODELS, CHEAP_16_MODELS, PREMIUM_CHEAP } from '../runner/model-client';
+import { CHEAP_MODELS, CHEAP_8_MODELS, ALL_CHEAP_MODELS, CHEAP_16_MODELS, PREMIUM_CHEAP, UNTESTED_LATEST_CHEAP, MAP_ELITE_TIER1, MAP_ELITE_TIER2, MAP_ELITE_TIER3, MAP_ELITE_BEST_8 } from '../runner/model-client';
 
 async function main() {
   const [cmd, ...args] = process.argv.slice(2);
@@ -45,6 +45,26 @@ async function main() {
         case 'premium':
           models = [...PREMIUM_CHEAP];
           break;
+        case 'latest':
+        case 'untested':
+          models = [...UNTESTED_LATEST_CHEAP];
+          break;
+        case 'tier1':
+        case 't1':
+          models = [...MAP_ELITE_TIER1];
+          break;
+        case 'tier2':
+        case 't2':
+          models = [...MAP_ELITE_TIER2];
+          break;
+        case 'tier3':
+        case 't3':
+          models = [...MAP_ELITE_TIER3];
+          break;
+        case 'best8':
+        case 'elite':
+          models = [...MAP_ELITE_BEST_8];
+          break;
         case 'all':
           models = [...ALL_CHEAP_MODELS];
           break;
@@ -53,8 +73,14 @@ async function main() {
           console.log('\nSets:');
           console.log('  4/cheap4   - 4 core families');
           console.log('  8/cheap8   - 8 families');
-          console.log('  16/cheap16 - 16 cheap models (comprehensive)');
+          console.log('  16/cheap16 - 16 cheap models');
           console.log('  premium    - Premium cheap (Claude Haiku)');
+          console.log('  latest     - Untested latest cheap models');
+          console.log('\nMAP-ELITE Archive Sets (cost-optimized):');
+          console.log('  tier1/t1   - Ultra-cheap ($0.01-0.05/M)');
+          console.log('  tier2/t2   - Budget ($0.06-0.15/M)');
+          console.log('  tier3/t3   - Value ($0.20-0.50/M)');
+          console.log('  best8/elite - Best 8 for archives');
           console.log('  all        - All cheap models');
           process.exit(1);
       }
