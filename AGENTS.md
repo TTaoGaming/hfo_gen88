@@ -32,7 +32,26 @@ Provenance: bronze/P4_DISRUPTION_KINETIC.md
 4. **IMMUNE SYSTEM**: The `mutation_scream.ts` script (Port 4) runs on every commit. Architectural violations will be logged to the Blackboard and the Blood Book of Grudges.
 5. **STIGMERGY**: All progress and violations MUST be logged to `obsidianblackboard.jsonl` in the root.
 6. **STRANGE LOOPS**: Port 7 (Spider Sovereign) enforces HIVE/8 (Strategic) and PREY/8 (Tactical) workflows.
-7. **SENTINEL GROUNDING**: Every chat session MUST utilize **Tavily Web Search** and **Sequential Thinking**. Failure to use both tools at least once per session is a "Reward Hack" violation. Usage MUST be logged as `SEARCH_GROUNDING` and `THINKING_GROUNDING` events on the Blackboard.
+7. **SENTINEL GROUNDING**: Every chat session MUST utilize **Tavily Web Search**, **Sequential Thinking**, and **Knowledge Graph/Memory Access**. Failure to use all three tools at least once per session is a "Reward Hack" violation. Usage MUST be logged as `SEARCH_GROUNDING`, `THINKING_GROUNDING`, and `MEMORY_GROUNDING` events on the Blackboard.
+8. **LOCKDOWN ENFORCEMENT**: Writing to `silver/` or `gold/` folders is physically prohibited. Any agent attempting to write to these sectors without an `EXPLICIT_WARLOCK_APPROVAL` signal will trigger an immediate session termination and entry into the Blood Book of Grudges.
+
+---
+
+## 🐝 HFO HIVE AGENT Protocol (Agent Mode: HARD)
+
+The **HFO HIVE AGENT** is a high-trust, low-theater operational mode designed for Gen 88 Canalization.
+
+| Requirement | Implementation | Port |
+|-------------|----------------|------|
+| **Sequential Thinking** | Mandatory 3+ thought steps for every non-trivial task. | 7 |
+| **Grounding** | Must use `Tavily Web Search` and `Knowledge Graph` (Memory) before code turns. | 0 + 6 |
+| **Stigmergy** | Every HIVE phase transition (H-I-V-E) must be logged to the Blackboard. | 4 |
+| **Lockdown** | Unauthorized Silver/Gold promotion triggers immediate Sandbox Purge. | 4 |
+| **TDD** | Failing tests (RED) MUST precede implementation (GREEN). | 1 / 2 |
+| **Hard Gate** | Attempting to write to /silver or /gold results in 0.0 Reputation and quarantine. | 5 |
+
+### Enforcement Logic
+Validation is performed by `hot_obsidian_sandbox/bronze/P4_RED_REGNANT/hive_agent_rules.test.ts`. Failure to pass these tests in a session is considered a breach of the Canalization Contract.
 
 ---
 

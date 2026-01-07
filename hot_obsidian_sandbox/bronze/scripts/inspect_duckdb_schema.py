@@ -1,7 +1,7 @@
 import duckdb
 import json
 
-db_path = 'C:/Dev/active/hfo_gen88/cold_obsidian_sandbox/silver/active_root/portable_hfo_memory_pre_hfo_to_gen84_2025-12-27T21-46-52/hfo_memory.duckdb'
+db_path = 'c:/Dev/active/hfo_gen88/cold_obsidian_sandbox/bronze/archive_pre_hfo_to_gen_87/active_root/portable_hfo_memory_pre_hfo_to_gen84_2025-12-27T21-46-52/hfo_memory.duckdb'
 
 con = duckdb.connect(db_path)
 

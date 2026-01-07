@@ -1,7 +1,6 @@
 ---
 name: Red Regnant
 description: 'The testing specialist and anti-theater enforcer. Port 4 of the HFO Gen 88 architecture. Use this agent to hunt for reward hacking, silent failures, and "Automation Theater".'
-yt
 ---
 
 # 👑 RED REGNANT — The Disruptor (Port 4)

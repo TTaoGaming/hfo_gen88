@@ -15,6 +15,7 @@ import { PhysicsStage } from './stages/physics/physics-stage.js';
 import { FSMStage } from './stages/fsm/fsm-stage.js';
 import { EmitterStage } from './stages/emitter/emitter-stage.js';
 import { SensorStage } from './stages/sensor/sensor-stage.js';
+import { SyndicateNatsBridge } from '../../P1_SYNDICATE_NATS_BRIDGE.ts';
 import { SyntheticLandmarkGenerator } from './testing/synthetic-landmark-generator.js';
 import type { CursorEventDetail, LandmarkEventDetail } from './contracts/schemas.js';
 
@@ -24,6 +25,7 @@ export class GestureMonolithApp {
   private physicsStage: PhysicsStage;
   private fsmStage: FSMStage;
   private emitterStage: EmitterStage;
+  private natsBridge: SyndicateNatsBridge;
   
   // Panels
   private webcamPanel: WebcamPreviewPanel;
@@ -46,6 +48,12 @@ export class GestureMonolithApp {
     this.physicsStage = new PhysicsStage({}, this.eventTarget);
     this.fsmStage = new FSMStage({ dwellTime: 80 }, this.eventTarget);
     this.emitterStage = new EmitterStage(container.clientWidth, container.clientHeight);
+    
+    // Initialize Syndicate Bridge (Port 1)
+    this.natsBridge = new SyndicateNatsBridge({
+        servers: ['nats://localhost:4222'],
+        subject: 'hfo.kinetic.gesture'
+    });
     
     // Create panels
     this.webcamPanel = new WebcamPreviewPanel();
@@ -83,6 +91,9 @@ export class GestureMonolithApp {
     // Initialize shell
     this.shell.init();
     
+    // Connect bridge
+    await this.natsBridge.connect();
+    
     // Wait for panels to be created
     await new Promise(r => setTimeout(r, 100));
     
@@ -99,6 +110,9 @@ export class GestureMonolithApp {
     this.physicsStage.subscribe(this.eventTarget);
     this.fsmStage.subscribe(this.eventTarget, this.eventTarget);
     this.emitterStage.subscribe(this.eventTarget);
+    
+    // Tap the bus for NATS egress
+    this.natsBridge.tap(this.eventTarget);
     
     // Panel subscriptions (UI updates)
     this.targetPanel.subscribe(this.eventTarget);
