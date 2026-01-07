@@ -21,9 +21,9 @@ export default {
   timeoutMS: 15000,
   maxTestRunnerReuse: 10,
   jsonReporter: {
-    fileName: "hot_obsidian_sandbox/bronze/infra/reports/mutation/mutation.json"
+    fileName: "hot_obsidian_sandbox/bronze/infra/reports/mutation/mutation-p5.json"
   },
   htmlReporter: {
-    baseDir: "hot_obsidian_sandbox/bronze/infra/reports/mutation/html"
+    baseDir: "hot_obsidian_sandbox/bronze/infra/reports/mutation/html-p5"
   }
 };

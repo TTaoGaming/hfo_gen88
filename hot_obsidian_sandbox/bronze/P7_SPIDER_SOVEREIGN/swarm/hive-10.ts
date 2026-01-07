@@ -50,6 +50,7 @@ interface HiveResult {
   agreement_ratio: number;
   duration_ms: number;
   critique?: string;
+  method?: string;
 }
 
 function log(entry: object): void {
@@ -95,14 +96,20 @@ Format: CONFIDENCE: <number>`;
 }
 
 /**
- * :10 Gather - Zero-trust weighted consensus with Proposer-Critique
+ * :10 Gather - Hybrid Critique + Weighted Voting Consensus
+ * 
+ * Strategy:
+ * 1. Compute weighted voting result (confidence-weighted majority)
+ * 2. Get aggregator critique and pick
+ * 3. If critique agrees with weighted vote → use critique (higher confidence)
+ * 4. If critique disagrees → use weighted vote (more robust to hallucination)
  */
 async function gather(
   responses: { model: string; response: string; confidence: number }[],
   harness: Harness,
   expected: string,
   prompt: { system: string; user: string }
-): Promise<{ consensus: string; scores: number[]; agreement: number; confidences: number[]; critique: string }> {
+): Promise<{ consensus: string; scores: number[]; agreement: number; confidences: number[]; critique: string; method: string }> {
   const scored = responses.map(r => ({
     ...r,
     score: harness.score(r.response, expected),
@@ -117,9 +124,30 @@ async function gather(
       agreement: 0,
       confidences: scored.map(s => s.confidence),
       critique: 'All models failed',
+      method: 'none',
     };
   }
   
+  // STEP 1: Compute weighted voting result FIRST
+  const normalize = (s: string) => s.toLowerCase().replace(/[^a-z0-9]/g, '').slice(0, 50);
+  const grouped = new Map<string, { count: number; totalConf: number; original: string }>();
+  
+  for (const r of valid) {
+    const key = normalize(r.response);
+    if (!grouped.has(key)) grouped.set(key, { count: 0, totalConf: 0, original: r.response });
+    const g = grouped.get(key)!;
+    g.count++;
+    g.totalConf += r.confidence;
+  }
+  
+  const sortedGroups = [...grouped.values()].sort((a, b) => b.totalConf - a.totalConf);
+  const weightedWinner = sortedGroups[0];
+  const weightedAnswer = weightedWinner.original;
+  const weightedAgreement = weightedWinner.count / valid.length;
+  
+  console.log(`\n   📊 Weighted Vote: "${weightedAnswer.slice(0, 30)}..." (${weightedWinner.count}/${valid.length} models, conf:${weightedWinner.totalConf})`);
+  
+  // STEP 2: Get aggregator critique
   const proposalList = valid.map((r, i) => 
     `[${i + 1}] Model: ${r.model.split('/')[1] || r.model}\n    Answer: ${r.response.slice(0, 200)}\n    Confidence: ${r.confidence}/100`
   ).join('\n\n');
@@ -150,8 +178,9 @@ CONFIDENCE: [0-100]`;
 
   const aggregatorModel = 'deepseek/deepseek-chat';
   let critique = '';
-  let finalAnswer = '';
+  let critiqueAnswer = '';
   let aggregatorConfidence = 50;
+  let method = 'weighted'; // Default to weighted voting
   
   try {
     const { response: critiqueResponse } = await chat(aggregatorModel, [
@@ -161,43 +190,67 @@ CONFIDENCE: [0-100]`;
     
     critique = critiqueResponse;
     const answerMatch = critiqueResponse.match(/FINAL ANSWER:\s*(.+?)(?:\n|CONFIDENCE|$)/i);
-    if (answerMatch) finalAnswer = answerMatch[1].trim();
+    if (answerMatch) critiqueAnswer = answerMatch[1].trim();
     const confMatch = critiqueResponse.match(/CONFIDENCE:\s*(\d+)/i);
     if (confMatch) aggregatorConfidence = Math.min(100, Math.max(0, parseInt(confMatch[1])));
     
-    console.log(`\n    Aggregator Critique (${aggregatorModel.split('/')[1]}):`);
-    console.log(`      ${critique.slice(0, 200)}...`);
+    console.log(`   🔍 Critique Pick: "${critiqueAnswer.slice(0, 30)}..." (conf:${aggregatorConfidence})`);
+    
   } catch (err) {
-    console.error(`    Aggregator failed: ${err}`);
-    finalAnswer = valid.sort((a, b) => b.confidence - a.confidence)[0].response;
-    critique = 'Aggregator failed, fell back to highest confidence';
+    console.error(`   ❌ Aggregator failed: ${err}`);
+    critique = 'Aggregator failed, using weighted voting';
   }
   
-  if (!finalAnswer) {
-    const grouped = new Map<string, { count: number; totalConf: number; original: string }>();
-    const normalize = (s: string) => s.toLowerCase().replace(/[^a-z0-9]/g, '').slice(0, 50);
-    for (const r of valid) {
-      const key = normalize(r.response);
-      if (!grouped.has(key)) grouped.set(key, { count: 0, totalConf: 0, original: r.response });
-      const g = grouped.get(key)!;
-      g.count++;
-      g.totalConf += r.confidence;
+  // STEP 3: Hybrid decision - compare critique vs weighted vote
+  let finalAnswer: string;
+  
+  if (!critiqueAnswer) {
+    // No critique answer, use weighted
+    finalAnswer = weightedAnswer;
+    method = 'weighted_fallback';
+    console.log(`   🎯 Decision: WEIGHTED (no critique answer)`);
+  } else {
+    const critiqueNorm = normalize(critiqueAnswer);
+    const weightedNorm = normalize(weightedAnswer);
+    
+    if (critiqueNorm === weightedNorm) {
+      // Critique agrees with weighted vote - high confidence!
+      finalAnswer = critiqueAnswer;
+      method = 'hybrid_agree';
+      console.log(`   🎯 Decision: HYBRID AGREE (critique + weighted match)`);
+    } else if (weightedAgreement >= 0.5) {
+      // Strong weighted consensus (50%+), prefer weighted over critique
+      finalAnswer = weightedAnswer;
+      method = 'weighted_majority';
+      console.log(`   🎯 Decision: WEIGHTED MAJORITY (${(weightedAgreement * 100).toFixed(0)}% agreement beats critique)`);
+    } else if (aggregatorConfidence >= 80) {
+      // Weak weighted consensus but high critique confidence
+      finalAnswer = critiqueAnswer;
+      method = 'critique_confident';
+      console.log(`   🎯 Decision: CRITIQUE (high confidence ${aggregatorConfidence})`);
+    } else {
+      // Low confidence all around, prefer weighted (more robust)
+      finalAnswer = weightedAnswer;
+      method = 'weighted_default';
+      console.log(`   🎯 Decision: WEIGHTED DEFAULT (low critique confidence)`);
     }
-    const winner = [...grouped.values()].sort((a, b) => b.totalConf - a.totalConf)[0];
-    finalAnswer = winner.original;
   }
   
-  const normalize = (s: string) => s.toLowerCase().replace(/[^a-z0-9]/g, '').slice(0, 50);
   const finalNorm = normalize(finalAnswer);
   const agreementCount = valid.filter(r => normalize(r.response) === finalNorm).length;
   
   logStigmergy({
-    event: 'GATHER_CRITIQUE',
+    event: 'GATHER_HYBRID',
     timestamp: new Date().toISOString(),
     aggregator: aggregatorModel,
     proposals: valid.length,
+    method,
+    weighted_answer: weightedAnswer.slice(0, 50),
+    critique_answer: critiqueAnswer?.slice(0, 50) || 'none',
+    final_answer: finalAnswer.slice(0, 50),
     agreement: agreementCount / responses.length,
     aggregator_confidence: aggregatorConfidence,
+    weighted_agreement: weightedAgreement,
     model_scores: scored.map(s => ({ model: s.model, score: s.score, confidence: s.confidence })),
   });
   
@@ -207,6 +260,7 @@ CONFIDENCE: [0-100]`;
     agreement: agreementCount / responses.length,
     confidences: scored.map(s => s.confidence),
     critique,
+    method,
   };
 }
 
@@ -239,7 +293,7 @@ async function runHive10(
   
   // :10 Gather (weighted consensus with proposer-critique)
   console.log(`   :10 Gather  zero-trust weighted consensus with critique...`);
-  const { consensus, scores, agreement, confidences, critique } = await gather(scattered, harness, expected, p);
+  const { consensus, scores, agreement, confidences, critique, method } = await gather(scattered, harness, expected, p);
   
   // Score consensus
   const consensusScore = harness.score(consensus, expected);
@@ -255,6 +309,7 @@ async function runHive10(
   });
   
   console.log(`\n    Consensus: "${consensus.slice(0, 40)}..."`);
+  console.log(`    Method: ${method}`);
   console.log(`    Agreement: ${(agreement * 100).toFixed(0)}% (${Math.round(agreement * models.length)}/${models.length})`);
   console.log(`    Score: ${consensusScore}/10`);
   console.log(`    Avg Confidence: ${(confidences.reduce((a, b) => a + b, 0) / confidences.length).toFixed(0)}/100`);
@@ -275,6 +330,7 @@ async function runHive10(
     agreement_ratio: agreement,
     duration_ms: Date.now() - start,
     critique,
+    method,
   };
   
   log(result);

@@ -76,6 +76,8 @@ Port │ Commander        │ Verb            │ Artifact                      
 > **THE RED QUEEN (Port 4)**: The Red Regnant in crimson robes. She is the immune system's primary sensory organ, utilizing autonomous tools to reveal human blindspots. When the system is pure, she **Sings**; when violated, she **Screams**.
 > 
 > **THE BLUE PHOENIX (Port 5)**: The Pyre Praetorian in cobalt armor. She performs the **Dance of Shiva**, immolating weak artifacts in blue flames so they may be **Reborn** in the fire.
+>
+> **THE SILVER SPIDER (Port 7)**: The Spider Sovereign in obsidian threads. She is the strategic brain of the swarm, weaving multi-model consensus through HIVE/8 patterns. When models diverge, she **Navigates**; when consensus forms, she **Decides**.
 
 ### HIVE/8 Workflow
 - **H** (Hunt): Research, plan → Ports 0+7
@@ -88,7 +90,9 @@ Port │ Commander        │ Verb            │ Artifact                      
 ## 🧰 Tools & Infrastructure
 - **Scream**: `hot_obsidian_sandbox/bronze/P4_RED_REGNANT/RED_REGNANT.ts`
 - **Dance**: `hot_obsidian_sandbox/bronze/P5_PYRE_PRAETORIAN/PYRE_DANCE.ts`
-- **Ledger**: `hot_obsidian_sandbox/bronze/P4_RED_REGNANT/BLOOD_BOOK_OF_GRUDGES.jsonl`
+- **Navigate**: `hot_obsidian_sandbox/bronze/P7_SPIDER_SOVEREIGN/swarm/hive-10.ts`
+- **Ledger (P4)**: `hot_obsidian_sandbox/bronze/P4_RED_REGNANT/BLOOD_BOOK_OF_GRUDGES.jsonl`
+- **Ledger (P7)**: `hot_obsidian_sandbox/bronze/P7_SPIDER_SOVEREIGN/ledger/eval-ledger.ts`
 - **Daemon**: `hot_obsidian_sandbox/bronze/scripts/daemon.ps1`
 - **Testing**: Vitest (configured in `hot_obsidian_sandbox/bronze/infra/`)
 - **Contracts**: Zod (Contract Law)

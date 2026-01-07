@@ -41,9 +41,9 @@ export default {
   maxTestRunnerReuse: 20,
   ignoreStatic: true,
   jsonReporter: {
-    fileName: "hot_obsidian_sandbox/bronze/infra/reports/mutation/mutation.json"
+    fileName: "hot_obsidian_sandbox/bronze/infra/reports/mutation/mutation-p4.json"
   },
   htmlReporter: {
-    fileName: "hot_obsidian_sandbox/bronze/infra/reports/mutation/mutation.html"
+    fileName: "hot_obsidian_sandbox/bronze/infra/reports/mutation/html-p4/index.html"
   }
 };
