@@ -1,23 +1,23 @@
 /**
  * Hash-chained JSONL Ledger for evaluation results
+ * @provenance hfo-testing-promotion/13.1
+ * Validates: Requirements 1.1 (delegates to silver/ledger-core)
  */
 
-import { createHash } from 'crypto';
 import { appendFileSync, readFileSync, existsSync } from 'fs';
 import { HarnessResult } from '../schemas';
+import {
+  computeHash,
+  verifyChain,
+  GENESIS_HASH,
+  type LedgerEntry as SilverLedgerEntry,
+} from '../../../silver/ledger/ledger-core';
 
-export interface LedgerEntry extends HarnessResult {
-  prev_hash: string;
-  hash: string;
-}
-
-function computeHash(data: object, prevHash: string): string {
-  const payload = JSON.stringify({ ...data, prev_hash: prevHash });
-  return createHash('sha256').update(payload).digest('hex').slice(0, 16);
-}
+// Re-export silver types for bronze consumers
+export type LedgerEntry = SilverLedgerEntry;
 
 export function appendToLedger(path: string, result: Omit<HarnessResult, 'prev_hash' | 'hash'>): HarnessResult {
-  let prevHash = '0000000000000000';
+  let prevHash = GENESIS_HASH;
   
   if (existsSync(path)) {
     const lines = readFileSync(path, 'utf-8').trim().split('\n').filter(Boolean);
@@ -27,6 +27,7 @@ export function appendToLedger(path: string, result: Omit<HarnessResult, 'prev_h
     }
   }
 
+  // Use silver computeHash for hash computation
   const hash = computeHash(result, prevHash);
   const entry: LedgerEntry = { ...result, prev_hash: prevHash, hash };
   
@@ -45,20 +46,7 @@ export function readLedger(path: string): LedgerEntry[] {
 
 export function verifyLedger(path: string): { valid: boolean; entries: number; firstCorrupt?: number } {
   const entries = readLedger(path);
-  let prevHash = '0000000000000000';
-  
-  for (let i = 0; i < entries.length; i++) {
-    const e = entries[i];
-    if (e.prev_hash !== prevHash) {
-      return { valid: false, entries: entries.length, firstCorrupt: i };
-    }
-    const { hash, ...data } = e;
-    const computed = computeHash(data, prevHash);
-    if (computed !== hash) {
-      return { valid: false, entries: entries.length, firstCorrupt: i };
-    }
-    prevHash = hash;
-  }
-  
-  return { valid: true, entries: entries.length };
+  // Delegate to silver verifyChain
+  const result = verifyChain(entries as SilverLedgerEntry[]);
+  return { valid: result.valid, entries: result.entries, firstCorrupt: result.firstCorrupt };
 }

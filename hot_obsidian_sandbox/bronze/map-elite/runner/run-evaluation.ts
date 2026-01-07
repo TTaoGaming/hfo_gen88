@@ -1,12 +1,15 @@
 /**
  * MAP-ELITE Evaluation Runner - High Concurrency (Powers of 8)
+ * @provenance hfo-testing-promotion/13.2
+ * Validates: Requirements 5.1, 5.2, 5.3, 5.4 (delegates to silver modules)
  */
 
 import { ALL_HARNESSES, Harness } from '../harnesses';
 import { HarnessResult } from '../schemas';
 import { appendToLedger } from '../ledger/eval-ledger';
 import { computeFitness, FitnessReport } from '../fitness/compute-fitness';
-import { chat, ChatMessage, detectProvider, ModelProvider } from './model-client';
+import { chat, ChatMessage, detectProvider } from './model-client';
+import { Semaphore } from '../../../silver/concurrency/semaphore';
 import { appendFileSync, existsSync, mkdirSync } from 'fs';
 import { dirname } from 'path';
 
@@ -36,19 +39,7 @@ function audit(path: string, entry: object): void {
   appendFileSync(path, JSON.stringify({ ts: new Date().toISOString(), ...entry }) + '\n');
 }
 
-class Semaphore {
-  private permits: number;
-  private queue: (() => void)[] = [];
-  constructor(n: number) { this.permits = n; }
-  async acquire() {
-    if (this.permits > 0) { this.permits--; return; }
-    await new Promise<void>(r => this.queue.push(r));
-  }
-  release() {
-    if (this.queue.length) this.queue.shift()!();
-    else this.permits++;
-  }
-}
+// Semaphore imported from silver/concurrency/semaphore
 
 async function runPrompt(
   h: Harness, idx: number, model: string, sem: Semaphore, audit_path: string, verbose: boolean

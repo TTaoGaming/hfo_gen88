@@ -1,39 +1,34 @@
 /**
  * Fitness computation with configurable weights
+ * @provenance hfo-testing-promotion/13.2
+ * Validates: Requirements 3.1 (delegates to silver/fitness)
  */
 
 import { HarnessResult, FitnessConfig, DEFAULT_FITNESS_CONFIG } from '../schemas';
+import {
+  computeFitness as silverComputeFitness,
+  type FitnessReport as SilverFitnessReport,
+  type HarnessScore,
+} from '../../../silver/fitness/compute-fitness';
 
-export interface FitnessReport {
-  fitness: number;
-  harness_scores: Record<string, number>;
-  total_duration_ms: number;
-  timestamp: string;
-}
+// Re-export silver FitnessReport type
+export type FitnessReport = SilverFitnessReport;
 
+/**
+ * Compute fitness from HarnessResult array.
+ * Adapts bronze HarnessResult to silver HarnessScore interface.
+ */
 export function computeFitness(
   results: HarnessResult[],
   config: FitnessConfig = DEFAULT_FITNESS_CONFIG
 ): FitnessReport {
-  const harness_scores: Record<string, number> = {};
-  let weightedSum = 0;
-  let totalWeight = 0;
-  let total_duration_ms = 0;
+  // Adapt bronze HarnessResult to silver HarnessScore
+  const scores: HarnessScore[] = results.map(r => ({
+    harness_name: r.harness_name,
+    normalized: r.scores.normalized,
+    duration_ms: r.duration_ms,
+  }));
 
-  for (const r of results) {
-    const weight = config.harness_weights[r.harness_name] ?? 1.0;
-    harness_scores[r.harness_name] = r.scores.normalized;
-    weightedSum += r.scores.normalized * weight;
-    totalWeight += weight;
-    total_duration_ms += r.duration_ms;
-  }
-
-  const fitness = totalWeight > 0 ? weightedSum / totalWeight : 0;
-
-  return {
-    fitness,
-    harness_scores,
-    total_duration_ms,
-    timestamp: new Date().toISOString(),
-  };
+  // Delegate to silver
+  return silverComputeFitness(scores, { harness_weights: config.harness_weights });
 }
