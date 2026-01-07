@@ -4,9 +4,12 @@
   "description": "HFO Gen 88 Root Tooling (Immune System)",
   "type": "module",
   "scripts": {
-    "scream": "npx tsx hot_obsidian_sandbox/bronze/P4_RED_REGNANT/mutation_scream.ts",
+    "scream": "npx tsx hot_obsidian_sandbox/bronze/P4_RED_REGNANT/RED_REGNANT.ts",
     "stryker": "stryker run stryker.root.config.mjs",
+    "stryker:silver": "stryker run stryker.silver.config.mjs",
     "test": "vitest run -c vitest.root.config.ts",
+    "test:silver": "vitest run -c vitest.silver.config.ts",
+    "test:silver:watch": "vitest -c vitest.silver.config.ts",
     "prepare": "husky"
   },
   "devDependencies": {
@@ -29,6 +32,10 @@
     "@opentelemetry/instrumentation": "^0.208.0",
     "@opentelemetry/sdk-trace-base": "^2.2.0",
     "@opentelemetry/sdk-trace-node": "^2.2.0",
+    "@temporalio/activity": "^1.14.0",
+    "@temporalio/client": "^1.14.0",
+    "@temporalio/worker": "^1.14.0",
+    "@temporalio/workflow": "^1.14.0",
     "js-yaml": "^4.1.1"
   }
 }

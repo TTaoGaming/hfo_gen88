@@ -155,10 +155,11 @@ export const ManifestSchema = z.object({
 export const ALLOWED_ROOT_FILES = [
     'hot_obsidian_sandbox', 'cold_obsidian_sandbox', 'AGENTS.md', 'llms.txt',
     'obsidianblackboard.jsonl', 'package.json', 'package-lock.json',
-    'stryker.root.config.mjs', 'vitest.root.config.ts', 'stryker.config.mjs',
-    'vitest.config.ts', '.git', '.github', '.gitignore', '.vscode', '.env',
+    'stryker.root.config.mjs', 'stryker.silver.config.mjs', 'vitest.root.config.ts', 
+    'vitest.silver.config.ts', 'vitest.harness.config.ts', 'vitest.mutation.config.ts',
+    'stryker.config.mjs', 'vitest.config.ts', '.git', '.github', '.gitignore', '.vscode', '.env',
     '.kiro', '.venv', 'tsconfig.json', '.stryker-tmp', '.husky', 'node_modules',
-    'LICENSE', 'output.txt', 'ttao-notes-2026-01-06.md', 'ttao-notes-2026-01-07.md'
+    'LICENSE', 'output.txt', 'reports', 'ttao-notes-2026-01-06.md', 'ttao-notes-2026-01-07.md'
 ];
 
 export const ALLOWED_ROOT_PATTERNS = [
@@ -177,6 +178,7 @@ export type ViolationType =
     | 'BESPOKE'          // 'any' without // @bespoke
     | 'VIOLATION'        // Missing provenance or headers
     | 'MUTATION_FAILURE' // Score < 88% (Gen 88)
+    | 'MUTATION_GAP'     // Mutation report missing or malformed
     | 'LATTICE_BREACH'   // Octal governance violations (counts/complexity)
     | 'BDD_MISALIGNMENT' // Missing traceability
     | 'OMISSION'         // Silent success/catch blocks
@@ -454,9 +456,11 @@ export function scanMedallions() {
 
                     // Hard Gate: No test = Demote (Only in Silver/Gold)
                     const isStrict = target.includes('silver') || target.includes('gold');
-                    if (isStrict && entry.name.endsWith('.ts') && !entry.name.endsWith('.test.ts') && !entry.name.endsWith('.d.ts')) {
+                    const isTestFile = entry.name.endsWith('.test.ts') || entry.name.endsWith('.property.ts');
+                    if (isStrict && entry.name.endsWith('.ts') && !isTestFile && !entry.name.endsWith('.d.ts')) {
                         const testPath = fullPath.replace(/\.ts$/, '.test.ts');
-                        if (!fs.existsSync(testPath)) {
+                        const propertyPath = fullPath.replace(/\.ts$/, '.property.ts');
+                        if (!fs.existsSync(testPath) && !fs.existsSync(propertyPath)) {
                             scream({ file: path.relative(ROOT_DIR, fullPath), type: 'THEATER', message: 'Strict artifact missing test file.' });
                         }
                     }
