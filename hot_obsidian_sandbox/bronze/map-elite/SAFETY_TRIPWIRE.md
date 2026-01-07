@@ -1,22 +1,23 @@
 # Safety Tripwire - Orchestration Testing
 
 **Created**: 2026-01-07T12:30:00Z
-**Safe Commit**: `1b4edf380bd3c295c186780b890f9da956200314`
+**Updated**: 2026-01-07T14:00:00Z
+**Safe Commit**: `56b4d4a939cd5daba8946dec573baa339ee0565e`
 **Purpose**: Checkpoint before orchestration pattern experiments
 
 ---
 
-## 🛡️ TRIPWIRE STATUS: ARMED
+## 🛡️ TRIPWIRE STATUS: ARMED (Updated)
 
-This document serves as a safety checkpoint before testing orchestration patterns.
-All critical MAP-ELITE work has been committed and pushed.
+All HIVE/8:10 work committed and pushed. Ready for orchestration pattern testing.
 
 ### Safe State Includes:
 - ✅ HLE hard benchmark (25 questions, 5 domains)
 - ✅ CLI fix for HLE harness recognition
 - ✅ Handoff test implementation
-- ✅ Audit ledger with test results
-- ✅ Progress report
+- ✅ HIVE/8:10 scatter-gather with confidence-weighted consensus
+- ✅ Calibration analysis (where AI is confident but wrong)
+- ✅ Orchestration patterns documentation
 
 ---
 
@@ -26,11 +27,25 @@ If orchestration experiments corrupt the codebase:
 
 ```bash
 # Hard reset to safe commit
-git reset --hard 1b4edf380bd3c295c186780b890f9da956200314
+git reset --hard 56b4d4a939cd5daba8946dec573baa339ee0565e
 
 # Or create a new branch from safe point
-git checkout -b orchestration-recovery 1b4edf380bd3c295c186780b890f9da956200314
+git checkout -b orchestration-recovery 56b4d4a939cd5daba8946dec573baa339ee0565e
 ```
+
+---
+
+## 📊 Current Test Results (HIVE/8:10)
+
+| Prompt | Correct Models | Consensus | Pattern |
+|--------|----------------|-----------|---------|
+| 0 (ZF) | 1/6 | ❌ Wrong | DANGEROUS - confident wrong |
+| 1 (poly) | 4/6 | ✅ Correct | BFT SUCCESS |
+| 2 (S_n) | 1/6 | ❌ Wrong | Scattered - uncertainty |
+| 3 (domino) | 0/6 | ❌ Wrong | Too hard |
+| 4 (Petersen) | 6/6 | ✅ Correct | PERFECT convergence |
+
+**Key insight**: Scatter pattern reveals uncertainty. BFT works when errors uncorrelated.
 
 ---
 
