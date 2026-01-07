@@ -10,6 +10,7 @@ config({ path: resolve(__dirname, '../../../../.env') });
 import { runEvaluation, runBatch } from '../runner/run-evaluation';
 import { verifyLedger, readLedger } from '../ledger/eval-ledger';
 import { CHEAP_MODELS, CHEAP_8_MODELS, ALL_CHEAP_MODELS, CHEAP_16_MODELS, PREMIUM_CHEAP, UNTESTED_LATEST_CHEAP, MAP_ELITE_TIER1, MAP_ELITE_TIER2, MAP_ELITE_TIER3, MAP_ELITE_BEST_8 } from '../runner/model-client';
+import { runHandoffTest } from '../swarm/handoff-test';
 
 async function main() {
   const [cmd, ...args] = process.argv.slice(2);
@@ -126,14 +127,45 @@ async function main() {
       break;
     }
 
+    case 'handoff': {
+      // HFO:0 vs HFO/8:00 sequential handoff test
+      // Usage: handoff [harness] [models...]
+      // harness: sense, disrupt, decide, simpleqa, gsm8k, gpqa, humaneval, bbh, hle_*
+      const harnesses = [
+        // Original HFO harnesses
+        'sense', 'disrupt', 'decide',
+        // SOTA benchmarks
+        'simpleqa', 'gsm8k', 'gpqa', 'humaneval', 'bbh',
+        // HLE HARD benchmarks (models score <10%)
+        'hle_math', 'hle_physics', 'hle_chemistry', 'hle_cs', 'hle_biology', 'hle',
+      ];
+      let harness = 'hle_math'; // Default to HLE_MATH (HARD - models struggle)
+      const models: string[] = [];
+      
+      for (const arg of args) {
+        if (harnesses.includes(arg)) {
+          harness = arg;
+        } else {
+          models.push(arg);
+        }
+      }
+      
+      await runHandoffTest(
+        models.length > 0 ? models : [...MAP_ELITE_TIER1].slice(0, 4),
+        harness
+      );
+      break;
+    }
+
     default:
-      console.log('MAP-ELITE v0.4 - LLM Evaluation Harness');
+      console.log('MAP-ELITE v0.5 - LLM Evaluation Harness');
       console.log('\nCommands:');
       console.log('  eval <model>           Evaluate single model');
       console.log('  batch <4|8|all>        Batch evaluate cheap models');
       console.log('  compare <m1> <m2>...   Compare specific models');
       console.log('  verify [ledger]        Verify ledger integrity');
       console.log('  history [ledger]       Show history');
+      console.log('  handoff [models...]    Test HFO:0 vs HFO/8:00 handoff');
   }
 }
 
