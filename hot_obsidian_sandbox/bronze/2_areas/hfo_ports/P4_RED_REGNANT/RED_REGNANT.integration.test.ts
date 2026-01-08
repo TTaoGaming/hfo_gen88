@@ -222,17 +222,17 @@ describe('Red Regnant: Content Auditing (Pure String Analysis)', () => {
     describe('Technical Debt Detection', () => {
         it('should detect TODO comments', () => {
             auditContent('file.ts', '// TODO: fix this later');
-            expect(violations.some(v => v.type === 'AMNESIA' && v.message.includes('TODO/FIXME'))).toBe(true);
+            expect(violations.some(v => v.type === 'DEBT' && v.message.includes('TODO/FIXME'))).toBe(true);
         });
 
         it('should detect FIXME comments', () => {
             auditContent('file.ts', '// FIXME: broken code');
-            expect(violations.some(v => v.type === 'AMNESIA' && v.message.includes('TODO/FIXME'))).toBe(true);
+            expect(violations.some(v => v.type === 'DEBT' && v.message.includes('TODO/FIXME'))).toBe(true);
         });
 
         it('should allow TODO with @permitted', () => {
             auditContent('file.ts', '// TODO: allowed // @permitted');
-            expect(violations.some(v => v.type === 'AMNESIA')).toBe(false);
+            expect(violations.some(v => v.type === 'DEBT')).toBe(false);
         });
     });
 
@@ -767,12 +767,12 @@ describe('Red Regnant: Edge Cases', () => {
     describe('Special Characters in Paths', () => {
         it('should handle paths with spaces', () => {
             auditContent('path with spaces/file.ts', '// TODO');
-            expect(violations.some(v => v.type === 'AMNESIA')).toBe(true);
+            expect(violations.some(v => v.type === 'DEBT')).toBe(true);
         });
 
         it('should handle paths with unicode', () => {
             auditContent('路径/文件.ts', '// TODO');
-            expect(violations.some(v => v.type === 'AMNESIA')).toBe(true);
+            expect(violations.some(v => v.type === 'DEBT')).toBe(true);
         });
     });
 
@@ -786,7 +786,7 @@ describe('Red Regnant: Edge Cases', () => {
             `;
             auditContent('hot_obsidian_sandbox/silver/multi.ts', content);
             
-            // Should have AMNESIA (TODO + console.log), BESPOKE (any), BDD_MISALIGNMENT
+            // Should have DEBT (TODO), AMNESIA (console.log), BESPOKE (any), BDD_MISALIGNMENT
             expect(violations.length).toBeGreaterThan(1);
         });
     });

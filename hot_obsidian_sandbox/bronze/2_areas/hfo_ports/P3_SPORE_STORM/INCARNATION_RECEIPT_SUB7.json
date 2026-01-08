@@ -1,0 +1,15 @@
+﻿{
+    "artifact":  "hot_obsidian_sandbox/bronze/2_areas/hfo_ports/P3_SPORE_STORM/core/spore-toolset.ts",
+    "subPart":  7,
+    "artifactHash":  "sha256:a2f9715f7636f09aa24f1cdbba50ff3ad3628e0b19a6c92573ac55c811b72862",
+    "timestamp":  "2026-01-07T22:10:35.894Z",
+    "subName":  "Spore Toolset",
+    "provenance":  "HFO_GEN88_INCARNATION_PROTOCOL",
+    "commander":  "SPORE_STORM",
+    "status":  "BRONZE_INCARNATED",
+    "testHash":  "sha256:76bda42e02d62f35b8d8533a6c74043fc0d3853a0da2ccd15e36fd7393bdd91a",
+    "mutationScoreReady":  true,
+    "port":  3,
+    "test":  "hot_obsidian_sandbox/bronze/2_areas/hfo_ports/P3_SPORE_STORM/core/spore-toolset.test.ts",
+    "goldilocksTarget":  88
+}

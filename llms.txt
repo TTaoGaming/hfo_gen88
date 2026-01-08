@@ -3,15 +3,15 @@ Topic: System Disruption & Testing
 Provenance: bronze/P4_DISRUPTION_KINETIC.md
 
 > Generation: 88
-> Status: IMMUNE SYSTEM PROMOTED TO SILVER
-> Status: HARD-GATED ENFORCEMENT ACTIVE
+> Status: SYSTEM DEGRADATION / MUFFLED SCREAM (191 VIOLATIONS / 1300+ DISRUPTIONS)
+> Status: HARD-GATED ENFORCEMENT ACTIVE (PORT 4 RED QUEEN)
 
 ## 🎯 CURRENT MISSION: W3C Gesture Control Plane
 
 **→ WORK IN hot_obsidian_sandbox/ ←**
 
 - **Bronze**: Slop, kinetic energy, experiments.
-- **Silver**: Verified, tested implementations.
+- **Silver**: UNSTABLE (Theater Purged).
 - **Gold**: Canonical manifests (currently empty).
 
 ## Architecture: Canalization
@@ -19,8 +19,8 @@ Provenance: bronze/P4_DISRUPTION_KINETIC.md
 Gen 88 is designed to prevent "AI Theater" through strict architectural gates.
 - **Root Purge**: No pollution allowed in the root.
 - **Medallion Architecture**: Strict separation of data quality.
-- **Immune System**: `physic_scream.ts` (Port 4) detects violations.
-- **Hardening**: `pyre_dance.ts` (Port 5) remediates slop.
+- **Immune System**: `RED_REGNANT.ts` (Port 4) detects violations.
+- **Hardening**: `PYRE_DANCE.ts` (Port 5) remediates slop.
 - **Stigmergy**: `obsidianblackboard.jsonl` is the source of truth.
 - **Grudges**: `BLOOD_BOOK_OF_GRUDGES.jsonl` tracks dev pain.
 

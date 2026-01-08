@@ -1,0 +1,17 @@
+﻿{
+    "vouch":  "P4_RED_REGNANT",
+    "commander":  "Mirror Magus",
+    "title":  "Physics Rigid Body",
+    "artifact":  {
+                     "hash":  "24C961A1C0D88B1327FF0AF7463872DA989AC2886D72361128C849BC5635CE69",
+                     "path":  "hot_obsidian_sandbox/bronze/2_areas/hfo_ports/P2_MIRROR_MAGUS/core/physics-body.ts"
+                 },
+    "port":  2,
+    "status":  "INCARNATED",
+    "test":  {
+                 "hash":  "84EBB857DC75068DE911000A4E9A365AD3783D1E1695E6BEDA616B799738CFF8",
+                 "path":  "hot_obsidian_sandbox/bronze/2_areas/hfo_ports/P2_MIRROR_MAGUS/core/physics-body.test.ts"
+             },
+    "subpart":  2,
+    "timestamp":  "2026-01-07 22:12:10"
+}

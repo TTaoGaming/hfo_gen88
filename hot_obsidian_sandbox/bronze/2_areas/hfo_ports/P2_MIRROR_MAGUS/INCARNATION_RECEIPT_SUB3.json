@@ -1,0 +1,17 @@
+﻿{
+    "vouch":  "P4_RED_REGNANT",
+    "commander":  "Mirror Magus",
+    "title":  "Adaptive Threshold",
+    "artifact":  {
+                     "hash":  "3B8F2B35244B4BB6F403DC9FC5F609C82E65796B68BC0919AF3D6FE7BD674ACE",
+                     "path":  "hot_obsidian_sandbox/bronze/2_areas/hfo_ports/P2_MIRROR_MAGUS/core/adaptive-threshold.ts"
+                 },
+    "port":  2,
+    "status":  "INCARNATED",
+    "test":  {
+                 "hash":  "D01C19AF45D41C54263DDDCF45E84A53BF4ED4D40FEF8C5A96498E358FF648A3",
+                 "path":  "hot_obsidian_sandbox/bronze/2_areas/hfo_ports/P2_MIRROR_MAGUS/core/adaptive-threshold.test.ts"
+             },
+    "subpart":  3,
+    "timestamp":  "2026-01-07 22:12:24"
+}

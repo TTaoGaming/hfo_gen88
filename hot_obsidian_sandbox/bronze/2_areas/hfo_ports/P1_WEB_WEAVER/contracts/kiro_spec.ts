@@ -4,6 +4,13 @@ import { z } from 'zod';
  * KIRO SPECIFICATION v1.0
  * Focus: Interlocking Interfaces & Border Control
  * Status: DRAFT / BRONZE
+ * 
+ * @port 1
+ * @commander WEB_WEAVER
+ * @gen 88
+ * @status BRONZE
+ * @provenance LEGENDARY_COMMANDERS_V9.md
+ * Validates: Requirement 3.1 (Standardized Pheromone)
  */
 
 export const CloudEventSchema = z.object({

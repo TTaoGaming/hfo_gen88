@@ -1,0 +1,17 @@
+﻿{
+    "vouch":  "P4_RED_REGNANT",
+    "commander":  "Spider Sovereign",
+    "title":  "MDP Policy",
+    "artifact":  {
+                     "hash":  "602FDA343E5417EDB47FE85B8B69A75D51C9D96AD465C0C219B995A3BCD18C24",
+                     "path":  "hot_obsidian_sandbox/bronze/2_areas/hfo_ports/P7_SPIDER_SOVEREIGN/core/mdp-policy.ts"
+                 },
+    "port":  7,
+    "status":  "INCARNATED",
+    "test":  {
+                 "hash":  "B5859D18A42831BBD32D0E523247B0A1C14C43E309B9A1FC45A5A42AB2DC7A85",
+                 "path":  "hot_obsidian_sandbox/bronze/2_areas/hfo_ports/P7_SPIDER_SOVEREIGN/core/mdp-policy.test.ts"
+             },
+    "subpart":  2,
+    "timestamp":  "2026-01-07 22:21:09"
+}

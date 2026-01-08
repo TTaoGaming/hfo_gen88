@@ -1,0 +1,15 @@
+﻿{
+    "artifact":  "hot_obsidian_sandbox/bronze/2_areas/hfo_ports/P3_SPORE_STORM/core/cascade-director.ts",
+    "subPart":  2,
+    "artifactHash":  "sha256:d8b62537bb706f9798b1eba61e638cb49d50cac415534e9fc19f0e19fba12433",
+    "timestamp":  "2026-01-07T22:09:06.718Z",
+    "subName":  "Cascade Director",
+    "provenance":  "HFO_GEN88_INCARNATION_PROTOCOL",
+    "commander":  "SPORE_STORM",
+    "status":  "BRONZE_INCARNATED",
+    "testHash":  "sha256:f45199b04f7946fddab80c0ff1182a16f528bc60cbf118f4f533c0c2083c57d6",
+    "mutationScoreReady":  true,
+    "port":  3,
+    "test":  "hot_obsidian_sandbox/bronze/2_areas/hfo_ports/P3_SPORE_STORM/core/cascade-director.test.ts",
+    "goldilocksTarget":  88
+}

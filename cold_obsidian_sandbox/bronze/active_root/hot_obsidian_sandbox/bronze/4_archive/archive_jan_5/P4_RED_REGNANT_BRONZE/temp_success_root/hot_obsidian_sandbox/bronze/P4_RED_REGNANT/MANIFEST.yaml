@@ -1,7 +1,0 @@
-identity:
-  port: 4
-  commander: Red Regnant
-galois_lattice:
-  coordinate: [4,4]
-dna:
-  hfo_generation: 88

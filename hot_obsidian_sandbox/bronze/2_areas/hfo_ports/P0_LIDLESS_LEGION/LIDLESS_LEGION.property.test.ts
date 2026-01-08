@@ -3,8 +3,10 @@
  * 
  * @port 0
  * @commander LIDLESS_LEGION
+ * @gen 88
+ * @status BRONZE
  * @verb OBSERVE / SENSE
- * @provenance: LEGENDARY_COMMANDERS_V9.md
+ * @provenance LEGENDARY_COMMANDERS_V9.md
  * Validates: Property 2 (Observation Logging), Property 3 (Separation of Concerns)
  */
 

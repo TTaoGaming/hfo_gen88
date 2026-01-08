@@ -1,0 +1,10 @@
+[
+  { "model": "google/gemini-3-flash-preview", "fitness": 100.0, "latency": 3895, "tier": "TIER1" },
+  { "model": "openai/gpt-4o-mini", "fitness": 80.0, "latency": 3493, "tier": "TIER2" },
+  { "model": "anthropic/claude-3.5-haiku", "fitness": 80.0, "latency": 6085, "tier": "TIER1" },
+  { "model": "meta-llama/llama-3.3-70b-instruct", "fitness": 80.0, "latency": 16648, "tier": "TIER3" },
+  { "model": "x-ai/grok-4.1-fast", "fitness": 80.0, "latency": 38133, "tier": "TIER3" },
+  { "model": "deepseek/deepseek-chat-v3.1", "fitness": 40.0, "latency": 9050, "tier": "TIER1" },
+  { "model": "mistralai/mistral-medium-3.1", "fitness": 40.0, "latency": 450, "tier": "TIER2" },
+  { "model": "qwen/qwen3-14b", "fitness": 20.0, "latency": 17270, "tier": "TIER1" }
+]

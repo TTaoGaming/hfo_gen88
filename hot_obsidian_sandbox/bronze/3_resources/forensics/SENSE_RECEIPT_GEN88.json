@@ -1,0 +1,101 @@
+{
+  "id": "c0d03eec-5d4b-4e0a-82a3-7d59aef8389e",
+  "timestamp": 1767851739985,
+  "observations": [
+    {
+      "id": "b48e531a-cc5d-4e97-a92b-1c81d7ba84b3",
+      "timestamp": 1767851739984,
+      "source": "MEMORY",
+      "query": "Analyze workspace disruption levels and library documentation integrity.",
+      "data": {
+        "msg": "Memory Sensor Online (Stigmergic Link Active)",
+        "query_status": "Awaiting implementation of direct MCP bridge",
+        "context_nodes": []
+      },
+      "confidence": 0.88,
+      "metadata": {
+        "tags": [
+          "mcp",
+          "knowledge-graph",
+          "stigmergy"
+        ]
+      }
+    },
+    {
+      "id": "c2fe067b-c77e-4cd7-b800-f443f54f275e",
+      "timestamp": 1767851739984,
+      "source": "DUCKDB_FTS",
+      "query": "Analyze workspace disruption levels and library documentation integrity.",
+      "data": {
+        "msg": "DuckDB Archive Sensor Online",
+        "archive_state": "MOUNTED",
+        "fts_status": "NOMINAL"
+      },
+      "confidence": 0.94,
+      "metadata": {
+        "tags": [
+          "analytical",
+          "archive",
+          "kraken"
+        ],
+        "latencyMs": 15
+      }
+    },
+    {
+      "id": "2f20d8e5-2efc-4ba5-a9ba-e974dfad469a",
+      "timestamp": 1767851739984,
+      "source": "TAVILY",
+      "query": "Analyze workspace disruption levels and library documentation integrity.",
+      "data": {
+        "results": [],
+        "search_depth": "advanced"
+      },
+      "confidence": 0.85,
+      "metadata": {
+        "tags": [
+          "web-search",
+          "external-context"
+        ]
+      }
+    },
+    {
+      "id": "054a7f38-a2fa-4c56-b962-55a433c9dde2",
+      "timestamp": 1767851739984,
+      "source": "CONTEXT7",
+      "query": "Analyze workspace disruption levels and library documentation integrity.",
+      "data": {
+        "documentation_hits": [],
+        "resolution_status": "CONNECTED"
+      },
+      "confidence": 0.98,
+      "metadata": {
+        "tags": [
+          "documentation",
+          "frameworks",
+          "v14"
+        ]
+      }
+    },
+    {
+      "id": "c8c53e66-581d-416e-988a-a22cec69b10b",
+      "timestamp": 1767851739985,
+      "source": "MEDIAPIPE",
+      "query": "Analyze workspace disruption levels and library documentation integrity.",
+      "data": {
+        "landmarks": [],
+        "device_status": "ACTIVE",
+        "stream_id": "webcam_0"
+      },
+      "confidence": 0.82,
+      "metadata": {
+        "tags": [
+          "kinetic",
+          "w3c-gestures",
+          "computer-vision"
+        ],
+        "latencyMs": 33
+      }
+    }
+  ],
+  "correlationId": "26adc005-9b21-4168-92b1-21c1658215ae"
+}

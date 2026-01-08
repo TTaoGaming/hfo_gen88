@@ -1,0 +1,17 @@
+﻿{
+    "vouch":  "P4_RED_REGNANT",
+    "commander":  "Kraken Keeper",
+    "title":  "L1 Cache",
+    "artifact":  {
+                     "hash":  "7EF7F48EC76856D53B4F1931B919748D943DB72BF2C510A9ADB06E7359411A05",
+                     "path":  "hot_obsidian_sandbox/bronze/2_areas/hfo_ports/P6_KRAKEN_KEEPER/core/l1-cache.ts"
+                 },
+    "port":  6,
+    "status":  "INCARNATED",
+    "test":  {
+                 "hash":  "BC7038BDC43363B65AEF8EE3736CE2B416BED8948CA8F9099B70EE71C5B0111B",
+                 "path":  "hot_obsidian_sandbox/bronze/2_areas/hfo_ports/P6_KRAKEN_KEEPER/core/l1-cache.test.ts"
+             },
+    "subpart":  0,
+    "timestamp":  "2026-01-07 22:18:00"
+}

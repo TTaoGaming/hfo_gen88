@@ -1,0 +1,17 @@
+﻿{
+    "vouch":  "P4_RED_REGNANT",
+    "commander":  "Spider Sovereign",
+    "title":  "Mosaic Composer",
+    "artifact":  {
+                     "hash":  "B29DE95991FF978332EFCE623ABC285EF285DF2B56DD9053F2DD1A81AFE41CF3",
+                     "path":  "hot_obsidian_sandbox/bronze/2_areas/hfo_ports/P7_SPIDER_SOVEREIGN/core/mosaic-composer.ts"
+                 },
+    "port":  7,
+    "status":  "INCARNATED",
+    "test":  {
+                 "hash":  "617106D510A2D93B0CE82DF904AF987718688E82629EAEA60FF61D768CC67F57",
+                 "path":  "hot_obsidian_sandbox/bronze/2_areas/hfo_ports/P7_SPIDER_SOVEREIGN/core/mosaic-composer.test.ts"
+             },
+    "subpart":  5,
+    "timestamp":  "2026-01-07 22:21:52"
+}

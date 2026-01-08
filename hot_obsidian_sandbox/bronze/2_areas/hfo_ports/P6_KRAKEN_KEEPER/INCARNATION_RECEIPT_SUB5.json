@@ -1,0 +1,17 @@
+﻿{
+    "vouch":  "P4_RED_REGNANT",
+    "commander":  "Kraken Keeper",
+    "title":  "L6 Graph",
+    "artifact":  {
+                     "hash":  "126BFF9E4C3A0A535F842C3BFEAE4D8F5E51FD93C5D35E183A83A54A1101F569",
+                     "path":  "hot_obsidian_sandbox/bronze/2_areas/hfo_ports/P6_KRAKEN_KEEPER/core/l6-graph.ts"
+                 },
+    "port":  6,
+    "status":  "INCARNATED",
+    "test":  {
+                 "hash":  "7D368A2568C070DB8CC4F3C6292A1B0328BC7E7C0CBD87E1E8793544BB3239DF",
+                 "path":  "hot_obsidian_sandbox/bronze/2_areas/hfo_ports/P6_KRAKEN_KEEPER/core/l6-graph.test.ts"
+             },
+    "subpart":  5,
+    "timestamp":  "2026-01-07 22:19:40"
+}

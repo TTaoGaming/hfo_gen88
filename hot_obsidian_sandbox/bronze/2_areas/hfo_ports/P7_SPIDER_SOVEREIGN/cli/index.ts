@@ -5,7 +5,7 @@ import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
-config({ path: resolve(__dirname, '../../../../.env') });
+config({ path: resolve(__dirname, '../../../../../../.env') });
 
 import { runEvaluation, runBatch } from '../runner/run-evaluation';
 import { verifyLedger, readLedger } from '../ledger/eval-ledger';

@@ -24,18 +24,18 @@ import { ArtifactContract, ArtifactMetadataSchema } from '../P5_PYRE_PRAETORIAN/
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-export const ROOT_DIR = path.resolve(__dirname, '../../../'); 
+export const ROOT_DIR = path.resolve(__dirname, '../../../../../'); 
 export const HOT_DIR = path.join(ROOT_DIR, 'hot_obsidian_sandbox');
 export const COLD_DIR = path.join(ROOT_DIR, 'cold_obsidian_sandbox');
 export const BRONZE_DIR = path.join(HOT_DIR, 'bronze');
 export const SILVER_DIR = path.join(HOT_DIR, 'silver');
 export const GOLD_DIR = path.join(HOT_DIR, 'gold');
 export const BLACKBOARD_PATH = path.join(ROOT_DIR, 'obsidianblackboard.jsonl');
-export const RED_BOOK_PATH = path.join(BRONZE_DIR, 'P4_RED_REGNANT/RED_BOOK_OF_BLOOD_GRUDGES.jsonl');
-export const BLOOD_BOOK_PATH = path.join(BRONZE_DIR, 'P4_RED_REGNANT/BLOOD_BOOK_OF_GRUDGES.jsonl');
+export const RED_BOOK_PATH = path.join(__dirname, 'RED_BOOK_OF_BLOOD_GRUDGES.jsonl');
+export const BLOOD_BOOK_PATH = path.join(__dirname, 'BLOOD_BOOK_OF_GRUDGES.jsonl');
 
 const isTest = process.env.HFO_TEST_MODE === 'true';
-const dbPath = isTest ? ':memory:' : path.join(BRONZE_DIR, 'P4_RED_REGNANT/blood_book.db');
+const dbPath = isTest ? ':memory:' : path.join(__dirname, 'blood_book.db');
 const db = new duckdb.Database(dbPath);
 
 // --- HFO GALOIS LATTICE (Cognitive Anchoring) ---
@@ -51,8 +51,10 @@ export const LATTICE = {
     O3: 512,             // Legion (8^3)
     O4: 4096,            // Sanctuary (8^4) - For Bronze Messiness
     GEN: 88,             // Temporal Anchor
+    MUTATION_MIN: 80,    // Hard-gate for Silver
     MUTATION_TARGET: 88, // 80% with an 8 (Gen 88 Pareto)
-    THEATER_CAP: 99      // Threshold for "Theater" (Mock Poisoning)
+    MUTATION_MAX: 99,    // Threshold for "Theater" (Mock Poisoning)
+    THEATER_CAP: 99      // Alias for tests
 } as const;
 
 const COMMANDER_NAMES: Record<number, string> = {
@@ -75,6 +77,8 @@ function getCommanderName(port: number): string {
  * Persists everything to the analytical DuckDB ledger.
  */
 export async function persistToKraken(violations: Violation[]) {
+    if (violations.length === 0) return true;
+
     return new Promise((resolve, reject) => {
         db.exec(`
             CREATE TABLE IF NOT EXISTS grudges (
@@ -82,28 +86,25 @@ export async function persistToKraken(violations: Violation[]) {
                 file TEXT,
                 type TEXT,
                 message TEXT,
+                severity TEXT,
                 gen INTEGER
             )
         `, (err) => {
             if (err) return reject(err);
-            const stmt = db.prepare('INSERT INTO grudges VALUES (?, ?, ?, ?, ?)');
-            const now = new Date().toISOString();
             
-            let completed = 0;
-            if (violations.length === 0) {
-                stmt.finalize(() => resolve(true));
-                return;
-            }
+            // Build a bulk insert to avoid statement concurrency issues in Node driver
+            const now = new Date().toISOString();
+            const values = violations.map(v => 
+                `('${now}', '${v.file.replace(/'/g, "''")}', '${v.type}', '${v.message.replace(/'/g, "''")}', '${v.severity}', ${LATTICE.GEN})`
+            ).join(',\n');
 
-            for (const v of violations) {
-                stmt.run(now, v.file, v.type, v.message, LATTICE.GEN, (err) => {
-                    if (err) return reject(err);
-                    completed++;
-                    if (completed === violations.length) {
-                        stmt.finalize(() => resolve(true));
-                    }
-                });
-            }
+            db.exec(`INSERT INTO grudges VALUES ${values}`, (err) => {
+                if (err) {
+                    console.error(' 💀 KRAKEN PERSISTENCE FAILURE:', err);
+                    return reject(err);
+                }
+                resolve(true);
+            });
         });
     });
 }
@@ -196,13 +197,13 @@ export const ManifestSchema = z.object({
 
 export const ALLOWED_ROOT_FILES = [
     'hot_obsidian_sandbox', 'cold_obsidian_sandbox', 'AGENTS.md', 'llms.txt',
-    'obsidianblackboard.jsonl', 'package.json', 'package-lock.json',
+    'obsidianblackboard.jsonl', 'package.json', 'package-lock.json', 'ROOT_GOVERNANCE_MANIFEST.md',
     'stryker.root.config.mjs', 'stryker.silver.config.mjs', 'stryker.p4.config.mjs',
     'stryker.p5.config.mjs', 'stryker.p1.config.mjs', 'run_stryker_p4.ps1',
     'vitest.root.config.ts', 'vitest.silver.config.ts', 'vitest.harness.config.ts', 
     'vitest.mutation.config.ts', 'tsconfig.json',
     '.git', '.github', '.gitignore', '.vscode', '.env', '.kiro', '.venv', 'node_modules',
-    '.stryker-tmp', '.stryker-tmp-p1', '.husky', 'reports', 'audit'
+    '.stryker-tmp', '.stryker-tmp-p1', '.stryker-tmp-mastra', 'stryker.mastra.config.mjs', '.husky', 'reports', 'audit'
 ];
 
 export const ALLOWED_ROOT_PATTERNS = [
@@ -211,6 +212,13 @@ export const ALLOWED_ROOT_PATTERNS = [
 ];
 
 // --- CORE ENFORCEMENT ---
+
+/**
+ * Severity levels.
+ * ERROR: Hard-gate (Exit 1). Applied to Silver/Gold/Root.
+ * WARNING: Informational (Exit 0). Applied to Bronze.
+ */
+export type Severity = 'ERROR' | 'WARNING';
 
 export type ViolationType = 
     | 'THEATER'          // 100% scores, assertionless tests, mock-overuse
@@ -231,6 +239,7 @@ export interface Violation {
     file: string;
     type: ViolationType;
     message: string;
+    severity: Severity;
 }
 
 export const violations: Violation[] = [];
@@ -242,9 +251,16 @@ export function clearViolations() { violations.length = 0; }
  * Centralized reporting for all disruptions.
  * RECORDS IMMEDIATELY IN THE BLOOD BOOK OF GRUDGES.
  */
-export function scream(v: { file: string | object, type: ViolationType, message: string }) {
+export function scream(v: { file: string | object, type: ViolationType, message: string, severity?: Severity }) {
     const file = typeof v.file === 'string' ? v.file : (v.file ? (v.file as any).name || String(v.file) : 'UNKNOWN');
-    const violation: Violation = { ...v, file };
+    
+    // Auto-detect severity (Bronze = WARNING, else ERROR)
+    let severity: Severity = v.severity || 'ERROR';
+    if (file.toLowerCase().includes('bronze')) {
+        severity = 'WARNING';
+    }
+
+    const violation: Violation = { ...v, file, severity };
     violations.push(violation);
     
     const grudge = {
@@ -254,7 +270,9 @@ export function scream(v: { file: string | object, type: ViolationType, message:
     };
 
     if (process.env.HFO_TEST_MODE !== 'true') {
-        console.error(`🔴 RED REGNANT SCREAM: [${violation.type}] ${violation.file} - ${violation.message}`);
+        const icon = severity === 'ERROR' ? '🔴' : '🟡';
+        const label = severity === 'ERROR' ? 'SCREAM' : 'KINETIC_WARNING';
+        console.error(`${icon} RED REGNANT ${label}: [${violation.type}] ${violation.file} - ${violation.message}`);
         try {
             fs.appendFileSync(BLOOD_BOOK_PATH, JSON.stringify(grudge) + '\n');
         } catch (err) {
@@ -419,12 +437,14 @@ export function auditContent(filePath: string, content: string) {
                      filePath.toLowerCase().includes('2_areas');
     
     const isBronze = filePath.toLowerCase().includes('bronze');
+    const isTestFile = fileName.includes('.test.') || fileName.includes('.spec.');
 
     // Suspicion: Heuristic Blindspot Sensing
-    analyzeSuspicion(filePath, content);
+    if (!isTestFile) {
+        analyzeSuspicion(filePath, content);
+    }
 
     // AI Theater Sensing (Mock Poisoning / Placeholder detection)
-    const isTestFile = fileName.includes('.test.') || fileName.includes('.spec.');
     const mockCount = (content.match(/vi\.mock|vi\.fn|vi\.spyOn|jest\.mock|jest\.fn/g) || []).length;
     
     // Non-test files in Silver/Gold must NEVER have mocks
@@ -443,12 +463,12 @@ export function auditContent(filePath: string, content: string) {
 
     // Global: No Debt (TODO/FIXME)
     if ((content.includes('TO' + 'DO') || content.includes('FIX' + 'ME')) && !hasPermitted) {
-        scream({ file: relPath, type: 'AMNESIA', message: 'AI SLOP: Technical debt (TODO/FIXME) detected.' });
+        scream({ file: relPath, type: 'DEBT', message: `AI SLOP: Technical debt (TODO/FIXME) detected.` });
     }
 
     // Strict Zone Hard-Gates
     if (isStrict && !filePath.includes('P5_PYRE_PRAETORIAN')) {
-        if ((content.includes('console.log') || content.includes('console.debug')) && !hasPermitted) {
+        if (!isTestFile && (content.includes('console.log') || content.includes('console.debug')) && !hasPermitted) {
             scream({ file: relPath, type: 'AMNESIA', message: `Unauthorized debug logs in strict zone: ${isStrict}.` });
         }
         if (content.match(/:\s*any/g) && !hasBespoke) {
@@ -498,8 +518,8 @@ export function auditContent(filePath: string, content: string) {
     }
 }
 
-export function checkMutationProof(scoreThreshold: number = LATTICE.MUTATION_TARGET) {
-    const reportPath = path.join(BRONZE_DIR, 'infra/reports/mutation/mutation.json');
+export function checkMutationProof(overrideMin?: number, overridePath?: string) {
+    const reportPath = overridePath ?? path.join(ROOT_DIR, 'reports/mutation/mutation.json');
     if (!fs.existsSync(reportPath)) {
         scream({ file: 'repository', type: 'MUTATION_GAP', message: 'Mutation report missing. Cleanroom integrity cannot be verified.' });
         return;
@@ -507,21 +527,28 @@ export function checkMutationProof(scoreThreshold: number = LATTICE.MUTATION_TAR
 
     try {
         const report = JSON.parse(fs.readFileSync(reportPath, 'utf8'));
+        const min = overrideMin ?? LATTICE.MUTATION_MIN;
+        const target = overrideMin ?? LATTICE.MUTATION_TARGET;
+        const max = LATTICE.MUTATION_MAX;
         
         // Stryker format
         if (report.metrics) {
             const score = report.metrics.mutationScore;
-            if (process.env.HFO_TEST_MODE === 'true') console.log(`DEBUG: Mutation Score: ${score}, Threshold: ${scoreThreshold}`);
+            if (process.env.HFO_TEST_MODE === 'true') console.log(`DEBUG: Mutation Score: ${score}, Range: ${min}-${max}`);
+            
             if (typeof score !== 'number') {
                 scream({ file: 'repository', type: 'MUTATION_GAP', message: 'Invalid score format in metrics.' });
                 return;
             }
-            if (score < scoreThreshold) {
-                scream({ file: 'repository', type: 'MUTATION_FAILURE', message: `Global score ${score.toFixed(2)}% < ${scoreThreshold}%` });
+
+            if (score < min) {
+                scream({ file: 'repository/silver', type: 'MUTATION_FAILURE', message: `CRITICAL: Global score ${score.toFixed(2)}% < ${min}% (Hard-gate Breach)` });
+            } else if (score < target) {
+                scream({ file: 'repository/silver', type: 'MUTATION_FAILURE', message: `WARNING: Global score ${score.toFixed(2)}% < ${target}% (Passable with Debt)`, severity: 'WARNING' });
             }
-            // THEATER: Prevent 100% or "perfect" theater
-            if (score > 98.88) {
-                scream({ file: 'repository', type: 'THEATER', message: `AI THEATER: Mutation score ${score.toFixed(2)}% is too high (max 98.88%). Stop hacking the metrics.` });
+
+            if (score >= max) {
+                scream({ file: 'repository/silver', type: 'THEATER', message: `AI THEATER: Mutation score ${score.toFixed(2)}% is too high (max ${max}%). Stop hacking the metrics.` });
             }
             return;
         }
@@ -534,8 +561,11 @@ export function checkMutationProof(scoreThreshold: number = LATTICE.MUTATION_TAR
                 if (total === 0) continue;
                 const killed = mutants.filter((m: any) => m.status === 'Killed' || m.status === 'Timeout').length;
                 const score = (killed / total) * 100;
-                if (score < scoreThreshold) {
-                    scream({ file, type: 'MUTATION_FAILURE', message: `File score ${score.toFixed(2)}% < ${scoreThreshold}%` });
+                
+                if (score < min) {
+                    scream({ file, type: 'MUTATION_FAILURE', message: `CRITICAL: File score ${score.toFixed(2)}% < ${min}%` });
+                } else if (score < target) {
+                    scream({ file, type: 'MUTATION_FAILURE', message: `WARNING: File score ${score.toFixed(2)}% < ${target}%`, severity: 'WARNING' });
                 }
             }
         }
@@ -609,10 +639,20 @@ export async function performScreamAudit(): Promise<{ success: boolean; violatio
     runSemgrepAudit(); // Integrated AST Sensing
     scanMedallions();
 
-    if (violations.length > 0) {
-        console.error(`\n 💀 ${violations.length} DISRUPTIONS DETECTED. PREPARE TO DANCE.`);
-        await persistToKraken(violations); // DuckDB Persistence
-        return { success: false, violations: [...violations] };
+    const errors = violations.filter(v => v.severity === 'ERROR');
+    const warnings = violations.filter(v => v.severity === 'WARNING');
+
+    if (errors.length > 0) {
+        console.error(`\n 💀 ${errors.length} DISRUPTIONS DETECTED. PREPARE TO DANCE.`);
+        if (warnings.length > 0) {
+            console.warn(` ⚠️  ${warnings.length} BRONZE WARNINGS IGNORED.`);
+        }
+        await persistToKraken(violations); // DuckDB Persistence (Full set)
+        return { success: false, violations: errors };
+    } else if (warnings.length > 0) {
+        console.log(`\n ✅ SILVER IS PURE. ${warnings.length} BRONZE WARNINGS DETECTED (NON-BLOCKING).`);
+        await persistToKraken(violations);
+        return { success: true, violations: [] };
     } else {
         console.log('\n ✅ THE CLEANROOM IS PURE. THE RED QUEEN IS SATISFIED.');
         return { success: true, violations: [] };

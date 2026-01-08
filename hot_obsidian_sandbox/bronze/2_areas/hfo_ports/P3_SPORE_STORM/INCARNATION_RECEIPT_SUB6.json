@@ -1,0 +1,15 @@
+﻿{
+    "artifact":  "hot_obsidian_sandbox/bronze/2_areas/hfo_ports/P3_SPORE_STORM/core/spore-agent.ts",
+    "subPart":  6,
+    "artifactHash":  "sha256:2eff40ae12a127dc83dc7873bf8e53376a9f3e76127d16f1e6708c92877c9551",
+    "timestamp":  "2026-01-07T22:10:18.630Z",
+    "subName":  "Spore Agent",
+    "provenance":  "HFO_GEN88_INCARNATION_PROTOCOL",
+    "commander":  "SPORE_STORM",
+    "status":  "BRONZE_INCARNATED",
+    "testHash":  "sha256:f829cf67a68bdb58a6d4e2fd96a2443f3d3b5405eda89e2a82c837e20e0c120e",
+    "mutationScoreReady":  true,
+    "port":  3,
+    "test":  "hot_obsidian_sandbox/bronze/2_areas/hfo_ports/P3_SPORE_STORM/core/spore-agent.test.ts",
+    "goldilocksTarget":  88
+}

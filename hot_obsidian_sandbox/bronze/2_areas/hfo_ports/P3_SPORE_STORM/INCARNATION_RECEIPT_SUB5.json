@@ -1,0 +1,15 @@
+﻿{
+    "artifact":  "hot_obsidian_sandbox/bronze/2_areas/hfo_ports/P3_SPORE_STORM/core/flow-orchestrator.ts",
+    "subPart":  5,
+    "artifactHash":  "sha256:1aa5a0c93337dabb25a80e0e2d10cbb49ef2bc67435dfbe4912baaf4a337c0eb",
+    "timestamp":  "2026-01-07T22:10:00.771Z",
+    "subName":  "Flow Orchestrator",
+    "provenance":  "HFO_GEN88_INCARNATION_PROTOCOL",
+    "commander":  "SPORE_STORM",
+    "status":  "BRONZE_INCARNATED",
+    "testHash":  "sha256:f51460920319b6442cb9ace904d917dbfa7a4c18f3fe5b95b33e566eefc48807",
+    "mutationScoreReady":  true,
+    "port":  3,
+    "test":  "hot_obsidian_sandbox/bronze/2_areas/hfo_ports/P3_SPORE_STORM/core/flow-orchestrator.test.ts",
+    "goldilocksTarget":  88
+}

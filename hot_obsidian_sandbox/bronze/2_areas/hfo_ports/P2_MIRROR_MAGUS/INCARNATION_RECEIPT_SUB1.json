@@ -1,0 +1,17 @@
+﻿{
+    "vouch":  "P4_RED_REGNANT",
+    "commander":  "Mirror Magus",
+    "title":  "Latency Compensator",
+    "artifact":  {
+                     "hash":  "9C137885987F8E75B0D716155BCB1062B3E48C16821816D06CE5DA8EA9F1856B",
+                     "path":  "hot_obsidian_sandbox/bronze/2_areas/hfo_ports/P2_MIRROR_MAGUS/core/latency-compensator.ts"
+                 },
+    "port":  2,
+    "status":  "INCARNATED",
+    "test":  {
+                 "hash":  "3F14C663994CC4AEC24D2E4E663D3116281ADFF0BF638E4F1A79E229D31B9861",
+                 "path":  "hot_obsidian_sandbox/bronze/2_areas/hfo_ports/P2_MIRROR_MAGUS/core/latency-compensator.test.ts"
+             },
+    "subpart":  1,
+    "timestamp":  "2026-01-07 22:11:55"
+}

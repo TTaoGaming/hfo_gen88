@@ -13,7 +13,7 @@ import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = pathDirname(__filename);
-config({ path: resolve(__dirname, '../../../../.env') });
+config({ path: resolve(__dirname, '../../../../../../.env') });
 
 import { chat, ChatMessage } from '../runner/model-client';
 import { Harness } from '../harnesses/harness.interface';
@@ -23,22 +23,22 @@ import { dirname } from 'path';
 
 const HIVE_LOG = './audit/hive-10.jsonl';
 
-// 8 models from 4 families (2x each for BFT redundancy)
-// Budget-friendly: all <$0.10/M tokens
-const HIVE_8_MODELS = [
-  // Google family (2x)
-  'google/gemma-3n-e4b-it',           // $0.02/M
-  'google/gemma-2-9b-it',             // $0.06/M
-  // Meta family (2x)
-  'meta-llama/llama-3.2-3b-instruct', // $0.02/M
-  'meta-llama/llama-3.1-8b-instruct', // $0.06/M
-  // Qwen/Alibaba family (2x)
-  'qwen/qwen-2.5-7b-instruct',        // $0.03/M
-  'qwen/qwen-2.5-32b-instruct',       // $0.08/M
-  // DeepSeek + Mistral family (2x)
-  'deepseek/deepseek-chat',           // $0.07/M
-  'mistralai/mistral-7b-instruct',    // $0.03/M
+/**
+ * HFO Gen 88 MAP-ELITE Archive Models
+ * Ref: hot_obsidian_sandbox/bronze/2_areas/hfo_ports/P7_SPIDER_SOVEREIGN/MAP_ELITE_HANDOFF.md
+ */
+export const MAP_ELITE_BEST_8 = [
+  'google/gemma-3n-e4b-it',           // $0.020/M - 95.8% ⭐ BEST CHEAP
+  'openai/gpt-oss-20b',               // $0.016/M - 92.5% ⭐ BEST VALUE
+  'google/gemma-3-27b-it',            // $0.036/M - 95.8%
+  'qwen/qwen3-30b-a3b-thinking-2507', // $0.051/M - 93.5%
+  'qwen/qwen3-coder-30b-a3b-instruct', // $0.070/M - 93.8%
+  'openai/gpt-4o-mini',               // $0.150/M - 96.3% ⭐ TOP PERFORMER
+  'x-ai/grok-4.1-fast',               // $0.200/M - 96.5% ⭐ BEST MID
+  'google/gemini-2.5-flash',          // $0.300/M - 95.8%
 ];
+
+export const HIVE_8_MODELS = MAP_ELITE_BEST_8;
 interface HiveResult {
   pattern: string;
   prompt_idx: number;
@@ -395,4 +395,4 @@ if (process.argv[1]?.includes('hive-10')) {
     });
 }
 
-export { runHive10, compareSingleVsHive, scatter, gather, HIVE_8_MODELS };
+export { runHive10, compareSingleVsHive, scatter, gather };

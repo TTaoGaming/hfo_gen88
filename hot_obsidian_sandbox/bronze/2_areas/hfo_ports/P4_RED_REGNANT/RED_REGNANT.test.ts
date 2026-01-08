@@ -101,10 +101,10 @@ describe('Red Regnant: Immunological Defense (Lockdown Suite)', () => {
         
         it('should detect TODO and FIXME', () => {
             auditContent('file.ts', '// TODO items');
-            expect(violations.some(v => v.type === 'AMNESIA' && v.message.includes('TODO/FIXME'))).toBe(true);
+            expect(violations.some(v => v.type === 'DEBT' && v.message.includes('TODO/FIXME'))).toBe(true);
             clearViolations();
             auditContent('file.ts', '// FIXME items');
-            expect(violations.some(v => v.type === 'AMNESIA' && v.message.includes('TODO/FIXME'))).toBe(true);
+            expect(violations.some(v => v.type === 'DEBT' && v.message.includes('TODO/FIXME'))).toBe(true);
         });
 
         it('should detect console.debug in strict zones', () => {
@@ -303,7 +303,7 @@ describe('Red Regnant: Immunological Defense (Lockdown Suite)', () => {
     describe('Content Auditing (Killing Audit mutants)', () => {
         it('should detect technical debt and strict zone violations', () => {
             auditContent('file.ts', '// TODO: fix');
-            expect(violations[0].type).toBe('AMNESIA');
+            expect(violations[0].type).toBe('DEBT');
             expect(violations[0].message).toContain('AI SLOP: Technical debt (TODO/FIXME) detected.');
 
             clearViolations();
@@ -379,7 +379,7 @@ describe('Red Regnant: Immunological Defense (Lockdown Suite)', () => {
         it('should handle missing mutation report gracefully', () => {
             const reportPath = path.join(BRONZE_DIR, 'infra/reports/mutation/mutation.json');
             vi.mocked(fs.existsSync).mockImplementation((p) => p !== reportPath);
-            checkMutationProof(88);
+            checkMutationProof(88, reportPath);
             const v = violations.find(v => v.type === 'MUTATION_GAP');
             expect(v).toBeDefined();
             expect(v?.message).toBe('Mutation report missing. Cleanroom integrity cannot be verified.');
@@ -520,8 +520,8 @@ describe('Red Regnant: Immunological Defense (Lockdown Suite)', () => {
             vi.mocked(fs.readFileSync).mockReturnValue('// TODO: fix');
 
             scanMedallions();
-            // Should audit both in gold, 2 violations (AMNESIA)
-            expect(violations.filter(v => v.type === 'AMNESIA')).toHaveLength(2);
+            // Should audit both in gold, 2 violations (DEBT)
+            expect(violations.filter(v => v.type === 'DEBT')).toHaveLength(2);
         });
 
         it('should skip non-standard file extensions in medallions', () => {
@@ -944,8 +944,8 @@ describe('Red Regnant: Immunological Defense (Lockdown Suite)', () => {
              vi.mocked(fs.readFileSync).mockReturnValue('// TODO: technical debt');
              
              scanMedallions();
-             // Should detect AMNESIA in gold/truth.js
-             expect(violations.some(v => v.type === 'AMNESIA' && v.file.includes('truth.js'))).toBe(true);
+             // Should detect DEBT in gold/truth.js
+             expect(violations.some(v => v.type === 'DEBT' && v.file.includes('truth.js'))).toBe(true);
         });
 
         it('should kill mutants in isStrict logic for P5 exceptions', () => {
@@ -1175,16 +1175,16 @@ describe('Red Regnant: Immunological Defense (Lockdown Suite)', () => {
             it('should kill TODO/FIXME string literal mutants', () => {
                 clearViolations();
                 auditContent('logic.ts', 'TO' + 'DO');
-                expect(violations.find(v => v.type === 'AMNESIA')).toBeDefined();
+                expect(violations.find(v => v.type === 'DEBT')).toBeDefined();
                 
                 clearViolations();
                 auditContent('logic.ts', 'FIX' + 'ME');
-                expect(violations.find(v => v.type === 'AMNESIA')).toBeDefined();
+                expect(violations.find(v => v.type === 'DEBT')).toBeDefined();
 
                 clearViolations();
                 // If 'TO' was replaced by ""
                 auditContent('logic.ts', 'DO'); 
-                expect(violations.find(v => v.type === 'AMNESIA' && v.message.includes('AI SLOP'))).toBeUndefined();
+                expect(violations.find(v => v.type === 'DEBT' && v.message.includes('AI SLOP'))).toBeUndefined();
             });
 
             it('should kill scanMedallions directory exclusion mutants', () => {

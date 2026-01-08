@@ -1,0 +1,17 @@
+﻿{
+    "vouch":  "P4_RED_REGNANT",
+    "commander":  "Mirror Magus",
+    "title":  "Intent Resolver",
+    "artifact":  {
+                     "hash":  "5F16288EFCC8F09BA898DB27192151E02A75A083D38D5D92F0E75974ED6E244F",
+                     "path":  "hot_obsidian_sandbox/bronze/2_areas/hfo_ports/P2_MIRROR_MAGUS/core/intent-resolver.ts"
+                 },
+    "port":  2,
+    "status":  "INCARNATED",
+    "test":  {
+                 "hash":  "D5A88E22FBDEBC78C6174E08D23D1CC144C391D6E378FB5ECF2DB8AC6239CAE4",
+                 "path":  "hot_obsidian_sandbox/bronze/2_areas/hfo_ports/P2_MIRROR_MAGUS/core/intent-resolver.test.ts"
+             },
+    "subpart":  5,
+    "timestamp":  "2026-01-07 22:12:54"
+}

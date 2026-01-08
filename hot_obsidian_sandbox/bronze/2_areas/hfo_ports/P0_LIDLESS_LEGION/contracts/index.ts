@@ -3,8 +3,10 @@
  * 
  * @port 0
  * @commander LIDLESS_LEGION
+ * @gen 88
+ * @status BRONZE
  * @verb OBSERVE / SENSE
- * @provenance: LEGENDARY_COMMANDERS_V9.md
+ * @provenance LEGENDARY_COMMANDERS_V9.md
  * Validates: Requirements 2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.7
  */
 
@@ -20,6 +22,9 @@ export const ObservationSourceSchema = z.enum([
   'WEBCAM',      // Raw video input
   'FILE_SYSTEM', // Local file observation
   'STIGMERGY',   // Blackboard observation
+  'MEMORY',      // Memory MCP / Knowledge Graph
+  'DUCKDB_FTS',  // Full Text Search Archive
+  'CONTEXT7',    // Documentation search
 ]);
 
 export type ObservationSource = z.infer<typeof ObservationSourceSchema>;

@@ -1,3 +1,0 @@
-{"ts": "2026-01-07T06:45:30.763780+00:00", "type": "ABC_COMPARISON", "method": "A_SINGLE", "accuracy": 0.875, "correct": 7, "total": 8, "avg_latency_ms": 5004.4932499999995, "hive": "HFO_GEN88", "gen": 88, "port": 4}
-{"ts": "2026-01-07T06:45:30.765713+00:00", "type": "ABC_COMPARISON", "method": "B_SEQUENTIAL", "accuracy": 1.0, "correct": 8, "total": 8, "avg_latency_ms": 10381.284875, "hive": "HFO_GEN88", "gen": 88, "port": 4}
-{"ts": "2026-01-07T06:45:30.766041+00:00", "type": "ABC_COMPARISON", "method": "C_SCATTER_GATHER", "accuracy": 0.875, "correct": 7, "total": 8, "avg_latency_ms": 7884.63975, "hive": "HFO_GEN88", "gen": 88, "port": 4}

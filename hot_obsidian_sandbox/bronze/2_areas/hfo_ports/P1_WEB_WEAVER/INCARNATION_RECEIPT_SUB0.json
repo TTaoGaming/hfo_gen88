@@ -1,0 +1,17 @@
+﻿{
+    "vouch":  "P4_RED_REGNANT",
+    "commander":  "Web Weaver",
+    "title":  "Protocol Bridge",
+    "artifact":  {
+                     "hash":  "450F625AD25390C7678EF0656C6363AAE20B74D4892B06833FD3DC2911007319",
+                     "path":  "hot_obsidian_sandbox/bronze/2_areas/hfo_ports/P1_WEB_WEAVER/core/protocol-bridge.ts"
+                 },
+    "port":  1,
+    "status":  "INCARNATED",
+    "test":  {
+                 "hash":  "5A6C302892C8809C24CF3FE1434A0AE4C29CE80A32D59E24A822E0FDF4FE3DB8",
+                 "path":  "hot_obsidian_sandbox/bronze/2_areas/hfo_ports/P1_WEB_WEAVER/core/protocol-bridge.test.ts"
+             },
+    "subpart":  0,
+    "timestamp":  "2026-01-07 22:14:00"
+}

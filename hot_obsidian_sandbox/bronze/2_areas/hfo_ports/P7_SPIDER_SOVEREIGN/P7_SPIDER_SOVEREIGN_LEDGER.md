@@ -5,6 +5,20 @@
 
 **"In the web of possibilities, I choose the path."**
 
+## Status: BRONZE (Incarnated) 8/8 [CP]
+
+## Core Incarnation (8x8 Matrix)
+| Subpart | Component | Status | Receipt |
+|---------|-----------|--------|---------|
+| 0 | [OODA Loop](./core/ooda-loop.ts) | [CP] | [Receipt](./INCARNATION_RECEIPT_SUB0.json) |
+| 1 | [MCTS Planner](./core/mcts-planner.ts) | [CP] | [Receipt](./INCARNATION_RECEIPT_SUB1.json) |
+| 2 | [MDP Policy](./core/mdp-policy.ts) | [CP] | [Receipt](./INCARNATION_RECEIPT_SUB2.json) |
+| 3 | [FCA Manager](./core/fca-manager.ts) | [CP] | [Receipt](./INCARNATION_RECEIPT_SUB3.json) |
+| 4 | [JADC2 Orch](./core/jadc2-orchestrator.ts) | [CP] | [Receipt](./INCARNATION_RECEIPT_SUB4.json) |
+| 5 | [Mosaic Comp](./core/mosaic-composer.ts) | [CP] | [Receipt](./INCARNATION_RECEIPT_SUB5.json) |
+| 6 | [Hive Mind](./core/hive-mind.ts) | [CP] | [Receipt](./INCARNATION_RECEIPT_SUB6.json) |
+| 7 | [Prey Tracker](./core/prey-tracker.ts) | [CP] | [Receipt](./INCARNATION_RECEIPT_SUB7.json) |
+
 ## Identity
 
 | Attribute | Value |

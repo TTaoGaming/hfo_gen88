@@ -14,11 +14,9 @@ import {
   fuse,
   wrapEnvelope,
   HfoEnvelopeSchema,
-  SilverPromotionReceiptSchema,
   StigmergyEventSchema,
   KiroEnvelopeSchema,
   type HfoEnvelope,
-  type SilverPromotionReceipt,
   type StigmergyEvent,
   type Verb,
   type KiroEnvelope,
@@ -30,14 +28,12 @@ export {
   fuse,
   wrapEnvelope,
   HfoEnvelopeSchema,
-  SilverPromotionReceiptSchema,
   StigmergyEventSchema,
   KiroEnvelopeSchema,
 };
 
 export type {
   HfoEnvelope,
-  SilverPromotionReceipt,
   StigmergyEvent,
   Verb,
   KiroEnvelope,
@@ -126,13 +122,6 @@ export class WebWeaver {
    */
   validateEnvelope(envelope: unknown): { success: true; data: HfoEnvelope } | { success: false; errors: string[] } {
     return this.bridge(envelope, HfoEnvelopeSchema);
-  }
-
-  /**
-   * Validate a SilverPromotionReceipt
-   */
-  validateReceipt(receipt: unknown): { success: true; data: SilverPromotionReceipt } | { success: false; errors: string[] } {
-    return this.bridge(receipt, SilverPromotionReceiptSchema);
   }
 
   /**

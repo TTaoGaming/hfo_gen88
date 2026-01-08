@@ -10,7 +10,7 @@ import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
-const ROOT_DIR = resolve(__dirname, '../../../');
+const ROOT_DIR = resolve(__dirname, '../../../../../');
 
 const BLOOD_BOOK = join(ROOT_DIR, 'hot_obsidian_sandbox/bronze/P4_RED_REGNANT/RED_BOOK_OF_BLOOD_GRUDGES.jsonl');
 

@@ -1,0 +1,17 @@
+﻿{
+    "vouch":  "P4_RED_REGNANT",
+    "commander":  "Kraken Keeper",
+    "title":  "L3 Archiver",
+    "artifact":  {
+                     "hash":  "ADB9CD3D4456A35CD7AFCB0B4FD6E00B52D48EFD96DFC35A37FBFD36A75B457D",
+                     "path":  "hot_obsidian_sandbox/bronze/2_areas/hfo_ports/P6_KRAKEN_KEEPER/core/l3-archiver.ts"
+                 },
+    "port":  6,
+    "status":  "INCARNATED",
+    "test":  {
+                 "hash":  "50FE65FA125FD6987E86F22CE67CB606B909440EECC25A69935CE5B54296D3D4",
+                 "path":  "hot_obsidian_sandbox/bronze/2_areas/hfo_ports/P6_KRAKEN_KEEPER/core/l3-archiver.test.ts"
+             },
+    "subpart":  2,
+    "timestamp":  "2026-01-07 22:18:54"
+}

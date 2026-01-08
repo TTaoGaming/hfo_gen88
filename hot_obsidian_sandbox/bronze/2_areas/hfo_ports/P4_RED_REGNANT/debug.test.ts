@@ -6,5 +6,5 @@ it('debug audit', () => {
     clearViolations();
     auditContent('test.ts', '// TODO: something');
     console.log('VIOLATIONS:', JSON.stringify(violations, null, 2));
-    expect(violations[0].type).toBe('AMNESIA');
+    expect(violations[0].type).toBe('DEBT');
 });

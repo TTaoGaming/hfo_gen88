@@ -1,0 +1,17 @@
+﻿{
+    "vouch":  "P4_RED_REGNANT",
+    "commander":  "Spider Sovereign",
+    "title":  "JADC2 Orchestrator",
+    "artifact":  {
+                     "hash":  "F2DC4464B1859B7834A73BF7FBFEA45BBD753B0C5A4F342D6B9018398647EEB4",
+                     "path":  "hot_obsidian_sandbox/bronze/2_areas/hfo_ports/P7_SPIDER_SOVEREIGN/core/jadc2-orchestrator.ts"
+                 },
+    "port":  7,
+    "status":  "INCARNATED",
+    "test":  {
+                 "hash":  "5442712DA406AF1A63C7EDE6EA35DE1A95646B8E89D0D2C573B49B57FFFEF5EE",
+                 "path":  "hot_obsidian_sandbox/bronze/2_areas/hfo_ports/P7_SPIDER_SOVEREIGN/core/jadc2-orchestrator.test.ts"
+             },
+    "subpart":  4,
+    "timestamp":  "2026-01-07 22:21:39"
+}

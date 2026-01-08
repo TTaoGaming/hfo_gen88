@@ -1,0 +1,17 @@
+﻿{
+    "vouch":  "P4_RED_REGNANT",
+    "commander":  "Mirror Magus",
+    "title":  "Signal Transform",
+    "artifact":  {
+                     "hash":  "0D6DBC7A8B5AD9CE77CDEFA5EC463F589BC9FB2607AF07CB3CCCBF4E5F44A56B",
+                     "path":  "hot_obsidian_sandbox/bronze/2_areas/hfo_ports/P2_MIRROR_MAGUS/core/signal-transform.ts"
+                 },
+    "port":  2,
+    "status":  "INCARNATED",
+    "test":  {
+                 "hash":  "8401AC98A0D43FD7C5953A729A791BFD2772238DD5B6164243D03E0429446ABA",
+                 "path":  "hot_obsidian_sandbox/bronze/2_areas/hfo_ports/P2_MIRROR_MAGUS/core/signal-transform.test.ts"
+             },
+    "subpart":  0,
+    "timestamp":  "2026-01-07 22:11:42"
+}

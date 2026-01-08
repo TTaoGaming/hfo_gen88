@@ -15,6 +15,15 @@ import { execSync } from 'node:child_process';
 import { z } from 'zod';
 import * as yaml from 'js-yaml';
 
+// --- CORE MODULES (Sub-part Incarnations) ---
+export * from './core/medallion-enforcer.js';
+export * from './core/para-governor.js';
+export * from './core/import-validator.js';
+export * from './core/theater-detector.js';
+export * from './core/proof-of-verification.js';
+export * from './core/stigmergy-monitor.js';
+export * from './core/grudge-manager.js';
+
 // --- SCHEMAS (Autonomous Integrity) ---
 
 const CacaoStepSchema = z.object({

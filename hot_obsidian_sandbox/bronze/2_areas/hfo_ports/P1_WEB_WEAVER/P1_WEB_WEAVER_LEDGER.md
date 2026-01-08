@@ -19,9 +19,8 @@
 The Web Weaver is responsible for:
 - Consolidating all Zod contracts and stigmergy schemas
 - Defining the HfoEnvelope schema for inter-commander messages
-- Defining the SilverPromotionReceipt schema for medallion gating
-- Protocol adaptation via the `bridge()` function
-- Contract composition via the `fuse()` function
+- Protocol adaptation via the `bridge()` function (Verb: BRIDGE)
+- Contract composition via the `fuse()` function (Verb: FUSE)
 - Message validation against appropriate schemas
 
 ## Architecture
@@ -52,8 +51,8 @@ P1_WEB_WEAVER/
 ## Key Contracts
 
 1. **HfoEnvelope**: Universal message wrapper for all inter-commander communication
-2. **SilverPromotionReceipt**: Proof of quality for medallion promotion
-3. **StigmergyEvent**: Blackboard event schema
+2. **StigmergyEvent**: Blackboard event schema (Mapped to Commander Verbs)
+3. **KiroEnvelope**: Standardized W3C/MCP event wrapper
 
 ## Separation of Concerns
 
@@ -62,3 +61,22 @@ The Web Weaver SHALL NOT:
 - Transform data (P2's job)
 - Store data (P6's job)
 - Make decisions (P7's job)
+
+## Status: BRONZE (Fully Incarnated)
+
+## Artifacts
+- WEB_WEAVER.ts - Main entry point
+- core/ - 8 Sub-part implementations
+  1. protocol-bridge.ts (Sub 0)
+  2. schema-fusion.ts (Sub 1)
+  3. envelope-wrapper.ts (Sub 2)
+  4. module-registry.ts (Sub 3)
+  5. contract-store.ts (Sub 4)
+  6. event-bus.ts (Sub 5)
+  7. low-pipe.ts (Sub 6)
+  8. pi-gateway.ts (Sub 7)
+
+## Incarnation Density: 8/8 [CP]
+
+## Stryker Mutation Ready
+All 8 sub-parts have unit tests and tamper-evident receipts (INCARNATION_RECEIPT_SUB*.json) for Stryker mutation Goldilocks validation.

@@ -1,0 +1,17 @@
+﻿{
+    "vouch":  "P4_RED_REGNANT",
+    "commander":  "Kraken Keeper",
+    "title":  "L5 Blob",
+    "artifact":  {
+                     "hash":  "26CE31F385C808A3B7B177B22207429D28E2627A5D498EBE82067E7D5C9DA639",
+                     "path":  "hot_obsidian_sandbox/bronze/2_areas/hfo_ports/P6_KRAKEN_KEEPER/core/l5-blob.ts"
+                 },
+    "port":  6,
+    "status":  "INCARNATED",
+    "test":  {
+                 "hash":  "4126479D2A8EC19A094F9F6FFB78D281A5655CB5C8C75785922FCA746C410E5C",
+                 "path":  "hot_obsidian_sandbox/bronze/2_areas/hfo_ports/P6_KRAKEN_KEEPER/core/l5-blob.test.ts"
+             },
+    "subpart":  4,
+    "timestamp":  "2026-01-07 22:19:27"
+}

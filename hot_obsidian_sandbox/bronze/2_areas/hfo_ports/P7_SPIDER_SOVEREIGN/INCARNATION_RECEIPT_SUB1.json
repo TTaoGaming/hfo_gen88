@@ -1,0 +1,17 @@
+﻿{
+    "vouch":  "P4_RED_REGNANT",
+    "commander":  "Spider Sovereign",
+    "title":  "MCTS Planner",
+    "artifact":  {
+                     "hash":  "3507060EB06FFA0D87AFD7D4304FE401807B92160AA75749438FC2CDBEEB0944",
+                     "path":  "hot_obsidian_sandbox/bronze/2_areas/hfo_ports/P7_SPIDER_SOVEREIGN/core/mcts-planner.ts"
+                 },
+    "port":  7,
+    "status":  "INCARNATED",
+    "test":  {
+                 "hash":  "F8C53A4CE6FDF6F9553378129DB03910326E3FF9199876E0283E9E9FD0BE6582",
+                 "path":  "hot_obsidian_sandbox/bronze/2_areas/hfo_ports/P7_SPIDER_SOVEREIGN/core/mcts-planner.test.ts"
+             },
+    "subpart":  1,
+    "timestamp":  "2026-01-07 22:20:56"
+}

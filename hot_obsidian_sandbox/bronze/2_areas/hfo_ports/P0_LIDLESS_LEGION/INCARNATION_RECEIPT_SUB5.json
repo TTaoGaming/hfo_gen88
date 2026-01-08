@@ -1,0 +1,17 @@
+﻿{
+    "vouch":  "P4_RED_REGNANT",
+    "commander":  "Lidless Legion",
+    "title":  "Graph Crawler",
+    "artifact":  {
+                     "hash":  "1E71C1CF9C6B1C394EF695B1B1C27DCE5F2695F8F88D51B05F832C1E2EBA724D",
+                     "path":  "hot_obsidian_sandbox/bronze/2_areas/hfo_ports/P0_LIDLESS_LEGION/core/graph-crawler.ts"
+                 },
+    "port":  0,
+    "status":  "INCARNATED",
+    "test":  {
+                 "hash":  "FF3DCDF39CB373293CE319FB779452B8C47C0AD6B42B4A3BB826F99ACE92C74C",
+                 "path":  "hot_obsidian_sandbox/bronze/2_areas/hfo_ports/P0_LIDLESS_LEGION/core/graph-crawler.test.ts"
+             },
+    "subpart":  5,
+    "timestamp":  "2026-01-07 22:17:11"
+}

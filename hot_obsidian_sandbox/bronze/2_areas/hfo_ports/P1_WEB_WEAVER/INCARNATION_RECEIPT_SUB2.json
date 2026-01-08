@@ -1,0 +1,17 @@
+﻿{
+    "vouch":  "P4_RED_REGNANT",
+    "commander":  "Web Weaver",
+    "title":  "Envelope Wrapper",
+    "artifact":  {
+                     "hash":  "F95707122971BDCE772D859F8709D550929D6C39DE19A67393B61030425ACEE6",
+                     "path":  "hot_obsidian_sandbox/bronze/2_areas/hfo_ports/P1_WEB_WEAVER/core/envelope-wrapper.ts"
+                 },
+    "port":  1,
+    "status":  "INCARNATED",
+    "test":  {
+                 "hash":  "F3BDD08DD803C57899CFAEDC07CF52D195FA19C712516FDC8CEC9472548BD1DB",
+                 "path":  "hot_obsidian_sandbox/bronze/2_areas/hfo_ports/P1_WEB_WEAVER/core/envelope-wrapper.test.ts"
+             },
+    "subpart":  2,
+    "timestamp":  "2026-01-07 22:14:26"
+}

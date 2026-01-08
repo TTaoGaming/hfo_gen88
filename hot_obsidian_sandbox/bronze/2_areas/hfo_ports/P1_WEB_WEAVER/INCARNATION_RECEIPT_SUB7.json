@@ -1,0 +1,17 @@
+﻿{
+    "vouch":  "P4_RED_REGNANT",
+    "commander":  "Web Weaver",
+    "title":  "API Gateway",
+    "artifact":  {
+                     "hash":  "0CD30DD1B64CBE050522E270024353DD1F9D36F3D8F1BE2CFA95047E70E1EC18",
+                     "path":  "hot_obsidian_sandbox/bronze/2_areas/hfo_ports/P1_WEB_WEAVER/core/api-gateway.ts"
+                 },
+    "port":  1,
+    "status":  "INCARNATED",
+    "test":  {
+                 "hash":  "950AC8D73B5E31C569F0520C26AA074A93BF5A691F65455B72DBF5A211BB4DDF",
+                 "path":  "hot_obsidian_sandbox/bronze/2_areas/hfo_ports/P1_WEB_WEAVER/core/api-gateway.test.ts"
+             },
+    "subpart":  7,
+    "timestamp":  "2026-01-07 22:15:31"
+}

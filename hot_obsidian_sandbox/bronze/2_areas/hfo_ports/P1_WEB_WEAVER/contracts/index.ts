@@ -67,32 +67,13 @@ export const HfoEnvelopeSchema = z.object({
 
 export type HfoEnvelope = z.infer<typeof HfoEnvelopeSchema>;
 
-// --- SILVER PROMOTION RECEIPT ---
-
-export const SilverPromotionReceiptSchema = z.object({
-  artifact: z.string(),
-  mutationScore: z.number().min(80).max(98.99),
-  timestamp: z.string(),
-  hash: z.string().regex(/^sha256:[a-f0-9]{64}$/),
-  strykerConfig: z.string(),
-  propertyTestsPassed: z.boolean(),
-  zodContractsPresent: z.boolean(),
-  provenanceHeadersPresent: z.boolean(),
-});
-
-export type SilverPromotionReceipt = z.infer<typeof SilverPromotionReceiptSchema>;
-
 // --- STIGMERGY EVENT ---
 
 export const StigmergyEventSchema = z.object({
   id: z.string().uuid(),
   timestamp: z.number(),
   sourcePort: z.number().min(0).max(7),
-  eventType: z.enum([
-    'OBSERVATION', 'BRIDGE', 'TRANSFORM', 'INJECTION',
-    'VIOLATION', 'IMMUNIZATION', 'ASSIMILATION', 'DECISION',
-    'PROMOTION', 'DEMOTION', 'REBIRTH'
-  ]),
+  eventType: VerbSchema,
   payload: z.unknown(),
   correlationId: z.string().optional(),
 });

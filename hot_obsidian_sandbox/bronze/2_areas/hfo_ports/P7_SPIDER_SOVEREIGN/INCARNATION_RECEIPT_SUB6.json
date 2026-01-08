@@ -1,0 +1,17 @@
+﻿{
+    "vouch":  "P4_RED_REGNANT",
+    "commander":  "Spider Sovereign",
+    "title":  "Hive Mind",
+    "artifact":  {
+                     "hash":  "1D043243B180987E1BC9C125F651374EEDD97C797E2363A06CE5D5A435BE3063",
+                     "path":  "hot_obsidian_sandbox/bronze/2_areas/hfo_ports/P7_SPIDER_SOVEREIGN/core/hive-mind.ts"
+                 },
+    "port":  7,
+    "status":  "INCARNATED",
+    "test":  {
+                 "hash":  "24DD512BFC875071C3D36F28811E985A7642DC20E3A8B457977205BE335EF357",
+                 "path":  "hot_obsidian_sandbox/bronze/2_areas/hfo_ports/P7_SPIDER_SOVEREIGN/core/hive-mind.test.ts"
+             },
+    "subpart":  6,
+    "timestamp":  "2026-01-07 22:22:05"
+}

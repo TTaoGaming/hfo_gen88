@@ -1,0 +1,17 @@
+﻿{
+    "vouch":  "P4_RED_REGNANT",
+    "commander":  "Spider Sovereign",
+    "title":  "OODA Loop",
+    "artifact":  {
+                     "hash":  "234837D8F837BC3B633655305FAE7F5C195EBDBEFCC2EFAFCDD61CFFEFC03452",
+                     "path":  "hot_obsidian_sandbox/bronze/2_areas/hfo_ports/P7_SPIDER_SOVEREIGN/core/ooda-loop.ts"
+                 },
+    "port":  7,
+    "status":  "INCARNATED",
+    "test":  {
+                 "hash":  "BB1816F30A6DEA3787F3AF8AA49C6B139AABC37FD048EF577A3BFD0F0E951CB2",
+                 "path":  "hot_obsidian_sandbox/bronze/2_areas/hfo_ports/P7_SPIDER_SOVEREIGN/core/ooda-loop.test.ts"
+             },
+    "subpart":  0,
+    "timestamp":  "2026-01-07 22:20:42"
+}

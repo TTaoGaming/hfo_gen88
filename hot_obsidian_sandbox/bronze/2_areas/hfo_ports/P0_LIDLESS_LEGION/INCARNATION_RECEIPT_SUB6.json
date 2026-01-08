@@ -1,0 +1,17 @@
+﻿{
+    "vouch":  "P4_RED_REGNANT",
+    "commander":  "Lidless Legion",
+    "title":  "Prompt Echo",
+    "artifact":  {
+                     "hash":  "6443C8D30229BADB608E7051E61110E726E521D19D55EE35F22BE1E6291B55AD",
+                     "path":  "hot_obsidian_sandbox/bronze/2_areas/hfo_ports/P0_LIDLESS_LEGION/core/prompt-echo.ts"
+                 },
+    "port":  0,
+    "status":  "INCARNATED",
+    "test":  {
+                 "hash":  "7F0A03B21CCFB3EF6BC31BA3820B25CB316065713F38B562EFF68D2608B41A2B",
+                 "path":  "hot_obsidian_sandbox/bronze/2_areas/hfo_ports/P0_LIDLESS_LEGION/core/prompt-echo.test.ts"
+             },
+    "subpart":  6,
+    "timestamp":  "2026-01-07 22:17:23"
+}

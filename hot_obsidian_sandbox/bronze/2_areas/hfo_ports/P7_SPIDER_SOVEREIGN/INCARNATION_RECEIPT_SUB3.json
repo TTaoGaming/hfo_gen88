@@ -1,0 +1,17 @@
+﻿{
+    "vouch":  "P4_RED_REGNANT",
+    "commander":  "Spider Sovereign",
+    "title":  "FCA Manager",
+    "artifact":  {
+                     "hash":  "209758B6D98E99DAEB0680A9D3973240BED216E1B882C50287720E2F7492197F",
+                     "path":  "hot_obsidian_sandbox/bronze/2_areas/hfo_ports/P7_SPIDER_SOVEREIGN/core/fca-manager.ts"
+                 },
+    "port":  7,
+    "status":  "INCARNATED",
+    "test":  {
+                 "hash":  "6F23521C4C224E2A9737C103F31FBF23CDB77672AECEFDE60651F15C53AD8D6E",
+                 "path":  "hot_obsidian_sandbox/bronze/2_areas/hfo_ports/P7_SPIDER_SOVEREIGN/core/fca-manager.test.ts"
+             },
+    "subpart":  3,
+    "timestamp":  "2026-01-07 22:21:20"
+}

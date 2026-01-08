@@ -1,0 +1,17 @@
+﻿{
+    "vouch":  "P4_RED_REGNANT",
+    "commander":  "Spider Sovereign",
+    "title":  "Prey Tracker",
+    "artifact":  {
+                     "hash":  "8140A1BB60980B2D486E0E73D5FCE2367A1155DB82992AAC2A3641B49A837B0A",
+                     "path":  "hot_obsidian_sandbox/bronze/2_areas/hfo_ports/P7_SPIDER_SOVEREIGN/core/prey-tracker.ts"
+                 },
+    "port":  7,
+    "status":  "INCARNATED",
+    "test":  {
+                 "hash":  "90CB8F502B3B525875458A0BE7590EFA69F39DB68ED6655FA75C3727AC7C4418",
+                 "path":  "hot_obsidian_sandbox/bronze/2_areas/hfo_ports/P7_SPIDER_SOVEREIGN/core/prey-tracker.test.ts"
+             },
+    "subpart":  7,
+    "timestamp":  "2026-01-07 22:22:22"
+}
