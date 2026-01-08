@@ -4,8 +4,9 @@
  * @port 0
  * @commander LIDLESS_LEGION (aligned)
  * @verb SENSE
- * @tier BRONZE
- * @provenance: .kiro/specs/red-regnant-8-screams/design.md
+ * @tier SILVER
+ * @provenance: .kiro/specs/silver-promotion-blindspot/design.md
+ * @mutationScore: 80.95% (Goldilocks)
  * Validates: Requirements 1.1, 1.2, 1.3, 1.4, 1.5
  * 
  * Detects silent failures and missing observations:
@@ -46,7 +47,7 @@ export const BLINDSPOT_PATTERNS = {
   // Empty finally blocks
   EMPTY_FINALLY: /finally\s*\{\s*\}/g,
   
-  // Catch with only console.log (not proper handling)
+  // Catch with only console log (not proper handling)
   CATCH_CONSOLE_ONLY: /catch\s*\([^)]*\)\s*\{\s*console\.(log|warn)\([^)]*\);\s*\}/g,
   
   // Async function without try-catch

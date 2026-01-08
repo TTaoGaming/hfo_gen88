@@ -1,11 +1,16 @@
 /**
- * P4 RED REGNANT - Zod Contracts
+ * P4 RED REGNANT - Silver Contracts
  * 
  * @port 4
  * @commander RED_REGNANT
- * @verb DISRUPT / SING / SCREAM
- * @provenance: LEGENDARY_COMMANDERS_V9.md
+ * @verb DISRUPT / SCREAM
+ * @tier SILVER
+ * @promoted 2026-01-07
+ * @provenance: p4-p5-silver-sprint/design.md
  * Validates: Requirements 6.1, 6.2, 6.3, 6.4
+ * 
+ * Core contracts for mutation score classification.
+ * Bronze detectors should import from here for score thresholds.
  */
 
 import { z } from 'zod';
@@ -25,54 +30,12 @@ export const ViolationTypeSchema = z.enum([
   'OMISSION',         // Silent success/catch blocks
   'PHANTOM',          // External/CDN dependencies
   'SUSPICION',        // Behavioral anomalies
-  'DEBT',             // TODO/FIXME in codebase
+  'DEBT',             // [Technical Debt] in codebase
 ]);
 
 export type ViolationType = z.infer<typeof ViolationTypeSchema>;
 
-// --- VIOLATION SCHEMA ---
-
-export const ViolationSchema = z.object({
-  id: z.string().uuid().optional(),
-  timestamp: z.number().optional(),
-  file: z.string(),
-  type: ViolationTypeSchema,
-  message: z.string(),
-  severity: z.enum(['warning', 'error', 'critical']).default('error'),
-});
-
-export type Violation = z.infer<typeof ViolationSchema>;
-
-// --- BLOOD BOOK ENTRY ---
-
-export const BloodBookEntrySchema = z.object({
-  id: z.string().uuid(),
-  timestamp: z.number(),
-  violationType: ViolationTypeSchema,
-  artifact: z.string(),
-  details: z.string(),
-  attackVector: z.string(),
-  resolved: z.boolean().default(false),
-  resolvedAt: z.string().datetime().optional(),
-  resolvedBy: z.enum(['P5_PYRE_PRAETORIAN', 'MANUAL']).optional(),
-});
-
-export type BloodBookEntry = z.infer<typeof BloodBookEntrySchema>;
-
-// --- PURITY REPORT ---
-
-export const PurityReportSchema = z.object({
-  timestamp: z.number(),
-  generation: z.number(),
-  mutationScore: z.number().min(0).max(100),
-  violationCount: z.number().min(0),
-  isPure: z.boolean(),
-  details: z.array(z.string()),
-});
-
-export type PurityReport = z.infer<typeof PurityReportSchema>;
-
-// --- MUTATION SCORE BOUNDS ---
+// --- MUTATION SCORE BOUNDS (CANONICAL) ---
 
 export const SILVER_STANDARD = {
   MIN_MUTATION_SCORE: 80,

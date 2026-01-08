@@ -4,9 +4,10 @@
  * @port 1
  * @commander WEB_WEAVER (aligned)
  * @verb FUSE
- * @tier BRONZE
- * @provenance: .kiro/specs/red-regnant-8-screams/design.md
- * Validates: Requirements 2.1, 2.2, 2.3, 2.4, 2.5
+ * @tier SILVER
+ * @provenance: .kiro/specs/scream-goldilocks-sprint/design.md
+ * @mutation-score: 87.60% (GOLDILOCKS)
+ * Validates: Requirements 1.1, 1.2, 1.3, 1.4
  * 
  * Detects contract violations and type safety issues:
  * - `any` types without @bespoke annotation

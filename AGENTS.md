@@ -68,6 +68,8 @@ Silver promotion requires verified artifact integrity based on the following sca
 | 6 | Kraken Keeper | STORE | I (Interlock) |
 | 7 | Spider Sovereign | **NAVIGATE / ORCHESTRATE** | H (Hunt) |
 
+> **Mission Engineering**: The Dual-Anchor MTG Compositions & Literate Declarative Gherkin Scenarios (V5) are archived in [HFO_LEGENDARY_COMMANDERS_MTG_MAPPING_V5.md](hot_obsidian_sandbox/bronze/3_resources/HFO_LEGENDARY_COMMANDERS_MTG_MAPPING_V5.md).
+
 ---
 
 ## 🏗️ HFO Gen 88 Architecture: Port 7 Centralization

@@ -4,9 +4,9 @@
  * @port 4
  * @commander RED_REGNANT
  * @verb SCREAM
- * @tier BRONZE (pending Silver promotion)
- * @provenance: .kiro/specs/red-regnant-8-screams/design.md
- * Validates: Requirements 1-8 (all detectors)
+ * @tier SILVER
+ * @provenance: .kiro/specs/silver-promotion-blindspot/design.md
+ * Validates: Requirements 1.5, 2.2
  * 
  * Defines the interface for all 8 SCREAM detectors.
  * Each detector implements this interface to provide consistent behavior.

@@ -4,6 +4,9 @@
  * @port 4
  * @commander RED_REGNANT
  * @verb SCREAM
+ * @tier SILVER
+ * @promoted 2026-01-07
+ * @mutation-score 92.96%
  * @provenance: p4-p5-silver-sprint/design.md
  * Validates: Requirements 1.1, 1.2, 1.3, 1.4, 1.5
  * 
@@ -13,7 +16,7 @@
 
 import { z } from 'zod';
 import { createHash } from 'crypto';
-import { SILVER_STANDARD, ViolationTypeSchema } from '../contracts/index.js';
+import { SILVER_STANDARD } from '../contracts/index.js';
 
 // --- SCORE CLASSIFICATION ---
 

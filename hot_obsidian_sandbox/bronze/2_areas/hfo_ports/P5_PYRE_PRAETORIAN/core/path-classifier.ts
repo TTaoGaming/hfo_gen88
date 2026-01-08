@@ -4,6 +4,9 @@
  * @port 5
  * @commander PYRE_PRAETORIAN
  * @verb IMMUNIZE
+ * @tier SILVER
+ * @promoted 2026-01-07
+ * @mutation-score 84.07%
  * @provenance: p4-p5-silver-sprint/design.md
  * Validates: Requirements 2.1, 2.2, 2.3, 2.4, 2.5, 2.6
  * 

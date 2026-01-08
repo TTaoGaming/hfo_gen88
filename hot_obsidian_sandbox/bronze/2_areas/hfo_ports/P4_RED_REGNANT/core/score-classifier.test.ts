@@ -3,6 +3,7 @@
  * 
  * @port 4
  * @commander RED_REGNANT
+ * @tier SILVER
  * @provenance: p4-p5-silver-sprint/design.md
  * Validates: Requirements 1.1, 5.1
  */

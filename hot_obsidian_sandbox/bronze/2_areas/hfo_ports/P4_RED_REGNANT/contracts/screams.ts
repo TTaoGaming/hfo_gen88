@@ -4,9 +4,9 @@
  * @port 4
  * @commander RED_REGNANT
  * @verb SCREAM
- * @tier BRONZE (pending Silver promotion)
- * @provenance: .kiro/specs/red-regnant-8-screams/design.md
- * Validates: Requirements 1-9 (all SCREAM types)
+ * @tier SILVER
+ * @provenance: .kiro/specs/silver-promotion-blindspot/design.md
+ * Validates: Requirements 1.6, 2.1, 2.3
  * 
  * The 8 canonical SCREAM types aligned with the 8 Legendary Commanders.
  * Each SCREAM produces a cryptographically verifiable receipt.
