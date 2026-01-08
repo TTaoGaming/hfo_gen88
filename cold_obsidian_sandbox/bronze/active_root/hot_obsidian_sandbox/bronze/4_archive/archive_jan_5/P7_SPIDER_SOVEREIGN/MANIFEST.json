@@ -1,0 +1,54 @@
+{
+  "context": "https://hfo.io/v88/artifact",
+  "type": "legendary-artifact",
+  "spec_version": "cacao-2.0",
+  "id": "hfo:port:7:ttv-firmament",
+  "metadata": {
+    "trigram": "☰ Qián",
+    "element": "Heaven",
+    "commander": "Spider Sovereign",
+    "mtg_card": "https://scryfall.com/card/afr/112/lolth-spider-queen",
+    "hfo_generation": 88,
+    "mission": "Total Tool Virtualization (TTV)"
+  },
+  "incarnation": {
+    "semantic_anchor": "The Firmament of Total Tool Virtualization",
+    "mythic_lore": "The social spider weaves the web of liberation, virtualizing analog tools for 1:1 skill transfer.",
+    "kinetic_signature": "HFO-GEN88-7-TTV-FIRMAMENT"
+  },
+  "vision": {
+    "short_term": "W3C Gesture Control Plane (Port 0)",
+    "long_term": "Multi-sensor fusion XR for skill transfer",
+    "liberation_thesis": "A student with a phone, projector, and props can learn any skill"
+  },
+  "capabilities": {
+    "sensor_fusion": "Multi-modal (camera, thermal, IMU, audio)",
+    "interaction_detection": "Touch, hover, dwell, gesture",
+    "skill_assessment": "Reference comparison with graded feedback",
+    "action_generation": "MIDI, control inputs, visual/haptic feedback"
+  },
+  "use_cases": [
+    "Paper Piano (draw keys, play music)",
+    "Stick Joystick (prop becomes flight control)",
+    "Surgical Trainer (graded procedure analysis)",
+    "Martial Arts Dojo (form correction with ghost overlay)"
+  ],
+  "artifacts": [
+    "ttv-contracts.ts",
+    "ttv-contracts.test.ts",
+    "ttv-engine.ts",
+    "ttv-engine.test.ts"
+  ],
+  "dependencies": {
+    "port_0": "Sensor fusion (Lidless Legion)",
+    "port_1": "Data bridge (Web Weaver)",
+    "port_2": "Smoothing/transformation (Mirror Magus)",
+    "port_3": "Action delivery (Spore Storm)",
+    "port_6": "Session storage (Kraken Keeper)"
+  },
+  "test_status": {
+    "contracts": "41 tests passing",
+    "engine": "Included in contracts test count",
+    "mutation_score": "PENDING"
+  }
+}

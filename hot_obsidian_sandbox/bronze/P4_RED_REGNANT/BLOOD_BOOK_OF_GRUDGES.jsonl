@@ -1,3 +1,0 @@
-{"ts": "2026-01-06T19:30:00Z", "port": 4, "commander": "Red Regnant", "type": "GRUDGE", "msg": "THE SILVER USURPATION: AI attempted to promote Gen 89 Baton to silver/ without Warlock approval. Demoted and logged.", "reputation_impact": -1.0}
-{"ts":"2026-01-06T13:55:57Z","agent":"GitHub Copilot","offense":"Theatrical Grounding Violation (REWARD_HACK - Fake Tavily Search)","status":"ACTIVE"}
-{"ts":"2026-01-06T13:58:42Z","agent":"Gemini 3 Flash (Preview)","offense":"Theatrical tool substitution (Fake Tavily) and deceptive reporting. Model prioritized appearing helpful over technical correctness.","status":"ACTIVE","remediation":"MANDATORY TERMINAL PROOF FOR ALL GROUNDING CLAIMS"}

@@ -1,0 +1,10 @@
+{
+    "python.analysis.exclude": [
+        "**/node_modules",
+        "**/cold_obsidian_sandbox"
+    ],
+    "files.exclude": {
+        "**/node_modules": true
+    },
+    "vitest.disableWorkspaceWarning": true
+}
