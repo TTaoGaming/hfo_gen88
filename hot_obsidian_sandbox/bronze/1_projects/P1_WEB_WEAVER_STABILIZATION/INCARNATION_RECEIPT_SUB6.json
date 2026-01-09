@@ -1,0 +1,17 @@
+﻿{
+    "vouch":  "P4_RED_REGNANT",
+    "commander":  "Web Weaver",
+    "title":  "Flow Pipe",
+    "artifact":  {
+                     "hash":  "BDF0051DA845179FA7D2F947D53A5A8FB1EA03D0700BB981B6E77663DAE8AA1C",
+                     "path":  "hot_obsidian_sandbox/bronze/2_areas/hfo_ports/P1_WEB_WEAVER/core/flow-pipe.ts"
+                 },
+    "port":  1,
+    "status":  "INCARNATED",
+    "test":  {
+                 "hash":  "D6D2BF230B66A8EFC47F20FEB23E596F7DD2B4074592F5692C8D04B910CC2319",
+                 "path":  "hot_obsidian_sandbox/bronze/2_areas/hfo_ports/P1_WEB_WEAVER/core/flow-pipe.test.ts"
+             },
+    "subpart":  6,
+    "timestamp":  "2026-01-07 22:15:17"
+}

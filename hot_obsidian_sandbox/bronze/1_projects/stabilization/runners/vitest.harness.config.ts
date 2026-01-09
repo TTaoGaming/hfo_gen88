@@ -24,11 +24,11 @@ export default defineConfig({
       'hot_obsidian_sandbox/bronze/adapters/**',
       'hot_obsidian_sandbox/bronze/tests/**',
       'hot_obsidian_sandbox/bronze/1_projects/**',
-      'hot_obsidian_sandbox/bronze/2_areas/**',
+      // 'hot_obsidian_sandbox/bronze/2_areas/**', // DISABLED FOR STABILIZATION RUNS
       'hot_obsidian_sandbox/bronze/P4_PYRE_PRAETORIAN/test_root_mutation/**',
     ],
     alias: {
-      'zod': resolve(__dirname, 'node_modules/zod'),
+      'zod': resolve(process.cwd(), 'node_modules/zod'),
     },
   },
   resolve: {

@@ -5,16 +5,18 @@ export default {
   testRunner: "vitest",
   coverageAnalysis: "perTest",
   mutate: [
-    "hot_obsidian_sandbox/bronze/P5_PYRE_PRAETORIAN/PYRE_PRAETORIAN.ts"
+    "hot_obsidian_sandbox/bronze/2_areas/hfo_ports/P5_PYRE_PRAETORIAN/PYRE_DANCE.ts"
   ],
   files: [
-    "hot_obsidian_sandbox/bronze/P5_PYRE_PRAETORIAN/PYRE_PRAETORIAN.ts",
-    "hot_obsidian_sandbox/bronze/P5_PYRE_PRAETORIAN/PYRE_PRAETORIAN.test.ts",
-    "vitest.harness.config.ts",
+    "hot_obsidian_sandbox/bronze/2_areas/hfo_ports/P5_PYRE_PRAETORIAN/PYRE_DANCE.ts",
+    "hot_obsidian_sandbox/bronze/2_areas/hfo_ports/P5_PYRE_PRAETORIAN/PHOENIX_CONTRACTS.ts",
+    "hot_obsidian_sandbox/bronze/2_areas/hfo_ports/P5_PYRE_PRAETORIAN/RED_BLUE_DANCE.test.ts",
+    "hot_obsidian_sandbox/bronze/2_areas/hfo_ports/P4_RED_REGNANT/RED_REGNANT.ts",
+    "hot_obsidian_sandbox/bronze/1_projects/stabilization/runners/vitest.harness.config.ts",
     "package.json"
   ],
   vitest: {
-    configFile: "vitest.harness.config.ts"
+    configFile: "hot_obsidian_sandbox/bronze/1_projects/stabilization/runners/vitest.harness.config.ts"
   },
   tempDirName: ".stryker-tmp-p5",
   cleanTempDir: true,

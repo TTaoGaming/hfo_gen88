@@ -1,0 +1,17 @@
+﻿{
+    "vouch":  "P4_RED_REGNANT",
+    "commander":  "Web Weaver",
+    "title":  "Schema Fusion",
+    "artifact":  {
+                     "hash":  "01D16B797061D165C1AB724F03D3D853C62C68FAA95343D8C14E49177FBC0E94",
+                     "path":  "hot_obsidian_sandbox/bronze/2_areas/hfo_ports/P1_WEB_WEAVER/core/schema-fusion.ts"
+                 },
+    "port":  1,
+    "status":  "INCARNATED",
+    "test":  {
+                 "hash":  "6EF6042FDF5640BCDFF399568F95B0642C48B6B1799F68D7A29D1B0F4F0F6C71",
+                 "path":  "hot_obsidian_sandbox/bronze/2_areas/hfo_ports/P1_WEB_WEAVER/core/schema-fusion.test.ts"
+             },
+    "subpart":  1,
+    "timestamp":  "2026-01-07 22:14:13"
+}

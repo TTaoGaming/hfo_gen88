@@ -9,15 +9,12 @@ export default defineConfig({
       HFO_TEST_MODE: 'true'
     },
     include: [
-      'hot_obsidian_sandbox/silver/**/*.test.ts',
-      'hot_obsidian_sandbox/bronze/**/*.test.ts',
-      'hot_obsidian_sandbox/bronze/P4_PYRE_PRAETORIAN/**/*.test.ts',
-      'hot_obsidian_sandbox/bronze/tests/**/*.test.ts'
+      'hot_obsidian_sandbox/bronze/2_areas/hfo_ports/P7_SPIDER_SOVEREIGN/**/*.test.ts'
     ],
     exclude: ['**/node_modules/**', '**/dist/**', '**/.stryker-tmp*/**', 'cold_obsidian_sandbox/**', '**/quarantine/**'],
     alias: {
-      'zod': resolve(process.cwd(), 'node_modules/zod'),
-      'duckdb': resolve(process.cwd(), 'node_modules/duckdb'),
+      'zod': resolve(ROOT_DIR, 'node_modules/zod'),
+      'duckdb': resolve(ROOT_DIR, 'node_modules/duckdb'),
     },
   },
   resolve: {
