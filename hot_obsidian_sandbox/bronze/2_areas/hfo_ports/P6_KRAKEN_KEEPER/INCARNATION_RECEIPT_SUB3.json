@@ -1,0 +1,17 @@
+﻿{
+    "vouch":  "P4_RED_REGNANT",
+    "commander":  "Kraken Keeper",
+    "title":  "L4 Vector",
+    "artifact":  {
+                     "hash":  "D3ACB74CD6F0E30EFD74C435AE070F05FAC311EF16087BEEA69D30CF1F94B30D",
+                     "path":  "hot_obsidian_sandbox/bronze/2_areas/hfo_ports/P6_KRAKEN_KEEPER/core/l4-vector.ts"
+                 },
+    "port":  6,
+    "status":  "INCARNATED",
+    "test":  {
+                 "hash":  "3CAC3879A1D45E79C88A65F7371B31A0BE05CAFA7EE76B549E810C8D62ADB1AA",
+                 "path":  "hot_obsidian_sandbox/bronze/2_areas/hfo_ports/P6_KRAKEN_KEEPER/core/l4-vector.test.ts"
+             },
+    "subpart":  3,
+    "timestamp":  "2026-01-07 22:19:14"
+}

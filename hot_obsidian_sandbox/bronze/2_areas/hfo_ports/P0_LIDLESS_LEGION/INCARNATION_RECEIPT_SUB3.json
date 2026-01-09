@@ -1,0 +1,17 @@
+﻿{
+    "vouch":  "P4_RED_REGNANT",
+    "commander":  "Lidless Legion",
+    "title":  "Network Sniffer",
+    "artifact":  {
+                     "hash":  "A9E037B2755E14128BCB2C5903D0797D6197DC7EE0565A4B0E5E3929583F65D7",
+                     "path":  "hot_obsidian_sandbox/bronze/2_areas/hfo_ports/P0_LIDLESS_LEGION/core/network-sniffer.ts"
+                 },
+    "port":  0,
+    "status":  "INCARNATED",
+    "test":  {
+                 "hash":  "B5F08F0024A894FDF18E94CB2F9AC9BBE3AFFC7E577DA4BD66AB8F89FB26F3FA",
+                 "path":  "hot_obsidian_sandbox/bronze/2_areas/hfo_ports/P0_LIDLESS_LEGION/core/network-sniffer.test.ts"
+             },
+    "subpart":  3,
+    "timestamp":  "2026-01-07 22:16:44"
+}

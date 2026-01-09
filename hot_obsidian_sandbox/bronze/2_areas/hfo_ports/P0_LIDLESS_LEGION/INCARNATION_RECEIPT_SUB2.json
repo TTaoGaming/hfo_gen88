@@ -1,0 +1,17 @@
+﻿{
+    "vouch":  "P4_RED_REGNANT",
+    "commander":  "Lidless Legion",
+    "title":  "File Watcher",
+    "artifact":  {
+                     "hash":  "5DE437AC13D39267E795832FFD8D9578F55CAEB51D99B370ABB42666B072DF71",
+                     "path":  "hot_obsidian_sandbox/bronze/2_areas/hfo_ports/P0_LIDLESS_LEGION/core/file-watcher.ts"
+                 },
+    "port":  0,
+    "status":  "INCARNATED",
+    "test":  {
+                 "hash":  "F464A196210DAA4C05070EE29E506DE4F5397B91ADD3D1FC418B6D36B12A6205",
+                 "path":  "hot_obsidian_sandbox/bronze/2_areas/hfo_ports/P0_LIDLESS_LEGION/core/file-watcher.test.ts"
+             },
+    "subpart":  2,
+    "timestamp":  "2026-01-07 22:16:31"
+}

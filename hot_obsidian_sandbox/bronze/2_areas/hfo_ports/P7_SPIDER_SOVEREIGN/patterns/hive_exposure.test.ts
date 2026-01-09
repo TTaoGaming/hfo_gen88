@@ -1,5 +1,5 @@
-import { describe, it, expect, vi } from "vitest";
-import { hiveWorkflow } from "./hive_workflow";
+import { describe, it, expect } from "vitest";
+import { validateStep } from "./hive_workflow";
 
 /**
  * Hive Exposure Test
@@ -8,19 +8,26 @@ import { hiveWorkflow } from "./hive_workflow";
 
 describe("Hive Strategic Exposure", () => {
     it("should fail validation if fewer than 3 platforms are found (REAL LOGIC)", async () => {
-        // We trigger the workflow with a query that should yield low results
-        // or we mock the research response to be sparse.
+        // We test the validation step directly to bypass Mastra telemetry issues
         
-        // This test ensures the 'validate' step has real semantic logic.
-        const result = await hiveWorkflow.execute({
-            triggerData: { query: "A very obscure and non-existent AI tool" }
+        // 1. Scenario: Fail (2 platforms)
+        const failResult = await (validateStep as any).execute({
+            inputData: { 
+                platforms: ["Platform A", "Platform B"],
+                response: "Found 2 platforms"
+            }
         });
+        expect(failResult.isValid).toBe(false);
+        expect(failResult.reasoning).toContain("Insufficient depth");
 
-        // If the workflow is 'Theater', it will always pass.
-        // If it's 'Kinetic', it might fail or return a 'RE_HUNT' status.
-        console.log(`[EXPOSURE] Workflow Status: ${result.results.evolve?.status}`);
-        
-        // In a real run, it should either have real results or signal a failure
-        expect(result.results.validate).toBeDefined();
+        // 2. Scenario: Pass (3 platforms)
+        const passResult = await (validateStep as any).execute({
+            inputData: { 
+                platforms: ["Platform A", "Platform B", "Platform C"],
+                response: "Found 3 platforms"
+            }
+        });
+        expect(passResult.isValid).toBe(true);
+        expect(passResult.reasoning).toContain("Sufficient depth");
     });
 });

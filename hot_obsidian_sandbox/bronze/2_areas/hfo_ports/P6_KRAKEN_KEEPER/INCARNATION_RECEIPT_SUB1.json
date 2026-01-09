@@ -1,0 +1,17 @@
+﻿{
+    "vouch":  "P4_RED_REGNANT",
+    "commander":  "Kraken Keeper",
+    "title":  "L2 LocalStore",
+    "artifact":  {
+                     "hash":  "2B049FABDE1D9AC2884C542FE75AC137C8616980C982AAB7E1B931E5039AD30D",
+                     "path":  "hot_obsidian_sandbox/bronze/2_areas/hfo_ports/P6_KRAKEN_KEEPER/core/l2-localstore.ts"
+                 },
+    "port":  6,
+    "status":  "INCARNATED",
+    "test":  {
+                 "hash":  "0F0C4344AEB7FA0F51D007B7C89E47A45F0EFB4DD524ADC728854325D10491DD",
+                 "path":  "hot_obsidian_sandbox/bronze/2_areas/hfo_ports/P6_KRAKEN_KEEPER/core/l2-localstore.test.ts"
+             },
+    "subpart":  1,
+    "timestamp":  "2026-01-07 22:18:14"
+}

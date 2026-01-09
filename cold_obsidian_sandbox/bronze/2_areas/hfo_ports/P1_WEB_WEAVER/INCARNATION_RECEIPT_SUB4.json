@@ -1,0 +1,17 @@
+﻿{
+    "vouch":  "P4_RED_REGNANT",
+    "commander":  "Web Weaver",
+    "title":  "Contract Store",
+    "artifact":  {
+                     "hash":  "B3C986D6D1469B49F1C9426C3F94F7AB749AB0964BDA21FC431A7F47F721A69D",
+                     "path":  "hot_obsidian_sandbox/bronze/2_areas/hfo_ports/P1_WEB_WEAVER/core/contract-store.ts"
+                 },
+    "port":  1,
+    "status":  "INCARNATED",
+    "test":  {
+                 "hash":  "A5C9E7CE63D1E7D37AA84932B4D13FFFBAB5DC604E03AD78D089867DF915B67C",
+                 "path":  "hot_obsidian_sandbox/bronze/2_areas/hfo_ports/P1_WEB_WEAVER/core/contract-store.test.ts"
+             },
+    "subpart":  4,
+    "timestamp":  "2026-01-07 22:14:52"
+}

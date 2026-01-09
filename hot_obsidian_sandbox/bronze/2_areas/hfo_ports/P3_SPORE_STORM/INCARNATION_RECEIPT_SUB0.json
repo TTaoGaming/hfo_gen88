@@ -1,0 +1,15 @@
+﻿{
+    "artifact":  "hot_obsidian_sandbox/bronze/2_areas/hfo_ports/P3_SPORE_STORM/core/file-injector.ts",
+    "subPart":  0,
+    "artifactHash":  "sha256:180ce122337160cbd35854f8b5d69b86e9b2e4c542af4991dfd664d1772db677",
+    "timestamp":  "2026-01-07T22:08:26.640Z",
+    "subName":  "File Injector",
+    "provenance":  "HFO_GEN88_INCARNATION_PROTOCOL",
+    "commander":  "SPORE_STORM",
+    "status":  "BRONZE_INCARNATED",
+    "testHash":  "sha256:93bbee0795c9b41517486d8d7629ec2ce4d24e811db818b8112cd38dfd506de7",
+    "mutationScoreReady":  true,
+    "port":  3,
+    "test":  "hot_obsidian_sandbox/bronze/2_areas/hfo_ports/P3_SPORE_STORM/core/file-injector.test.ts",
+    "goldilocksTarget":  88
+}

@@ -1,0 +1,17 @@
+﻿{
+    "vouch":  "P4_RED_REGNANT",
+    "commander":  "Kraken Keeper",
+    "title":  "L8 Cold",
+    "artifact":  {
+                     "hash":  "F634B504B42BD0F0065FC81659CEC0676D03C0A9C606A66B0C68504F156609EB",
+                     "path":  "hot_obsidian_sandbox/bronze/2_areas/hfo_ports/P6_KRAKEN_KEEPER/core/l8-cold.ts"
+                 },
+    "port":  6,
+    "status":  "INCARNATED",
+    "test":  {
+                 "hash":  "F837AC374DCB18E0F45C350C25D497ED2836B1171B1D669A23282E742BAA7169",
+                 "path":  "hot_obsidian_sandbox/bronze/2_areas/hfo_ports/P6_KRAKEN_KEEPER/core/l8-cold.test.ts"
+             },
+    "subpart":  7,
+    "timestamp":  "2026-01-07 22:20:05"
+}

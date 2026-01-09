@@ -1,0 +1,17 @@
+﻿{
+    "vouch":  "P4_RED_REGNANT",
+    "commander":  "Lidless Legion",
+    "title":  "Error Beacon",
+    "artifact":  {
+                     "hash":  "FBA04BC0739501F27343359EBFCD13E8F295030F12618D455CDAA3EF3985AEA3",
+                     "path":  "hot_obsidian_sandbox/bronze/2_areas/hfo_ports/P0_LIDLESS_LEGION/core/error-beacon.ts"
+                 },
+    "port":  0,
+    "status":  "INCARNATED",
+    "test":  {
+                 "hash":  "7E3637CB24B25B8F49A7D57226338FF650486BD64370113735FA2521EF3027B4",
+                 "path":  "hot_obsidian_sandbox/bronze/2_areas/hfo_ports/P0_LIDLESS_LEGION/core/error-beacon.test.ts"
+             },
+    "subpart":  7,
+    "timestamp":  "2026-01-07 22:17:37"
+}

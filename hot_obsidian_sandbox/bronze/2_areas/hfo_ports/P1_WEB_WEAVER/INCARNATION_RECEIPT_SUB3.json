@@ -1,0 +1,17 @@
+﻿{
+    "vouch":  "P4_RED_REGNANT",
+    "commander":  "Web Weaver",
+    "title":  "Module Registry",
+    "artifact":  {
+                     "hash":  "9A1196313DDD46FC1585CA2D8428AB6BEC4F954E27F2120FE37B7FAAB0DE9502",
+                     "path":  "hot_obsidian_sandbox/bronze/2_areas/hfo_ports/P1_WEB_WEAVER/core/module-registry.ts"
+                 },
+    "port":  1,
+    "status":  "INCARNATED",
+    "test":  {
+                 "hash":  "C7B142326BAB6EF25FC494A9ED06F2B6DA4A9003637634746308F49573C4E0CE",
+                 "path":  "hot_obsidian_sandbox/bronze/2_areas/hfo_ports/P1_WEB_WEAVER/core/module-registry.test.ts"
+             },
+    "subpart":  3,
+    "timestamp":  "2026-01-07 22:14:39"
+}

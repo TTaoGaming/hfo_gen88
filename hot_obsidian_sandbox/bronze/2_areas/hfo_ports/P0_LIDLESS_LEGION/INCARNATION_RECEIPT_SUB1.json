@@ -1,0 +1,17 @@
+﻿{
+    "vouch":  "P4_RED_REGNANT",
+    "commander":  "Lidless Legion",
+    "title":  "System Monitor",
+    "artifact":  {
+                     "hash":  "9EDE7BB6325C70A847567F6FAFA4EB64D3050993C96E3B7D2709622F6BAF6EED",
+                     "path":  "hot_obsidian_sandbox/bronze/2_areas/hfo_ports/P0_LIDLESS_LEGION/core/system-monitor.ts"
+                 },
+    "port":  0,
+    "status":  "INCARNATED",
+    "test":  {
+                 "hash":  "6A5177D6833E97D624A61CE41AC42CD9537C8907E768E15A56CF05121383A1BC",
+                 "path":  "hot_obsidian_sandbox/bronze/2_areas/hfo_ports/P0_LIDLESS_LEGION/core/system-monitor.test.ts"
+             },
+    "subpart":  1,
+    "timestamp":  "2026-01-07 22:16:19"
+}

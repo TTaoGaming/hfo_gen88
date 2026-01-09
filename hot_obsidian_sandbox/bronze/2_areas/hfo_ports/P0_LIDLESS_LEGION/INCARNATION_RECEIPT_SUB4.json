@@ -1,0 +1,17 @@
+﻿{
+    "vouch":  "P4_RED_REGNANT",
+    "commander":  "Lidless Legion",
+    "title":  "Code Analyzer",
+    "artifact":  {
+                     "hash":  "3C98E123B25EFF16A3444D5611F8B424AFAE48859C3DD4BBD9AB6C5824BD4395",
+                     "path":  "hot_obsidian_sandbox/bronze/2_areas/hfo_ports/P0_LIDLESS_LEGION/core/code-analyzer.ts"
+                 },
+    "port":  0,
+    "status":  "INCARNATED",
+    "test":  {
+                 "hash":  "9719A4BEDA05148F6E4ACC4E87D5982A6613B79C4F71A0D144BB24922BEA4150",
+                 "path":  "hot_obsidian_sandbox/bronze/2_areas/hfo_ports/P0_LIDLESS_LEGION/core/code-analyzer.test.ts"
+             },
+    "subpart":  4,
+    "timestamp":  "2026-01-07 22:16:57"
+}

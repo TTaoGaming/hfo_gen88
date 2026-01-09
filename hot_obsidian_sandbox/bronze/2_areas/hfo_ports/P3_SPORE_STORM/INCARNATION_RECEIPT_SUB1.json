@@ -1,0 +1,15 @@
+﻿{
+    "artifact":  "hot_obsidian_sandbox/bronze/2_areas/hfo_ports/P3_SPORE_STORM/core/event-listener.ts",
+    "subPart":  1,
+    "artifactHash":  "sha256:c4eaee8759c2664766ef0f24b5942745b394c6fac0423050d1995a9814cc7c47",
+    "timestamp":  "2026-01-07T22:08:48.377Z",
+    "subName":  "Event Listener",
+    "provenance":  "HFO_GEN88_INCARNATION_PROTOCOL",
+    "commander":  "SPORE_STORM",
+    "status":  "BRONZE_INCARNATED",
+    "testHash":  "sha256:e3445213c3b40319fe35c1c6ee57000a9ff467bf53a7ffa633655ebf300613e4",
+    "mutationScoreReady":  true,
+    "port":  3,
+    "test":  "hot_obsidian_sandbox/bronze/2_areas/hfo_ports/P3_SPORE_STORM/core/event-listener.test.ts",
+    "goldilocksTarget":  88
+}

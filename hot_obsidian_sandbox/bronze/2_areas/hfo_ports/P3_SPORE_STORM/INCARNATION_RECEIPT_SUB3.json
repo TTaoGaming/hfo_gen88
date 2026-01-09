@@ -1,0 +1,15 @@
+﻿{
+    "artifact":  "hot_obsidian_sandbox/bronze/2_areas/hfo_ports/P3_SPORE_STORM/core/payload-injector.ts",
+    "subPart":  3,
+    "artifactHash":  "sha256:68a60ce2e0e5edc808d0771e12be6573891403e44d7b871bf3971067176b55eb",
+    "timestamp":  "2026-01-07T22:09:25.030Z",
+    "subName":  "Payload Injector",
+    "provenance":  "HFO_GEN88_INCARNATION_PROTOCOL",
+    "commander":  "SPORE_STORM",
+    "status":  "BRONZE_INCARNATED",
+    "testHash":  "sha256:e6e11af3914c91458708dd05b676cc0053f5c90348835eba2a3b63781c1ba604",
+    "mutationScoreReady":  true,
+    "port":  3,
+    "test":  "hot_obsidian_sandbox/bronze/2_areas/hfo_ports/P3_SPORE_STORM/core/payload-injector.test.ts",
+    "goldilocksTarget":  88
+}

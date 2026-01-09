@@ -1,0 +1,17 @@
+﻿{
+    "vouch":  "P4_RED_REGNANT",
+    "commander":  "Mirror Magus",
+    "title":  "Feedback Loop",
+    "artifact":  {
+                     "hash":  "BE7811798A38A1491E7ADD98189496EBD6F6D3C310B21D7657F002B8B0F1B8B8",
+                     "path":  "hot_obsidian_sandbox/bronze/2_areas/hfo_ports/P2_MIRROR_MAGUS/core/feedback-loop.ts"
+                 },
+    "port":  2,
+    "status":  "INCARNATED",
+    "test":  {
+                 "hash":  "5F8F9C7835F6C824F522E512B6382823E47B77C2A420B3D9488AEF8ED3C08EE3",
+                 "path":  "hot_obsidian_sandbox/bronze/2_areas/hfo_ports/P2_MIRROR_MAGUS/core/feedback-loop.test.ts"
+             },
+    "subpart":  7,
+    "timestamp":  "2026-01-07 22:13:21"
+}

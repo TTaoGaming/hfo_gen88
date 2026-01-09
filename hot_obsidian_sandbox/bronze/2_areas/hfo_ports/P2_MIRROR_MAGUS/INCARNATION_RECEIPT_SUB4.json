@@ -1,0 +1,17 @@
+﻿{
+    "vouch":  "P4_RED_REGNANT",
+    "commander":  "Mirror Magus",
+    "title":  "Shape Classifier",
+    "artifact":  {
+                     "hash":  "287C13E609C0E118D43DB846981E8D2DD38D2890ED1098F572B1EFE50128B925",
+                     "path":  "hot_obsidian_sandbox/bronze/2_areas/hfo_ports/P2_MIRROR_MAGUS/core/shape-classifier.ts"
+                 },
+    "port":  2,
+    "status":  "INCARNATED",
+    "test":  {
+                 "hash":  "B23FB18125BA97137637AB0D2F9E60704F2A45998E6FEE67C14204CC8E4C3219",
+                 "path":  "hot_obsidian_sandbox/bronze/2_areas/hfo_ports/P2_MIRROR_MAGUS/core/shape-classifier.test.ts"
+             },
+    "subpart":  4,
+    "timestamp":  "2026-01-07 22:12:40"
+}

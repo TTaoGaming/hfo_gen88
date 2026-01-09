@@ -1,0 +1,17 @@
+﻿{
+    "vouch":  "P4_RED_REGNANT",
+    "commander":  "Lidless Legion",
+    "title":  "Telemetry Collector",
+    "artifact":  {
+                     "hash":  "38DBFD6F1D67806058987BB1BE3C8F3F84F5173E423479F86709BBD22488AD02",
+                     "path":  "hot_obsidian_sandbox/bronze/2_areas/hfo_ports/P0_LIDLESS_LEGION/core/telemetry-collector.ts"
+                 },
+    "port":  0,
+    "status":  "INCARNATED",
+    "test":  {
+                 "hash":  "2B6BA3C69FEC7FC8C91469C1AEE16C46AFB16E3D5C78B57F63941E85BFD2F37F",
+                 "path":  "hot_obsidian_sandbox/bronze/2_areas/hfo_ports/P0_LIDLESS_LEGION/core/telemetry-collector.test.ts"
+             },
+    "subpart":  0,
+    "timestamp":  "2026-01-07 22:16:06"
+}

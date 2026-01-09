@@ -1,0 +1,15 @@
+﻿{
+    "artifact":  "hot_obsidian_sandbox/bronze/2_areas/hfo_ports/P3_SPORE_STORM/core/shell-executor.ts",
+    "subPart":  4,
+    "artifactHash":  "sha256:26e38b995cc822ca7f80d8b69c315d134fe30bd9c9ff9814d773c91f6ca8d864",
+    "timestamp":  "2026-01-07T22:09:41.892Z",
+    "subName":  "Shell Executor",
+    "provenance":  "HFO_GEN88_INCARNATION_PROTOCOL",
+    "commander":  "SPORE_STORM",
+    "status":  "BRONZE_INCARNATED",
+    "testHash":  "sha256:952a99baee98237855da277830766cd6c94245b4a2a673f9be4e9d4d36231be1",
+    "mutationScoreReady":  true,
+    "port":  3,
+    "test":  "hot_obsidian_sandbox/bronze/2_areas/hfo_ports/P3_SPORE_STORM/core/shell-executor.test.ts",
+    "goldilocksTarget":  88
+}

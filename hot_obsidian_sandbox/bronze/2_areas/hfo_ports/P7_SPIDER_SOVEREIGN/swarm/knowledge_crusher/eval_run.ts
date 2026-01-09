@@ -16,9 +16,9 @@ async function runEval() {
 
   // 1. SELECT DOCUMENTS
   const files = [
-    'hot_obsidian_sandbox/bronze/3_resources/ABC_COMPARISON_RESULTS.md',
     'hot_obsidian_sandbox/bronze/3_resources/GEN88_WORKSPACE_GOVERNANCE_MANIFEST.md',
-    'hot_obsidian_sandbox/bronze/3_resources/MASTRA_POC_HANDOFF_2026_01_08.md'
+    'hot_obsidian_sandbox/bronze/3_resources/MASTRA_POC_HANDOFF_2026_01_08.md',
+    'hot_obsidian_sandbox/bronze/3_resources/HFO_HARD_GATE_PROTOCOL_2026_01_08.md'
   ];
 
   console.log(`[EVAL] Loading ${files.length} documents...`);

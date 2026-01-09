@@ -1,0 +1,17 @@
+﻿{
+    "vouch":  "P4_RED_REGNANT",
+    "commander":  "Mirror Magus",
+    "title":  "Mirror State",
+    "artifact":  {
+                     "hash":  "F08EB64303136110887A90AD292F05481B257AD9F2234CAB3B46CE568A06ABC8",
+                     "path":  "hot_obsidian_sandbox/bronze/2_areas/hfo_ports/P2_MIRROR_MAGUS/core/mirror-state.ts"
+                 },
+    "port":  2,
+    "status":  "INCARNATED",
+    "test":  {
+                 "hash":  "135009D67652F61ADCBB25BD0447077F6CCAA0B98855F6A3A5D4C1D2E0FBD33F",
+                 "path":  "hot_obsidian_sandbox/bronze/2_areas/hfo_ports/P2_MIRROR_MAGUS/core/mirror-state.test.ts"
+             },
+    "subpart":  6,
+    "timestamp":  "2026-01-07 22:13:08"
+}

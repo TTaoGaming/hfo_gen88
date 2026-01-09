@@ -1,0 +1,17 @@
+﻿{
+    "vouch":  "P4_RED_REGNANT",
+    "commander":  "Kraken Keeper",
+    "title":  "L7 Black",
+    "artifact":  {
+                     "hash":  "60908F8CF7B6794447C00CA1BDFA16B0EE7A4854C90423D899551189B1A858E5",
+                     "path":  "hot_obsidian_sandbox/bronze/2_areas/hfo_ports/P6_KRAKEN_KEEPER/core/l7-black.ts"
+                 },
+    "port":  6,
+    "status":  "INCARNATED",
+    "test":  {
+                 "hash":  "8D83C4CF751D409CCD8B85D6C96E0DD4041710F607A52F56742FB185221310CE",
+                 "path":  "hot_obsidian_sandbox/bronze/2_areas/hfo_ports/P6_KRAKEN_KEEPER/core/l7-black.test.ts"
+             },
+    "subpart":  6,
+    "timestamp":  "2026-01-07 22:19:53"
+}
