@@ -10,7 +10,7 @@ Provenance: bronze/2_areas/hfo_ports/P4_RED_REGNANT/P4_DISRUPTION_KINETIC.md
 
 ---
 
-## 🎯 CURRENT MISSION: W3C Gesture Control Plane (Port 0)
+## 🎯 CURRENT MISSION: The Physics Cursor Vertical Slice (V10)
 
 **ACTIVE WORK IS IN `hot_obsidian_sandbox/`**
 
@@ -68,7 +68,7 @@ Silver promotion requires verified artifact integrity based on the following sca
 | 6 | Kraken Keeper | STORE | I (Interlock) |
 | 7 | Spider Sovereign | **NAVIGATE / ORCHESTRATE** | H (Hunt) |
 
-> **Mission Engineering**: The Dual-Anchor MTG Compositions & Literate Declarative Gherkin Scenarios (V5) are archived in [HFO_LEGENDARY_COMMANDERS_MTG_MAPPING_V5.md](hot_obsidian_sandbox/bronze/3_resources/HFO_LEGENDARY_COMMANDERS_MTG_MAPPING_V5.md).
+> **Mission Engineering**: The Physics Cursor Vertical Slice, Rapier Integration, & Gesture FSM (V10) are archived in [HFO_LEGENDARY_COMMANDERS_V10_PHYSICS_CURSOR.md](hot_obsidian_sandbox/bronze/3_resources/HFO_LEGENDARY_COMMANDERS_V10_PHYSICS_CURSOR.md).
 
 ---
 
