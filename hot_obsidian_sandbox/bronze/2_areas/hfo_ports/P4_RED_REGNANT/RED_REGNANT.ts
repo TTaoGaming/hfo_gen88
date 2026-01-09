@@ -18,7 +18,7 @@ import { execSync } from 'node:child_process';
 import { z } from 'zod';
 import * as yaml from 'js-yaml';
 import duckdb from 'duckdb';
-import { ArtifactContract, ArtifactMetadataSchema } from '../P5_PYRE_PRAETORIAN/PHOENIX_CONTRACTS.js';
+import { ArtifactContract, ArtifactMetadataSchema } from '../P5_PYRE_PRAETORIAN/PHOENIX_CONTRACTS.ts';
 
 // --- INFRASTRUCTURE ---
 
@@ -457,22 +457,22 @@ export function auditContent(filePath: string, content: string) {
         scream({ file: relPath, type: 'THEATER', message: `Theater Overload: ${mockCount} mocks found. High likelihood of reward hacking.` });
     }
 
-    // Escape hatch check: Silver/Gold have ZERO escape hatches.
-    const hasPermitted = content.includes('@permitted');
-    const hasBespoke = content.includes('@bespoke');
+    // escape hatches are disabled for Gen 88 hard gates.
+    // const hasPermitted = content.includes('@permitted');
+    // const hasBespoke = content.includes('@bespoke');
 
     // Global: No Debt (TODO/FIXME)
-    if ((content.includes('TO' + 'DO') || content.includes('FIX' + 'ME')) && !hasPermitted) {
+    if ((content.includes('TO' + 'DO') || content.includes('FIX' + 'ME'))) {
         scream({ file: relPath, type: 'DEBT', message: `AI SLOP: Technical debt (TODO/FIXME) detected.` });
     }
 
     // Strict Zone Hard-Gates
     if (isStrict && !filePath.includes('P5_PYRE_PRAETORIAN')) {
-        if (!isTestFile && (content.includes('console.log') || content.includes('console.debug')) && !hasPermitted) {
+        if (!isTestFile && (content.includes('console.log') || content.includes('console.debug'))) {
             scream({ file: relPath, type: 'AMNESIA', message: `Unauthorized debug logs in strict zone: ${isStrict}.` });
         }
-        if (content.match(/:\s*any/g) && !hasBespoke) {
-            scream({ file: relPath, type: 'BESPOKE', message: 'Bespoke "any" type without justification (@bespoke).' });
+        if (content.match(/:\s*any/g)) {
+            scream({ file: relPath, type: 'BESPOKE', message: 'Bespoke "any" type detected. Unauthorized logic bypass.' });
         }
         if (!content.includes('Validates:') && !content.includes('@provenance')) {
             scream({ 
@@ -485,7 +485,7 @@ export function auditContent(filePath: string, content: string) {
 
     // Phantom dependencies (CDNs)
     if (fileName.endsWith('.html') || fileName.endsWith('.ts') || fileName.endsWith('.js')) {
-        if ((content.includes('https://cdn.') || content.includes('http://cdn.')) && !hasPermitted) {
+        if ((content.includes('https://cdn.') || content.includes('http://cdn.'))) {
             scream({ file: relPath, type: 'PHANTOM', message: `External CDN dependency detected in ${fileName}.` });
         }
     }
@@ -498,7 +498,7 @@ export function auditContent(filePath: string, content: string) {
 
         // Pattern: Mock Overuse
         const mockCount = (content.match(/vi\.mock/g) || []).length;
-        if (mockCount > 5 && !hasPermitted) {
+        if (mockCount > 5) {
             scream({ file: relPath, type: 'THEATER', message: `Mock Poisoning: ${mockCount} mocks detected. Use integration tests.` });
         }
     }
@@ -512,7 +512,7 @@ export function auditContent(filePath: string, content: string) {
     ];
 
     for (const p of placeholders) {
-        if (p.test(content) && !hasPermitted) {
+        if (p.test(content)) {
             scream({ file: relPath, type: 'THEATER', message: `Placeholder logic detected: ${p.source}` });
         }
     }

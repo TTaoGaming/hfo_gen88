@@ -4,7 +4,7 @@
  * Validates: AGENTS.md Rule 5 - Pyre Dance
  */
 
-import { appendFileSync, existsSync, mkdirSync, renameSync, unlinkSync, readFileSync } from 'fs';
+import { appendFileSync, existsSync, mkdirSync, renameSync, unlinkSync, readFileSync, lstatSync } from 'fs';
 import { dirname, join, basename, resolve, relative } from 'path';
 import { fileURLToPath } from 'url';
 
@@ -54,10 +54,9 @@ export function demote(filePath: string, reason: string): DanceResult {
   }
 
   const content = readFileSync(absPath, 'utf8');
-  if (content.includes('@permitted') || content.includes('@bespoke')) {
-    return { file: filePath, action: 'skipped', reason: 'Has escape hatch', timestamp };
-  }
-
+  // @hard-gate: No escape hatches allowed in Gen 88 Kinetic mode.
+  // Escape hatches are for theater. The Red Queen demands actual purity.
+  
   const archiveDir = getParaDest(filePath);
   if (!existsSync(archiveDir)) {
     mkdirSync(archiveDir, { recursive: true });
@@ -103,26 +102,20 @@ export function danceDie(violations: Array<{ file: string; type: string; message
   for (const v of violations) {
     const absPath = resolve(ROOT_DIR, v.file);
     if (!existsSync(absPath)) continue;
+    if (lstatSync(absPath).isDirectory()) continue;
 
     const content = readFileSync(absPath, 'utf8');
     
-    // Check for permitted files
-    if (content.includes('@permitted') || content.includes('@bespoke')) {
-      results.push({
-        file: v.file,
-        action: 'skipped',
-        reason: `Protected by escape hatch`,
-        timestamp: new Date().toISOString(),
-      });
-      continue;
-    }
+    // @hard-gate: Escape hatches REMOVED. Kinetic enforcement only.
+
+    const normalizedFile = v.file.replace(/\\/g, '/');
 
     // Demote silver/gold violations
-    if (v.file.includes('/silver/') || v.file.includes('/gold/')) {
+    if (normalizedFile.includes('/silver/') || normalizedFile.includes('/gold/')) {
       results.push(demote(v.file, `${v.type}: ${v.message}`));
     } else {
       // For Bronze, if it is a severe "Theater" violation, we might still archive it
-      if (v.type === 'THEATER' || v.type === 'POLLUTION') {
+      if (v.type === 'THEATER' || v.type === 'POLLUTION' || v.type === 'BDD_MISALIGNMENT') {
          results.push(demote(v.file, `Bronze Disruption: ${v.message}`));
       } else {
         results.push({

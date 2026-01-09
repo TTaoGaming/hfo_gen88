@@ -7,3 +7,11 @@
 {"file":"hot_obsidian_sandbox\\silver\\2_areas\\P5_PYRE_PRAETORIAN\\contracts.ts","action":"demoted","reason":"Bronze Disruption: Strict artifact missing test file.","timestamp":"2026-01-08T16:05:20.006Z"}
 {"file":"hot_obsidian_sandbox\\silver\\2_areas\\P6_KRAKEN_KEEPER\\ledger.ts","action":"demoted","reason":"Bronze Disruption: Strict artifact missing test file.","timestamp":"2026-01-08T16:05:20.007Z"}
 {"file":"hot_obsidian_sandbox\\silver\\2_areas\\P7_SPIDER_SOVEREIGN\\navigator.ts","action":"demoted","reason":"Bronze Disruption: Strict artifact missing test file.","timestamp":"2026-01-08T16:05:20.008Z"}
+{"file":"theater_test_artifact.test.ts","action":"demoted","reason":"Bronze Disruption: Assertionless test file.","timestamp":"2026-01-08T22:56:43.179Z"}
+{"file":".repomixignore","action":"demoted","reason":"Bronze Disruption: Unauthorized root file detected.","timestamp":"2026-01-08T23:01:49.212Z"}
+{"file":"hot_obsidian_sandbox\\silver\\2_areas\\hfo_ports\\P1_WEB_WEAVER\\contracts\\index.ts","action":"demoted","reason":"Bronze Disruption: Strict artifact missing test file.","timestamp":"2026-01-08T23:16:14.513Z"}
+{"file":"hot_obsidian_sandbox\\silver\\2_areas\\hfo_ports\\P1_WEB_WEAVER\\contracts\\kiro_spec.ts","action":"demoted","reason":"Bronze Disruption: Strict artifact missing test file.","timestamp":"2026-01-08T23:16:14.514Z"}
+{"file":"hot_obsidian_sandbox\\silver\\2_areas\\hfo_ports\\P1_WEB_WEAVER\\core\\interlock.ts","action":"demoted","reason":"Bronze Disruption: Strict artifact missing test file.","timestamp":"2026-01-08T23:16:14.518Z"}
+{"file":"hot_obsidian_sandbox\\silver\\3_resources\\HFO_GEN88_HOT_SILVER_BATON_QUINE_V3.md","action":"demoted","reason":"BDD_MISALIGNMENT: Implementation file missing requirement traceability (Validates: or @provenance).","timestamp":"2026-01-09T04:11:59.226Z"}
+{"file":"hot_obsidian_sandbox\\silver\\3_resources\\HFO_GEN88_HOT_SILVER_BATON_QUINE_V4.md","action":"demoted","reason":"BDD_MISALIGNMENT: Implementation file missing requirement traceability (Validates: or @provenance).","timestamp":"2026-01-09T04:11:59.228Z"}
+{"file":"hot_obsidian_sandbox\\silver\\3_resources\\HFO_GEN88_HOT_SILVER_BATON_QUINE_V4.md","action":"demoted","reason":"BDD_MISALIGNMENT: Implementation file missing requirement traceability (Validates: or @provenance).","timestamp":"2026-01-09T04:43:52.969Z"}
