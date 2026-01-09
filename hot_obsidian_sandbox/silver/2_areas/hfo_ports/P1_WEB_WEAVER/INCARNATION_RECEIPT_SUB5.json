@@ -1,0 +1,17 @@
+﻿{
+    "vouch":  "P4_RED_REGNANT",
+    "commander":  "Web Weaver",
+    "title":  "Event Bus",
+    "artifact":  {
+                     "hash":  "AF69D7F02A1FE4F80D8474F995FACEFECCAD6B52695ACDD330C54DEA40E59A44",
+                     "path":  "hot_obsidian_sandbox/bronze/2_areas/hfo_ports/P1_WEB_WEAVER/core/event-bus.ts"
+                 },
+    "port":  1,
+    "status":  "INCARNATED",
+    "test":  {
+                 "hash":  "FA49F4CD89906846F57D8804AF39210FC73B61D9C514535DFEA8AD4B1482504F",
+                 "path":  "hot_obsidian_sandbox/bronze/2_areas/hfo_ports/P1_WEB_WEAVER/core/event-bus.test.ts"
+             },
+    "subpart":  5,
+    "timestamp":  "2026-01-07 22:15:05"
+}

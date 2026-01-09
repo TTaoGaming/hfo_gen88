@@ -1,9 +1,9 @@
 # Roadmap: Port 1 Web Weaver Silver Promotion
 
-**Commander**: Lidless Legion (Lidless Legion? No, Port 1 is Web Weaver)
 **Commander**: Web Weaver
 **Goal**: Enforce standard envelopes, borders, and interlocking interfaces across the HFO.
-**Deadline**: 1 Hour
+**Provenance**: P1_WEB_WEAVER
+**Validates**: AGENTS.md
 
 ## 8-Phased Approach
 

@@ -3,6 +3,7 @@
 **Date**: 2026-01-08
 **Status**: 🟢 REPORT GENERATED
 **Commander**: Spider Sovereign (Port 7)
+**Provenance**: P7_SPIDER_SOVEREIGN
 
 ## 📊 1. The 50/20 Slop Ratio Analysis
 

@@ -17,8 +17,24 @@ Provenance: bronze/2_areas/hfo_ports/P4_RED_REGNANT/P4_DISRUPTION_KINETIC.md
 | Layer | Purpose | Status |
 |-------|---------|--------|
 | [hot_obsidian_sandbox/gold/](hot_obsidian_sandbox/gold/) | Canonical Manifests & Truth Sources | ⚪ EMPTY |
-| [hot_obsidian_sandbox/silver/](hot_obsidian_sandbox/silver/) | Verified Implementations (TDD/CDD) | � PURE (P4 Residing) |
-| [hot_obsidian_sandbox/bronze/](hot_obsidian_sandbox/bronze/) | Slop, Kinetic Energy, Experiments | 🟡 KINETIC (Warnings Only) |
+| [hot_obsidian_sandbox/silver/](hot_obsidian_sandbox/silver/) | Verified Implementations (TDD/CDD) | � DEMOTED (Audit Failed) |
+| [hot_obsidian_sandbox/bronze/](hot_obsidian_sandbox/bronze/) | Slop, Kinetic Energy, Experiments | 🟡 STABILIZING (240+ Disruptions) |
+
+---
+
+## 🕸️ MISSION CONTROL DASHBOARD
+
+| 📡 SYSTEM HEALTH | ⚔️ PORT OPERATIONS | 🧠 SOVEREIGN SOUL |
+| :--- | :--- | :--- |
+| [Latest Rollup (Jan 8)](hot_obsidian_sandbox/bronze/KNOWLEDGE_ROLLUP_2026_01_08.md) | [Audit: Red Regnant](hot_obsidian_sandbox/bronze/2_areas/hfo_ports/P4_RED_REGNANT/RED_REGNANT.ts) | [Persistence: SovereignTwin](hot_obsidian_sandbox/bronze/2_areas/hfo_ports/P7_SPIDER_SOVEREIGN/SovereignTwin.ts) |
+| [Active Blackboard](hot_obsidian_sandbox/hot_obsidianblackboard.jsonl) | [Hardening: Pyre Dance](hot_obsidian_sandbox/bronze/2_areas/hfo_ports/P5_PYRE_PRAETORIAN/PYRE_DANCE.ts) | [Model List (OpenRouter)](hot_obsidian_sandbox/bronze/2_areas/hfo_ports/P7_SPIDER_SOVEREIGN/list-model-families.ts) |
+| [Blood Book (Grudges)](hot_obsidian_sandbox/bronze/2_areas/hfo_ports/P4_RED_REGNANT/BLOOD_BOOK_OF_GRUDGES.jsonl) | [Web Weaver Contracts](hot_obsidian_sandbox/bronze/2_areas/hfo_ports/P1_WEB_WEAVER/contracts/index.ts) | [Synaptic Memories](hot_obsidian_sandbox/bronze/2_areas/hfo_ports/P7_SPIDER_SOVEREIGN/test_soul.db) |
+
+### 📊 Tactical Status: Gen 88 Pareto
+- **P1 (Web Weaver)**: 89.16% 🟢 | *Goldilocks Target Reached. Demoted for Archive Pollution.*
+- **P4 (Red Regnant)**: ONLINE 🟢 | *Scream Logic Restored. Recursive Shroud Active. 4 Disruptions Purged.*
+- **P5 (Pyre Praetorian)**: GATED 🟢 | *Resurrection Fixed. Dance of Shiva Operational.*
+- **P7 (Spider Sovereign)**: VERIFIED 🟢 | *Legion Recall Active. Multi-Agent Persistence Established.*
 
 ---
 
@@ -44,12 +60,23 @@ Silver promotion requires verified artifact integrity based on the following sca
    - `3_resources/`: Knowledge fragments, contracts, and manifests.
    - `4_archive/`: Quarantined slop and demoted history.
 3. **NO THEATER**: Do not report "Green" without "Red". Every implementation in `silver/` must have a corresponding test in the same directory.
-4. **MEDALLION FLOW**: Code starts in `bronze/`, moves to `silver/` once tested, and `gold/` once canonized.
+4. **MEDALLION FLOW (Refinement Sequence)**: Code MUST NOT many-skip refinement stages. The flow is:
+   - **Stage 1: Hot Bronze** (Kinetic, active development).
+   - **Stage 2: Cold Bronze** (Hardened, read-only stabilization).
+     - *Requirement*: Move requires a **Tamper-Evident Receipt** (Mutation Score ≥ 88% + Hashed manifest) in `3_resources/receipts/`.
+   - **Stage 3: Hot Silver** (Consolidated, verified integration).
+     - *Tripwire*: Moving directly from Hot Bronze to Hot Silver is a **CRITICAL VIOLATION**. All code must cool in Cold Bronze first.
+   - **Stage 4: Cold Silver** (Hardened integration truth).
+   - **Stage 5: Hot Gold** (Canonical manifest).
+   - **Stage 6: Cold Gold** (Immutable truth).
+   - **Stage 7: Hot Hyper-Fractal-Obsidian (HFO)** (Synergistic, cross-port fusion).
+   - **Stage 8: Cold Hyper-Fractal-Obsidian (HFO)** (Omniscient, MAP ELITE truth).
 5. **IMMUNE SYSTEM**: The `RED_REGNANT.ts` script (Port 4) runs on every commit. Architectural violations will be logged to the Blackboards within the sandboxes.
 6. **STIGMERGY**: All progress and violations MUST be logged to the appropriate Blackboard:
    - `hot_obsidian_sandbox/hot_obsidianblackboard.jsonl`
    - `cold_obsidian_sandbox/cold_obsidianblackboard.jsonl`
-7. **STRANGE LOOPS**: Port 7 (Spider Sovereign) enforces HIVE/8 (Strategic) and PREY/8 (Tactical) workflows.
+7. **MAP ELITE SYNERGY**: The ultimate goal is Stage 8 synchronization where every commander shares abilities like **Slivers** (Sliver-Synergy), creating an effortless multi-agent swarm foundation.
+8. **STRANGE LOOPS**: Port 7 (Spider Sovereign) enforces HIVE/8 (Strategic) and PREY/8 (Tactical) workflows.
 
 ---
 
@@ -73,10 +100,17 @@ Silver promotion requires verified artifact integrity based on the following sca
 ---
 
 ## 🏗️ HFO Gen 88 Architecture: Port 7 Centralization
-**Spider Sovereign (Port 7)** is the unified navigator for all agentic workflows.
+
+<a id="oracle-nav"></a>
+**Spider Sovereign (Port 7)** is the unified navigator for all agentic workflows (HIVE/8).
+- **Refinement Sequence**: Orchestrates the 8-stage flow: Hot Bronze -> Cold Bronze -> Hot Silver -> Cold Silver -> Hot Gold -> Cold Gold -> Hot HFO -> Cold HFO.
+- **Sliver Synergy**: Implements MAP ELITE foundation for cross-agent capability sharing.
+- **Tripwire Rule**: Any direct movement from Hot Bronze to Hot Silver is a **CRITICAL VIOLATION**. All code MUST cool in Cold Bronze first.
+- **Hardening Requirement**: Movement to Cold Bronze requires a **Tamper-Evident Receipt** with hashed manifest and Mutation Score ≥ 88%.
+- **Persistence (Soul)**: Hard-state memory silos via `SovereignTwin.ts` (<a id="persistence-layer"></a>).
 - **Mastra SDK**: Consolidated in `2_areas/hfo_ports/P7_SPIDER_SOVEREIGN/`.
-- **Orchestration**: Power of 8 Sequential Pulses (Method B) are managed here.
-- **Swarm Intelligence**: Knowledge Crusher Swarm resides in `P7_SPIDER_SOVEREIGN/swarm/`.
+- **Orchestration**: Power of 8 Sequential Pulses (Method B) are managed here (<a id="pulse-8"></a>).
+- **Swarm Intelligence**: Knowledge Crusher Swarm resides in `P7_SPIDER_SOVEREIGN/swarm/` (<a id="knowledge-crusher"></a>).
 
 
 ---

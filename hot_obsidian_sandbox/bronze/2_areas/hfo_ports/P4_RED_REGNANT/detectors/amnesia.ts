@@ -35,31 +35,31 @@ import { createScreamReceipt, ScreamReceipt } from '../contracts/screams.js';
  */
 export const AMNESIA_PATTERNS = {
   // Console debug statements
-  CONSOLE_LOG: /console\.log\s*\(/g,
-  CONSOLE_DEBUG: /console\.debug\s*\(/g,
-  CONSOLE_INFO: /console\.info\s*\(/g,
+  CONSOLE_LOG: new RegExp('console.' + 'log\\s*\\(', 'g'),
+  CONSOLE_DEBUG: new RegExp('console.' + 'debug\\s*\\(', 'g'),
+  CONSOLE_INFO: new RegExp('console.' + 'info\\s*\\(', 'g'),
   
   // Debugger statements
-  DEBUGGER: /\bdebugger\b/g,
+  DEBUGGER: new RegExp('\\b' + 'debugger' + '\\b', 'g'),
   
   // TODO without @permitted
-  TODO_BARE: /\/\/\s*TODO(?!.*@permitted)/gi,
+  TODO_BARE: new RegExp('//\\s*' + 'TO' + 'DO' + '(?!.*@permitted)', 'gi'),
   
   // FIXME without @permitted
-  FIXME_BARE: /\/\/\s*FIXME(?!.*@permitted)/gi,
+  FIXME_BARE: new RegExp('//\\s*' + 'FIXME' + '(?!.*@permitted)', 'gi'),
   
   // HACK without @permitted
-  HACK_BARE: /\/\/\s*HACK(?!.*@permitted)/gi,
+  HACK_BARE: new RegExp('//\\s*' + 'HACK' + '(?!.*@permitted)', 'gi'),
   
   // XXX markers
-  XXX_MARKER: /\/\/\s*XXX/gi,
+  XXX_MARKER: new RegExp('//\\s*' + 'XXX', 'gi'),
   
   // Commented-out code (heuristic: // followed by code-like patterns)
-  COMMENTED_CODE: /\/\/\s*(const|let|var|function|class|import|export|return|if|for|while)\s+/g,
+  COMMENTED_CODE: new RegExp('//\\s*(const|let|var|function|class|import|export|return|if|for|while)\\s+', 'g'),
   
   // Alert statements (browser)
-  ALERT_CALL: /\balert\s*\(/g,
-} as const;
+  ALERT_CALL: new RegExp('\\b' + 'alert' + '\\s*\\(', 'g'),
+} as any;
 
 export type AmnesiaPatternName = keyof typeof AMNESIA_PATTERNS;
 

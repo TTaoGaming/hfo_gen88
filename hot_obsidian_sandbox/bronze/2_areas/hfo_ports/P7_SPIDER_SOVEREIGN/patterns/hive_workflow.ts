@@ -1,7 +1,9 @@
 /**
  * HIVE/8:1010 Strategic Workflow (Consolidated)
  * @port 7
- * @commander Spider Sovereign
+ * @commander SPIDER_SOVEREIGN
+ * @verb ORCHESTRATE
+ * @provenance LEGENDARY_COMMANDERS_V10_PHYSICS_CURSOR.md
  * @gen 88
  * @status CONSOLIDATED
  */

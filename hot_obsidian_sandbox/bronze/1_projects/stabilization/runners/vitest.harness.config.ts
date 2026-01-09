@@ -9,7 +9,8 @@ export default defineConfig({
       HFO_TEST_MODE: 'true'
     },
     include: [
-      'hot_obsidian_sandbox/bronze/**/*.test.ts'
+      'hot_obsidian_sandbox/bronze/**/*.test.ts',
+      'hot_obsidian_sandbox/silver/**/*.test.ts'
     ],
     exclude: [
       '**/node_modules/**',

@@ -1,16 +1,19 @@
 /**
  * HFO UNIVERSAL INTEGRITY TEST (SILVER)
  * 
- * Validates that all 8 legendary commanders are online in the Silver tier.
+ * @port 0-7
+ * @status CROSS_TIER
+ * @provenance: LEGENDARY_COMMANDERS_V10_PHYSICS_CURSOR.md
+ * Validates: Requirement 0.1 (System Health)
  */
 
 import { describe, it, expect } from 'vitest';
 
 import { senseEnvironment } from './P0_LIDLESS_LEGION/sensor.js';
-import { fuseLayers } from './P1_WEB_WEAVER/interlock.js';
+import { fuseLayers } from '../../../../silver/2_areas/hfo_ports/P1_WEB_WEAVER/core/interlock.js';
 import { shapeSignal } from './P2_MIRROR_MAGUS/signals.js';
 import { triggerEvolution } from './P3_SPORE_STORM/evolve.js';
-import { isValidMutationScore } from './P4_RED_REGNANT/contracts/index.js';
+import { isValidMutationScore } from '../../../../silver/2_areas/hfo_ports/P4_RED_REGNANT/contracts/index.js';
 import { PyreEnforcer } from './P5_PYRE_PRAETORIAN/enforcer.js';
 import { KrakenLedger } from './P6_KRAKEN_KEEPER/ledger.js';
 import { SpiderNavigator } from './P7_SPIDER_SOVEREIGN/navigator.js';

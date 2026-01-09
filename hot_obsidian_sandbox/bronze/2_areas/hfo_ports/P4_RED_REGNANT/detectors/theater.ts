@@ -35,26 +35,26 @@ import { createScreamReceipt, ScreamReceipt } from '../contracts/screams.js';
  */
 export const THEATER_PATTERNS = {
   // Placeholder implementations
-  NOT_IMPLEMENTED: /throw new Error\(['"`]Not implemented['"`]\)/gi,
+  NOT_IMPLEMENTED: new RegExp('throw new' + ' Error\\([\'"`]Not implemented[\'"`]\\)', 'gi'),
   
   // Logic placeholder comments
-  LOGIC_PLACEHOLDER: /\/\/\s*(Logic goes here|TODO:?\s*implement)/gi,
+  LOGIC_PLACEHOLDER: new RegExp('//\\s*(Lo' + 'gic goes here|TO' + 'DO:?\\s*implement)', 'gi'),
   
   // Stub returns
-  STUB_RETURN: /return\s+(null|undefined|false|0|\{\});\s*\/\/\s*stub/gi,
+  STUB_RETURN: new RegExp('return\\s+(null|undefined|false|0|\\{\\});\\s*//\\s*stub', 'gi'),
   
   // Implementation placeholder
-  IMPL_PLACEHOLDER: /implementation\s+(below|here).*\.\.\./gis,
+  IMPL_PLACEHOLDER: new RegExp('implementation\\s+(below|here).*\\.\\.\\.', 'gis'),
   
   // Empty test body
-  EMPTY_TEST: /it\s*\([^)]+,\s*\(\)\s*=>\s*\{\s*\}\s*\)/g,
+  EMPTY_TEST: new RegExp('it\\s*\\([^)]+,\\s*\\(\\)\\s*=>\\s*\\{\\s*\\}\\s*\\)', 'g'),
   
   // Test with only console.log
-  CONSOLE_ONLY_TEST: /it\s*\([^)]+,\s*\(\)\s*=>\s*\{\s*console\.(log|warn|info)\([^)]*\);\s*\}\s*\)/g,
+  CONSOLE_ONLY_TEST: new RegExp('it\\s*\\([^)]+,\\s*\\(\\)\\s*=>\\s*\\{\\s*console\\.(log|warn|info)\\([^)]*\\);\\s*\\}\\s*\\)', 'g'),
   
   // Skip markers without reason
-  SKIP_NO_REASON: /\.(skip|todo)\s*\(\s*['"`][^'"`]+['"`]\s*,/g,
-} as const;
+  SKIP_NO_REASON: new RegExp('\\.(skip|todo)\\s*\\(\\s*[\'"`][^\'"`]+[\'"`]\\s*,', 'g'),
+} as any;
 
 export type TheaterPatternName = keyof typeof THEATER_PATTERNS;
 

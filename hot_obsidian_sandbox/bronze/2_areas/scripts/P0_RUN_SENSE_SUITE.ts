@@ -29,11 +29,7 @@ async function runSmokeTest() {
       console.log(`   - [${obs.source}] Confidence: ${obs.confidence}`);
     });
 
-    const receiptPath = path.join(process.cwd(), 'hot_obsidian_sandbox', 'bronze', '3_resources', 'SENSE_RECEIPT_GEN88.json');
-    
-    fs.writeFileSync(receiptPath, JSON.stringify(batch, null, 2));
-    
-    console.log(`\n📄 Receipt pinned to: ${receiptPath}`);
+    console.log(`\n📄 Receipt generated: ${batch.id}`);
     
   } catch (error) {
     console.error("💀 SENSE FAILURE:", error);

@@ -4,7 +4,7 @@
  * Validates: AGENTS.md Rule 5 - Pyre Dance
  */
 
-import { appendFileSync, existsSync, mkdirSync, renameSync, unlinkSync, readFileSync } from 'fs';
+import { appendFileSync, existsSync, mkdirSync, renameSync, unlinkSync, readFileSync, lstatSync } from 'fs';
 import { dirname, join, basename, resolve, relative } from 'path';
 import { fileURLToPath } from 'url';
 
@@ -12,7 +12,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 const ROOT_DIR = resolve(__dirname, '../../../../../');
 
-const BLOOD_BOOK = join(ROOT_DIR, 'hot_obsidian_sandbox/bronze/P4_RED_REGNANT/RED_BOOK_OF_BLOOD_GRUDGES.jsonl');
+const BLOOD_BOOK = join(ROOT_DIR, 'hot_obsidian_sandbox/bronze/2_areas/hfo_ports/P4_RED_REGNANT/BLOOD_BOOK_OF_GRUDGES.jsonl');
 
 /**
  * PARA Medallion Destinations
@@ -53,11 +53,9 @@ export function demote(filePath: string, reason: string): DanceResult {
      return { file: filePath, action: 'skipped', reason: 'File not found', timestamp };
   }
 
-  const content = readFileSync(absPath, 'utf8');
-  if (content.includes('@permitted') || content.includes('@bespoke')) {
-    return { file: filePath, action: 'skipped', reason: 'Has escape hatch', timestamp };
-  }
-
+  // @hard-gate: No escape hatches allowed in Gen 88 Kinetic mode.
+  // Escape hatches are for theater. The Red Queen demands actual purity.
+  
   const archiveDir = getParaDest(filePath);
   if (!existsSync(archiveDir)) {
     mkdirSync(archiveDir, { recursive: true });
@@ -97,33 +95,25 @@ export function purge(filePath: string, reason: string): DanceResult {
 /**
  * Execute the Dance of Shiva on a list of violations.
  */
-export function danceDie(violations: Array<{ file: string; type: string; message: string }>): DanceResult[] {
+export async function danceDie(violations: Array<{ file: string; type: string; message: string }>): Promise<DanceResult[]> {
   const results: DanceResult[] = [];
   
   for (const v of violations) {
     const absPath = resolve(ROOT_DIR, v.file);
     if (!existsSync(absPath)) continue;
+    if (lstatSync(absPath).isDirectory()) continue;
 
-    const content = readFileSync(absPath, 'utf8');
-    
-    // Check for permitted files
-    if (content.includes('@permitted') || content.includes('@bespoke')) {
-      results.push({
-        file: v.file,
-        action: 'skipped',
-        reason: `Protected by escape hatch`,
-        timestamp: new Date().toISOString(),
-      });
-      continue;
-    }
+    // @hard-gate: Escape hatches REMOVED. Kinetic enforcement only.
+
+    const normalizedFile = v.file.replace(/\\/g, '/');
 
     // Demote silver/gold violations
-    if (v.file.includes('/silver/') || v.file.includes('/gold/')) {
-      results.push(demote(v.file, `${v.type}: ${v.message}`));
+    if (normalizedFile.includes('/silver/') || normalizedFile.includes('/gold/')) {
+      results.push(await demote(v.file, `${v.type}: ${v.message}`));
     } else {
       // For Bronze, if it is a severe "Theater" violation, we might still archive it
-      if (v.type === 'THEATER' || v.type === 'POLLUTION') {
-         results.push(demote(v.file, `Bronze Disruption: ${v.message}`));
+      if (v.type === 'THEATER' || v.type === 'POLLUTION' || v.type === 'BDD_MISALIGNMENT') {
+         results.push(await demote(v.file, `Bronze Disruption: ${v.message}`));
       } else {
         results.push({
           file: v.file,

@@ -1,93 +1,86 @@
-import { describe, it, expect, beforeEach, afterEach } from 'vitest';
-import { Agent } from '@mastra/core';
-// @ts-ignore - Expected Red (Missing Packages)
-import { Memory } from '@mastra/memory';
-// @ts-ignore - Expected Red (Missing Packages)
-import { LibSQLStore } from '@mastra/libsql';
-import fs from 'fs';
-import path from 'path';
+import { describe, it, expect, beforeAll } from "vitest";
+import { SovereignTwin } from "./SovereignTwin";
+import fs from "node:fs";
+import path from "node:path";
 
-/**
- * SOVEREIGN PERSISTENCE TDD TEST (RUN RED)
- * 
- * Goal: Verify that the Digital Twin can persist its "Soul" (context payloads)
- * across restarts using a hard-state LibSQL database.
- * 
- * Validates: PORT-7-SS-01 (Sovereign Context Survival)
- */
+describe("Sovereign Persistence (Spider Sovereign/Port 7)", () => {
+    const DB_PATH = path.resolve(__dirname, "test_soul.db");
+    const RESOURCE_ID = "SOVEREIGN_V10_TWIN";
+    const THREAD_ID = "SYNAPTIC_THREAD_001";
 
-describe('Sovereign Persistence (Digital Twin)', () => {
-    const DB_PATH = path.resolve(__dirname, './test_soul.db');
-
-    beforeEach(() => {
+    beforeAll(() => {
         if (fs.existsSync(DB_PATH)) {
-            fs.unlinkSync(DB_PATH);
+            try {
+                fs.unlinkSync(DB_PATH);
+            } catch (e) {
+                console.warn("Could not delete existing DB");
+            }
         }
     });
 
-    afterEach(() => {
-        if (fs.existsSync(DB_PATH)) {
-            fs.unlinkSync(DB_PATH);
-        }
-    });
-
-    it('should persist a soul segment and recall it after instance destruction', async () => {
-        const SOUL_SEGMENT = "GEN88: Biological swarm projection - billion cells in concert.";
-        const AGENT_ID = "hfo-sovereign-twin";
-
-        // 1. Setup Initial Incarnation
-        const store = new LibSQLStore({
-            id: "test-store",
-            url: `file:${DB_PATH}`,
+    it("should maintain synaptic context across agent re-instantiation", async () => {
+        // Lifecycle 1: Initialization and Seeding
+        const twinA = new SovereignTwin({
+            dbPath: DB_PATH,
+            name: "twin",
+            instructions: "You are a persistent digital twin.",
+            model: { provider: "ANY", name: "MOCK" }
         });
 
-        const memory = new Memory({
-            storage: store,
+        const memoryA = await twinA.getMemory("twin");
+        if (!memoryA) throw new Error("MemoryA not found");
+
+        await memoryA.createThread({ threadId: THREAD_ID, resourceId: RESOURCE_ID });
+
+        const seedMessages = [
+            {
+                id: "msg-1",
+                role: "user" as const,
+                content: {
+                    parts: [{ type: "text", text: "Birth sequence initiated." }],
+                    format: 2
+                },
+                threadId: THREAD_ID,
+                resourceId: RESOURCE_ID,
+                createdAt: new Date(),
+                type: "text"
+            },
+            {
+                id: "msg-2",
+                role: "assistant" as const,
+                content: {
+                    parts: [{ type: "text", text: "Persistent soul established." }],
+                    format: 2
+                },
+                threadId: THREAD_ID,
+                resourceId: RESOURCE_ID,
+                createdAt: new Date(),
+                type: "text"
+            }
+        ];
+
+        await memoryA.saveMessages({ messages: seedMessages as any, format: "v2" });
+
+        // Lifecycle 2: Survival Check (New Instance, same DB)
+        const twinB = new SovereignTwin({
+            dbPath: DB_PATH,
+            name: "twin",
+            instructions: "You are a persistent digital twin.",
+            model: { provider: "ANY", name: "MOCK" }
         });
 
-        const twinV1 = new Agent({
-            id: AGENT_ID,
-            name: "Spider Sovereign V1",
-            memory: memory,
-        });
+        const memoryB = await twinB.getMemory("twin");
+        if (!memoryB) throw new Error("MemoryB not found");
 
-        // 2. "Inscribe" the soul segment into memory
-        // This simulates the agent 'remembering' a key philosophical anchor
-        await twinV1.memory.save({
-            content: SOUL_SEGMENT,
-            metadata: { type: 'SOUL_ANCHOR', gen: 88 }
-        });
-
-        console.log('[TDD] Incarnation V1: Soul inscribed.');
-
-        // 3. Destroy V1
-        // (In-memory references cleared)
+        const historyWrapB = await memoryB.rememberMessages({ threadId: THREAD_ID, resourceId: RESOURCE_ID });
+        const historyB = historyWrapB.messagesV2;
         
-        // 4. Setup Second Incarnation (pointing to same hard state)
-        const reloadedStore = new LibSQLStore({
-            id: "test-store",
-            url: `file:${DB_PATH}`,
-        });
-
-        const reloadedMemory = new Memory({
-            storage: reloadedStore,
-        });
-
-        const twinV2 = new Agent({
-            id: AGENT_ID,
-            name: "Spider Sovereign V2",
-            memory: reloadedMemory,
-        });
-
-        // 5. ASSERT: The Digital Twin recalls the biological projection
-        const recalledMemories = await twinV2.memory.query({
-            filter: { type: 'SOUL_ANCHOR' }
-        });
-
-        expect(recalledMemories).toBeDefined();
-        expect(recalledMemories.length).toBeGreaterThan(0);
-        expect(recalledMemories[0].content).toContain("billion cells");
+        expect(historyB.length).toBe(2);
         
-        console.log('[TDD] Incarnation V2: Soul recalled. Persistence Verified.');
+        const firstMsg = historyB.find(m => m.id === "msg-1");
+        expect(firstMsg?.content?.parts?.[0]?.text).toContain("Birth sequence");
+        
+        const secondMsg = historyB.find(m => m.id === "msg-2");
+        expect(secondMsg?.content?.parts?.[0]?.text).toContain("Persistent soul");
     });
 });

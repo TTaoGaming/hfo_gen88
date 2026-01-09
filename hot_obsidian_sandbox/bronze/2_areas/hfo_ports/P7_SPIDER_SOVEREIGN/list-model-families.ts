@@ -1,8 +1,12 @@
 import { config } from 'dotenv';
-import { resolve } from 'path';
+import { resolve, dirname } from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 // Load from workspace root .env
-config({ path: resolve(process.cwd(), '../../../.env') });
+config({ path: resolve(__dirname, '../../../../../.env') });
 
 const OPENROUTER_BASE_URL = 'https://openrouter.ai/api/v1';
 

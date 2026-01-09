@@ -35,7 +35,7 @@ describe('P4-P5 Red/Blue Dance', () => {
     expect(theaterViolation).toBeDefined();
 
     // 2. Blue Team (P5) Reacts with a Dance
-    const danceResults = danceDie(violations as any[]);
+    const danceResults = await danceDie(violations as any[]);
     
     const result = danceResults.find(r => r.file.includes('theater_test_artifact'));
     expect(result?.action).toBe('demoted');

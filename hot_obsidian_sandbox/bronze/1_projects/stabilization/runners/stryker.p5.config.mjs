@@ -5,12 +5,16 @@ export default {
   testRunner: "vitest",
   coverageAnalysis: "perTest",
   mutate: [
-    "hot_obsidian_sandbox/bronze/2_areas/hfo_ports/P5_PYRE_PRAETORIAN/PYRE_DANCE.ts"
+    "hot_obsidian_sandbox/bronze/2_areas/hfo_ports/P5_PYRE_PRAETORIAN/PYRE_DANCE.ts",
+    "hot_obsidian_sandbox/bronze/2_areas/hfo_ports/P5_PYRE_PRAETORIAN/RESURRECTION_LOOP.ts"
   ],
   files: [
     "hot_obsidian_sandbox/bronze/2_areas/hfo_ports/P5_PYRE_PRAETORIAN/PYRE_DANCE.ts",
+    "hot_obsidian_sandbox/bronze/2_areas/hfo_ports/P5_PYRE_PRAETORIAN/RESURRECTION_LOOP.ts",
     "hot_obsidian_sandbox/bronze/2_areas/hfo_ports/P5_PYRE_PRAETORIAN/PHOENIX_CONTRACTS.ts",
     "hot_obsidian_sandbox/bronze/2_areas/hfo_ports/P5_PYRE_PRAETORIAN/RED_BLUE_DANCE.test.ts",
+    "hot_obsidian_sandbox/bronze/2_areas/hfo_ports/P5_PYRE_PRAETORIAN/PYRE_HARDENING.test.ts",
+    "hot_obsidian_sandbox/bronze/2_areas/hfo_ports/P5_PYRE_PRAETORIAN/RESURRECTION.test.ts",
     "hot_obsidian_sandbox/bronze/2_areas/hfo_ports/P4_RED_REGNANT/RED_REGNANT.ts",
     "hot_obsidian_sandbox/bronze/1_projects/stabilization/runners/vitest.harness.config.ts",
     "package.json"

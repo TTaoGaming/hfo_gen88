@@ -1,0 +1,21 @@
+{
+  "mcpServers": {
+    "sovereign-soul": {
+      "command": "npx",
+      "args": [
+        "tsx",
+        "./hot_obsidian_sandbox/bronze/2_areas/hfo_ports/P7_SPIDER_SOVEREIGN/mcp-server/sovereign-mcp.ts"
+      ],
+      "env": {},
+      "disabled": false,
+      "autoApprove": [
+        "list_commanders",
+        "get_commander_state",
+        "get_hive_status",
+        "pulse_heartbeat",
+        "set_commander_state",
+        "set_commander_state"
+      ]
+    }
+  }
+}

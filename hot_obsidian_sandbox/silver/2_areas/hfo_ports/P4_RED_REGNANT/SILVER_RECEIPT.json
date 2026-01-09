@@ -1,0 +1,88 @@
+{
+  "promotion": {
+    "from": "bronze",
+    "to": "silver",
+    "timestamp": "2026-01-07T23:30:00.000Z",
+    "generation": 88,
+    "spec": ".kiro/specs/scream-goldilocks-sprint"
+  },
+  "artifacts": [
+    {
+      "path": "contracts/screams.ts",
+      "tests": "contracts/screams.test.ts",
+      "testCount": 42,
+      "status": "verified"
+    },
+    {
+      "path": "contracts/detector.ts",
+      "tests": "contracts/detector.test.ts",
+      "testCount": 44,
+      "status": "verified"
+    },
+    {
+      "path": "contracts/index.ts",
+      "tests": "contracts/index.test.ts",
+      "testCount": 50,
+      "status": "verified"
+    },
+    {
+      "path": "detectors/blindspot.ts",
+      "tests": "detectors/blindspot.test.ts",
+      "testCount": 44,
+      "mutationScore": 80.95,
+      "status": "goldilocks"
+    },
+    {
+      "path": "detectors/blindspot.integration.test.ts",
+      "testCount": 10,
+      "status": "anti-theater"
+    },
+    {
+      "path": "core/score-classifier.ts",
+      "tests": "core/score-classifier.test.ts",
+      "testCount": 29,
+      "status": "verified"
+    },
+    {
+      "path": "detectors/breach.ts",
+      "tests": "detectors/breach.test.ts",
+      "testCount": 62,
+      "mutationScore": 87.60,
+      "sourceHash": "4E36603680326B95A3CBB044BA7D94228835DACE4339CB7B16E0CA22B14A3536",
+      "strykerShard": "stryker-shards/shard-1-breach.mjs",
+      "status": "goldilocks"
+    }
+  ],
+  "verification": {
+    "realCodebaseScan": true,
+    "filesScanned": 206,
+    "violationsFound": 30,
+    "receiptIntegrity": "all_valid",
+    "performanceMs": 48
+  },
+  "totals": {
+    "testFiles": 7,
+    "totalTests": 281,
+    "allPassing": true
+  },
+  "commanders": {
+    "port0": {
+      "name": "LIDLESS_LEGION",
+      "verb": "SENSE",
+      "scream": "SCREAM_BLINDSPOT",
+      "status": "SILVER",
+      "mutationScore": 80.95,
+      "sourceHash": "N/A"
+    },
+    "port1": {
+      "name": "WEB_WEAVER",
+      "verb": "FUSE",
+      "scream": "SCREAM_BREACH",
+      "status": "SILVER",
+      "mutationScore": 87.60,
+      "sourceHash": "4E36603680326B95A3CBB044BA7D94228835DACE4339CB7B16E0CA22B14A3536",
+      "strykerShard": "stryker-shards/shard-1-breach.mjs",
+      "promotedAt": "2026-01-07T23:30:00.000Z"
+    }
+  }
+}

@@ -1,0 +1,54 @@
+rules:
+  - id: hfo.omission.silent-catch
+    patterns:
+      - pattern: |
+          try {
+            ...
+          } catch ($E) {
+          }
+      - pattern-not: |
+          try {
+            ...
+          } catch ($E) {
+            ...
+          }
+    message: "🔴 [RED QUEEN] Silent Catch detected. Electronic Silence (T1562.001) is a violation of the HFO immune system."
+    languages: [typescript, javascript]
+    severity: ERROR
+
+  - id: hfo.theater.assertionless-test
+    patterns:
+      - pattern: |
+          test(..., () => {
+            ...
+          })
+      - pattern-not-inside: |
+          test(..., () => {
+            ...
+            expect(...)
+            ...
+          })
+      - pattern-not-inside: |
+          test(..., () => {
+            ...
+            assert(...)
+            ...
+          })
+    message: "🔴 [RED QUEEN] Assertionless test detected. Mock Decoy (T1001.005) detected. Testing theatre is forbidden."
+    languages: [typescript, javascript]
+    severity: ERROR
+
+  - id: hfo.theater.placeholder-logic
+    patterns:
+      - pattern-either:
+          - pattern: throw new Error("Not implemented")
+          - pattern: throw new Error("TODO")
+      - pattern-not-inside: |
+          // @permitted
+          ...
+      - pattern-not-inside: |
+          // @bespoke
+          ...
+    message: "🔴 [RED QUEEN] Placeholder Logic detected. Masquerading (T1036) as an asset. Complete the implementation or be immolated."
+    languages: [typescript, javascript]
+    severity: ERROR

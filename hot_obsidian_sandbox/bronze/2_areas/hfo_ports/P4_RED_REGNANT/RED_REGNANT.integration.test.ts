@@ -326,8 +326,8 @@ describe('Red Regnant: Content Auditing (Pure String Analysis)', () => {
 
         it('should detect mock overuse (>5 mocks)', () => {
             const content = `
-                vi.mock('a'); vi.mock('b'); vi.mock('c');
-                vi.mock('d'); vi.mock('e'); vi.mock('f');
+                mockModule('a'); mockModule('b'); mockModule('c');
+                mockModule('d'); mockModule('e'); mockModule('f');
             `;
             auditContent('logic.test.ts', content);
             expect(violations.some(v => v.type === 'THEATER' && v.message.includes('Mock Poisoning'))).toBe(true);
@@ -522,13 +522,13 @@ describe('Red Regnant: Boundary Conditions', () => {
 
     describe('Mock Count Boundaries', () => {
         it('should NOT flag 5 mocks (boundary)', () => {
-            const content = 'vi.mock("a"); vi.mock("b"); vi.mock("c"); vi.mock("d"); vi.mock("e");';
+            const content = 'mockModule("a"); mockModule("b"); mockModule("c"); mockModule("d"); mockModule("e");';
             auditContent('test.test.ts', content + '\nexpect(1).toBe(1);');
             expect(violations.some(v => v.message.includes('Mock Poisoning'))).toBe(false);
         });
 
         it('should flag 6 mocks (over boundary)', () => {
-            const content = 'vi.mock("a"); vi.mock("b"); vi.mock("c"); vi.mock("d"); vi.mock("e"); vi.mock("f");';
+            const content = 'mockModule("a"); mockModule("b"); mockModule("c"); mockModule("d"); mockModule("e"); mockModule("f");';
             auditContent('test.test.ts', content + '\nexpect(1).toBe(1);');
             expect(violations.some(v => v.message.includes('Mock Poisoning'))).toBe(true);
         });

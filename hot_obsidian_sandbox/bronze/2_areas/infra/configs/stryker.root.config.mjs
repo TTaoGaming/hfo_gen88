@@ -12,14 +12,13 @@ export default {
   testRunner: "vitest",
   coverageAnalysis: "perTest",
   mutate: [
-    "hot_obsidian_sandbox/bronze/P4_RED_REGNANT/RED_REGNANT.ts",
-    "hot_obsidian_sandbox/bronze/P5_PYRE_PRAETORIAN/PYRE_DANCE.ts"
+    "hot_obsidian_sandbox/bronze/2_areas/hfo_ports/P5_PYRE_PRAETORIAN/PYRE_DANCE.ts",
+    "hot_obsidian_sandbox/bronze/2_areas/hfo_ports/P5_PYRE_PRAETORIAN/RESURRECTION_LOOP.ts"
   ],
   files: [
-    "hot_obsidian_sandbox/bronze/P4_RED_REGNANT/**/*",
-    "hot_obsidian_sandbox/bronze/P5_PYRE_PRAETORIAN/**/*",
-    "hot_obsidian_sandbox/bronze/infra/**/*",
-    "vitest.harness.config.ts",
+    "hot_obsidian_sandbox/bronze/2_areas/hfo_ports/P5_PYRE_PRAETORIAN/**/*",
+    "hot_obsidian_sandbox/bronze/2_areas/hfo_ports/P4_RED_REGNANT/**/*",
+    "hot_obsidian_sandbox/bronze/2_areas/infra/**/*",
     "package.json"
   ],
   ignorePatterns: [
@@ -30,7 +29,6 @@ export default {
     "hot_obsidian_sandbox/bronze/quarantine/**",
     "hot_obsidian_sandbox/bronze/provenance/**",
     "hot_obsidian_sandbox/bronze/1_projects/**",
-    "hot_obsidian_sandbox/bronze/2_areas/**",
     "hot_obsidian_sandbox/bronze/4_archive/**",
     "hot_obsidian_sandbox/bronze/artifacts/**",
     "hot_obsidian_sandbox/bronze/exemplars/**",
@@ -47,7 +45,7 @@ export default {
     "reports/**"
   ],
   vitest: {
-    configFile: "vitest.root.config.ts"
+    configFile: "hot_obsidian_sandbox/bronze/2_areas/infra/configs/vitest.root.config.ts"
   },
   tempDirName: ".stryker-tmp",
   cleanTempDir: true

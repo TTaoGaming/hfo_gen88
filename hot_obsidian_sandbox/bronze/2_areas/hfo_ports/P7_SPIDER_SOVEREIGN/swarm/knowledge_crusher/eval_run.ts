@@ -1,7 +1,7 @@
 /**
  * Knowledge Rollup Eval Harness (Gen 88)
  * @port 7
- * @commander Spider Sovereign
+ * @commander SPIDER_SOVEREIGN
  */
 
 import 'dotenv/config';

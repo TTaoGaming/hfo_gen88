@@ -1,7 +1,9 @@
 /**
  * Mastra Research Agent (Consolidated)
  * @port 7
- * @commander Spider Sovereign
+ * @commander SPIDER_SOVEREIGN
+ * @verb NAVIGATE
+ * @provenance LEGENDARY_COMMANDERS_V10_PHYSICS_CURSOR.md
  * @gen 88
  * @status CONSOLIDATED
  */

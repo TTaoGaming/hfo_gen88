@@ -12,12 +12,12 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 const ROOT_DIR = resolve(__dirname, '../../../../../');
 
-const BLOOD_BOOK = join(ROOT_DIR, 'hot_obsidian_sandbox/bronze/P4_RED_REGNANT/RED_BOOK_OF_BLOOD_GRUDGES.jsonl');
+const BLOOD_BOOK = join(ROOT_DIR, 'hot_obsidian_sandbox/bronze/2_areas/hfo_ports/P4_RED_REGNANT/BLOOD_BOOK_OF_GRUDGES.jsonl');
 
 /**
  * PARA Medallion Destinations
  */
-const MEDALLIONS = ['gold', 'silver', 'bronze'];
+const MEDALLIONS = ['hfo', 'gold', 'silver', 'bronze'];
 
 function getParaDest(filePath: string): string {
   const absPath = resolve(ROOT_DIR, filePath);
@@ -53,7 +53,6 @@ export function demote(filePath: string, reason: string): DanceResult {
      return { file: filePath, action: 'skipped', reason: 'File not found', timestamp };
   }
 
-  const content = readFileSync(absPath, 'utf8');
   // @hard-gate: No escape hatches allowed in Gen 88 Kinetic mode.
   // Escape hatches are for theater. The Red Queen demands actual purity.
   
@@ -96,7 +95,7 @@ export function purge(filePath: string, reason: string): DanceResult {
 /**
  * Execute the Dance of Shiva on a list of violations.
  */
-export function danceDie(violations: Array<{ file: string; type: string; message: string }>): DanceResult[] {
+export async function danceDie(violations: Array<{ file: string; type: string; message: string }>): Promise<DanceResult[]> {
   const results: DanceResult[] = [];
   
   for (const v of violations) {
@@ -104,19 +103,17 @@ export function danceDie(violations: Array<{ file: string; type: string; message
     if (!existsSync(absPath)) continue;
     if (lstatSync(absPath).isDirectory()) continue;
 
-    const content = readFileSync(absPath, 'utf8');
-    
     // @hard-gate: Escape hatches REMOVED. Kinetic enforcement only.
 
     const normalizedFile = v.file.replace(/\\/g, '/');
 
     // Demote silver/gold violations
     if (normalizedFile.includes('/silver/') || normalizedFile.includes('/gold/')) {
-      results.push(demote(v.file, `${v.type}: ${v.message}`));
+      results.push(await demote(v.file, `${v.type}: ${v.message}`));
     } else {
       // For Bronze, if it is a severe "Theater" violation, we might still archive it
       if (v.type === 'THEATER' || v.type === 'POLLUTION' || v.type === 'BDD_MISALIGNMENT') {
-         results.push(demote(v.file, `Bronze Disruption: ${v.message}`));
+         results.push(await demote(v.file, `Bronze Disruption: ${v.message}`));
       } else {
         results.push({
           file: v.file,

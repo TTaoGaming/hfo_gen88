@@ -3,8 +3,8 @@
  * 
  * @port 2
  * @commander MIRROR_MAGUS
- * @verb SHAPE / TRANSFORM
- * @provenance: LEGENDARY_COMMANDERS_V9.md
+ * @verb SHAPE
+ * @provenance LEGENDARY_COMMANDERS_V9.md
  * Validates: Requirements 4.1, 4.2, 4.3, 4.4, 4.5
  */
 
